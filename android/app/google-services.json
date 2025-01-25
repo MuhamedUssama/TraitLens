@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "988815369913",
+    "project_id": "traitlens",
+    "storage_bucket": "traitlens.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988815369913:android:c96064bd088b21c7951d68",
+        "android_client_info": {
+          "package_name": "com.example.trait_lens"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1WteXwEGvRIintD2Ut_knYdleTBfDbTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
