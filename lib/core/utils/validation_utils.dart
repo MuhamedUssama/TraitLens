@@ -1,11 +1,14 @@
-import 'app_strings.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'app_regex.dart';
 
 class AppValidator {
-  static String? validateEmailAddress(String? email) {
+  static String? validateEmailAddress(
+      {String? email, required BuildContext context}) {
     if (email == null || email.trim().isEmpty) {
-      return AppStrings.emptyEmailAddress;
-    } else if (!AppStrings.emailRegex.hasMatch(email.trim())) {
-      return AppStrings.validateEmailAddress;
+      return AppLocalizations.of(context)!.emptyEmailAddress;
+    } else if (!AppRegex.emailRegex.hasMatch(email.trim())) {
+      return AppLocalizations.of(context)!.validateEmailAddress;
     }
     return null;
   }
@@ -21,12 +24,13 @@ class AppValidator {
   static String? validateConfirmPassword({
     required String password,
     required String? confirmPassword,
+    required BuildContext context,
   }) {
     if (confirmPassword == null || confirmPassword.trim().isEmpty) {
-      return AppStrings.emptyConfirmPassword;
+      return AppLocalizations.of(context)!.emptyConfirmPassword;
     }
     if (confirmPassword != password) {
-      return AppStrings.passwordDontMatch;
+      return AppLocalizations.of(context)!.passwordDontMatch;
     }
     return null;
   }

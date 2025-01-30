@@ -1,0 +1,6 @@
+{
+  "emptyEmailAddress": "Email address cannot be empty",
+  "validateEmailAddress": "Please enter a valid email address",
+  "emptyConfirmPassword": "Confirm password cannot be empty",
+  "passwordDontMatch": "Password and confirm password do not match"
+}
