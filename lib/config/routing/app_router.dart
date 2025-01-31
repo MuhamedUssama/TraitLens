@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trait_lens/features/auth/sign_up/view/sign_up_screen.dart';
+import 'package:trait_lens/features/auth/view/ui/sign_up_screen.dart';
 
 import 'routes_name.dart';
 
