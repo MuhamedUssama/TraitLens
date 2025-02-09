@@ -15,5 +15,5 @@ abstract interface class AuthRepository {
 
   Future<Either<ServerException, void>> verifyAccount();
 
-  Future<Either<ServerException, void>> signOut();
+  Future<void> signOut();
 }

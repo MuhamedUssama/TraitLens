@@ -15,5 +15,5 @@ abstract interface class AuthDataSource {
 
   Future<Either<ServerException, void>> verifyAccount();
 
-  Future<Either<ServerException, void>> signOut();
+  Future<void> signOut();
 }

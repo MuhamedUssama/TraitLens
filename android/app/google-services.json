@@ -12,7 +12,20 @@
           "package_name": "com.example.trait_lens"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "988815369913-iuuarllog4jcqtek9dl5b9j198fo7p0f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trait_lens",
+            "certificate_hash": "7e548a65ffa0a034080e7a43d73039c384a2058d"
+          }
+        },
+        {
+          "client_id": "988815369913-d3vm2gqqquv93og57gt1qn36gabhpr39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB1WteXwEGvRIintD2Ut_knYdleTBfDbTM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988815369913-c3tvsh4cma4a9sv5gtncmc2dhbs7gcgg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "988815369913-9iorthq0vobur7e3m98qu9jqm5jklnnt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.traitLens"
+              }
+            }
+          ]
         }
       }
     }

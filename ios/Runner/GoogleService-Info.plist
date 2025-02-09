@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>988815369913-9iorthq0vobur7e3m98qu9jqm5jklnnt.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.988815369913-9iorthq0vobur7e3m98qu9jqm5jklnnt</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA62F5vdaWm5b6iQv9e9VxF8kgbewvf8Vk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>988815369913</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.traitLens</string>
+	<key>PROJECT_ID</key>
+	<string>traitlens</string>
+	<key>STORAGE_BUCKET</key>
+	<string>traitlens.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:988815369913:ios:1395b3e45edeacc9951d68</string>
+</dict>
+</plist>

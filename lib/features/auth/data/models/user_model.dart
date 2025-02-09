@@ -1,5 +1,7 @@
+import 'package:trait_lens/features/auth/domain/entities/user_entity.dart';
+
 class UserModel {
-  static const String userCollection = 'users';
+  static const String collectionName = 'users';
   final String id;
   final String email;
 
@@ -17,4 +19,6 @@ class UserModel {
         'id': id,
         'email': email,
       };
+
+  UserEntity toEntity() => UserEntity(id: id, email: email);
 }

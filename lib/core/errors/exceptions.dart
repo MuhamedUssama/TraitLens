@@ -43,29 +43,3 @@ class NoInternetConnectionException extends ServerException {
   const NoInternetConnectionException([message])
       : super("No Internet Connection");
 }
-
-// Firebase Exceptions
-class FirebaseAuthException extends ServerException {
-  const FirebaseAuthException([message])
-      : super("Firebase Authentication Error");
-}
-
-class FirebaseNetworkException extends ServerException {
-  const FirebaseNetworkException([message]) : super("Firebase Network Error");
-}
-
-class FirebaseStorageException extends ServerException {
-  const FirebaseStorageException([message]) : super("Firebase Storage Error");
-}
-
-class FirebaseDatabaseException extends ServerException {
-  const FirebaseDatabaseException([message]) : super("Firebase Database Error");
-}
-
-class FirebaseTimeoutException extends ServerException {
-  const FirebaseTimeoutException([message]) : super("Firebase Timeout Error");
-}
-
-class FirebaseUnknownException extends ServerException {
-  const FirebaseUnknownException([message]) : super("Unknown Firebase Error");
-}
