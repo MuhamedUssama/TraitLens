@@ -146,10 +146,10 @@ class AuthDataSourceImpl implements AuthDataSource {
   Future<void> signOut() => FirebaseAuth.instance.signOut();
 
   @override
-  Future<Either<ServerException, void>> verifyAccount() async {
+  Future<Either<ServerException, String>> verifyAccount() async {
     if (!FirebaseAuth.instance.currentUser!.emailVerified) {
       await FirebaseAuth.instance.currentUser!.sendEmailVerification();
-      return right(null);
+      return right('Email verified');
     } else {
       return left(const ServerException("Email already verified"));
     }

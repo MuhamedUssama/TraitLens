@@ -14,6 +14,9 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
 import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
     as _i105;
+import '../../features/auth/data/repository_impl/auth_repository_impl.dart'
+    as _i954;
+import '../../features/auth/domain/repository/auth_repository.dart' as _i961;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -30,6 +33,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.factory<_i961.AuthRepository>(
+        () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()));
     return this;
   }
 }

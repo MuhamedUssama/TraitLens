@@ -13,7 +13,7 @@ abstract interface class AuthRepository {
 
   Future<Either<ServerException, UserEntity>> signInWithFacebook();
 
-  Future<Either<ServerException, void>> verifyAccount();
+  Future<Either<ServerException, String>> verifyAccount();
 
   Future<void> signOut();
 }
