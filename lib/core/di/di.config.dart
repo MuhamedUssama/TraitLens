@@ -17,6 +17,17 @@ import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
 import '../../features/auth/data/repository_impl/auth_repository_impl.dart'
     as _i954;
 import '../../features/auth/domain/repository/auth_repository.dart' as _i961;
+import '../../features/auth/domain/use_cases/sign_in_with_email_and_password_usecase.dart'
+    as _i780;
+import '../../features/auth/domain/use_cases/sign_in_with_facebook_usecase.dart'
+    as _i952;
+import '../../features/auth/domain/use_cases/sign_in_with_google_usecase.dart'
+    as _i645;
+import '../../features/auth/domain/use_cases/sign_out_usecase.dart' as _i399;
+import '../../features/auth/domain/use_cases/sign_up_with_email_and_password_usecase.dart'
+    as _i217;
+import '../../features/auth/domain/use_cases/verify_account_usecase.dart'
+    as _i3;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -35,6 +46,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
     gh.factory<_i961.AuthRepository>(
         () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()));
+    gh.factory<_i217.SignUpWithEmailAndPasswordUsecase>(() =>
+        _i217.SignUpWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i780.SignInWithEmailAndPasswordUsecase>(() =>
+        _i780.SignInWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i3.VerifyAccountUsecase>(
+        () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i399.SignOutUsecase>(
+        () => _i399.SignOutUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i645.SignInWithGoogleUsecase>(
+        () => _i645.SignInWithGoogleUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i952.SignInWithFacebookUsecase>(
+        () => _i952.SignInWithFacebookUsecase(gh<_i961.AuthRepository>()));
     return this;
   }
 }
