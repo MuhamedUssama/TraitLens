@@ -90,6 +90,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                         );
                       }
+                      if (state is SignUpWithGoogleSuccessState) {
+                        AppDialogs.showSuccessDialog(
+                          message: AppLocalizations.of(context)!
+                              .accountCreatedSuccessfully,
+                          context: context,
+                          posActionTitle: AppLocalizations.of(context)!.ok,
+                          posAction: () {
+                            viewModel.doIntent(NavigateToSignInScreenAction());
+                          },
+                        );
+                      }
+                      if (state is SignUpWithFacebookSuccessState) {
+                        AppDialogs.showSuccessDialog(
+                          message: AppLocalizations.of(context)!
+                              .accountCreatedSuccessfully,
+                          context: context,
+                          posActionTitle: AppLocalizations.of(context)!.ok,
+                          posAction: () {
+                            viewModel.doIntent(NavigateToSignInScreenAction());
+                          },
+                        );
+                      }
                       if (state is SignUpErrorState) {
                         AppDialogs.showFailDialog(
                           message: state.message,

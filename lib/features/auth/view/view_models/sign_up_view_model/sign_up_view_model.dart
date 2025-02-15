@@ -99,7 +99,7 @@ class SignUpViewModel extends Cubit<SignUpStates> {
     emit(HideLoadingState());
     result.fold(
       (error) => emit(SignUpErrorState(error.message.toString())),
-      (userEntity) => emit(SignUpSuccessState(userEntity)),
+      (userEntity) => emit(SignUpWithGoogleSuccessState(userEntity)),
     );
   }
 
@@ -109,7 +109,7 @@ class SignUpViewModel extends Cubit<SignUpStates> {
     emit(HideLoadingState());
     result.fold(
       (error) => emit(SignUpErrorState(error.message.toString())),
-      (userEntity) => emit(SignUpSuccessState(userEntity)),
+      (userEntity) => emit(SignUpWithFacebookSuccessState(userEntity)),
     );
   }
 

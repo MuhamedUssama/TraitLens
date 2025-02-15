@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:trait_lens/config/theme/app_colors.dart';
+import 'package:trait_lens/core/utils/app_assets.dart';
 
 import '../../../../config/theme/text_style.dart';
 import '../../../../core/utils/validation_utils.dart';
@@ -94,6 +95,55 @@ class SignUpForm extends StatelessWidget {
               style: TextStyles.font20WhiteSemiBold,
             ),
           ),
+          SizedBox(height: 30.h),
+          TextButton(
+            onPressed: () => viewModel.doIntent(NavigateToSignInScreenAction()),
+            child: Text(
+              AppLocalizations.of(context)!.alreadyHaveAnAccount,
+              style: TextStyles.font14GreySemiBold,
+            ),
+          ),
+          SizedBox(height: 65.h),
+          Text(
+            AppLocalizations.of(context)!.orContinueWith,
+            style: TextStyles.font14BlueSemiBold,
+          ),
+          SizedBox(height: 20.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MaterialButton(
+                onPressed: () {
+                  viewModel.doIntent(SignUpWithGoogleAction());
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                minWidth: 60.w,
+                height: 44.h,
+                color: ColorsManager.lightGrey,
+                child: Image.asset(
+                  AppAssets.googleLogo,
+                  width: 24.w,
+                  height: 24.h,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(width: 10.w),
+              MaterialButton(
+                onPressed: () {
+                  viewModel.doIntent(SignUpWithFacebookAction());
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                minWidth: 60.w,
+                height: 44.h,
+                color: ColorsManager.lightGrey,
+                child: Icon(Icons.facebook, color: Colors.black, size: 24.w),
+              ),
+            ],
+          )
         ],
       ),
     );

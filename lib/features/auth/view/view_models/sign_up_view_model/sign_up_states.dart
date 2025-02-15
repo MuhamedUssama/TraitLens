@@ -16,6 +16,16 @@ class SignUpErrorState extends SignUpStates {
   SignUpErrorState(this.message);
 }
 
+class SignUpWithGoogleSuccessState extends SignUpStates {
+  UserEntity? userEntity;
+  SignUpWithGoogleSuccessState(this.userEntity);
+}
+
+class SignUpWithFacebookSuccessState extends SignUpStates {
+  UserEntity? userEntity;
+  SignUpWithFacebookSuccessState(this.userEntity);
+}
+
 class HideLoadingState extends SignUpStates {}
 
 class VerifyAccountState extends SignUpStates {
