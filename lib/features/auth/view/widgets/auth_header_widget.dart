@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthHeaderWidget extends StatelessWidget {
   final String title;
   final String message;
   final TextStyle titleTextStyle;
   final TextStyle messageTextStyle;
+  final double height;
+
   const AuthHeaderWidget({
     super.key,
     required this.title,
     required this.message,
     required this.titleTextStyle,
     required this.messageTextStyle,
+    required this.height,
   });
 
   @override
@@ -22,7 +24,7 @@ class AuthHeaderWidget extends StatelessWidget {
           title,
           style: titleTextStyle,
         ),
-        SizedBox(height: 6.h),
+        SizedBox(height: height),
         Text(
           message,
           style: messageTextStyle,

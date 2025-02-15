@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trait_lens/features/auth/view/ui/sign_in_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/sign_up_screen.dart';
+import 'package:trait_lens/features/home/view/ui/home_screen.dart';
 
 import 'routes_name.dart';
 
@@ -12,6 +13,9 @@ class AppRouters {
 
       case RoutesName.loginScreen:
         return MaterialPageRoute(builder: (context) => const SignInScreen());
+
+      case RoutesName.homeScreen:
+        return MaterialPageRoute(builder: (context) => const HomeScreen());
 
       default:
         return MaterialPageRoute(builder: (context) => unDefinePageRoute());

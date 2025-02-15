@@ -21,5 +21,11 @@
   "login": "Login",
   "signUp": "Sign Up",
   "alreadyHaveAnAccount": "Already have an account?",
-  "orContinueWith": "Or continue with"
+  "orContinueWith": "Or continue with",
+  "loginHere": "Login here",
+  "loginMessage": "Welcome back you’ve been missed!",
+  "forgotYourPassword": "Forgot your password?",
+  "signIn": "Sign in",
+  "createNewAccount": "Create new account",
+  "loggedInSuccessfully": "Logged in successfully."
 }

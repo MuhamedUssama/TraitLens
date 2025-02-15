@@ -51,6 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   AuthHeaderWidget(
+                    height: 6.h,
                     title: AppLocalizations.of(context)!.createAccount,
                     message: AppLocalizations.of(context)!.signUpMessage,
                     titleTextStyle: TextStyles.font30BlueBold,
