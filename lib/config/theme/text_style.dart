@@ -53,4 +53,10 @@ class TextStyles {
     fontWeight: FontWeightHelper.semiBold,
     color: ColorsManager.baseBlue,
   );
+
+  static TextStyle font20GreyBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.secondaryColor,
+  );
 }

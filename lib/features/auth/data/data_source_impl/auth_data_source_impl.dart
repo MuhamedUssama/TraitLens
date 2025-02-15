@@ -57,6 +57,15 @@ class AuthDataSourceImpl implements AuthDataSource {
         return left(const ServerException("User creation failed"));
       }
 
+      if (!credential.user!.emailVerified) {
+        await verifyAccount();
+        return left(
+          ServerException(
+            "Please verify your email before signing in, Verification email sent to ${FirebaseAuth.instance.currentUser!.email}",
+          ),
+        );
+      }
+
       CollectionReference<UserModel> usersCollection =
           FireBaseService.getUsersCollection();
 

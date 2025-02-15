@@ -21,5 +21,11 @@
   "login": "تسجيل الدخول",
   "signUp": "انشاء حساب",
   "alreadyHaveAnAccount": "هل لديك حساب؟",
-  "orContinueWith": "أو تابع مع"
+  "orContinueWith": "أو تابع مع",
+  "loginHere": "تسجيل الدخول هنا",
+  "loginMessage": "مرحبًا بعودتك لقد افتقدناك!",
+  "forgotYourPassword": "هل نسيت كلمة المرور؟",
+  "signIn": "تسجيل الدخول",
+  "createNewAccount": "إنشاء حساب جديد",
+  "loggedInSuccessfully": "تم تسجيل الدخول بنجاح."
 }
