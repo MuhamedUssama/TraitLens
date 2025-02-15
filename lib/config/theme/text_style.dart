@@ -12,9 +12,45 @@ class TextStyles {
     color: Colors.white,
   );
 
+  static TextStyle font20WhiteSemiBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.white,
+  );
+
   static TextStyle font16BlackRegular = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.baseBlack,
+  );
+
+  static TextStyle font30BlueBold = TextStyle(
+    fontSize: 30.sp,
+    fontWeight: FontWeight.w900,
+    color: ColorsManager.baseBlue,
+  );
+
+  static TextStyle font12GreyBold = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w900,
+    color: ColorsManager.grey,
+  );
+
+  static TextStyle font16DarkGreyMedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.secondaryColor,
+  );
+
+  static TextStyle font14GreySemiBold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.secondaryColor,
+  );
+
+  static TextStyle font14BlueSemiBold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.baseBlue,
   );
 }

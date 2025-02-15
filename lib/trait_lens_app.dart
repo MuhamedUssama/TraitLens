@@ -3,6 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'config/routing/app_router.dart';
+import 'config/routing/routes_name.dart';
 import 'config/theme/app_theme.dart';
 
 class TraitLensApp extends StatelessWidget {
@@ -29,7 +31,8 @@ class TraitLensApp extends StatelessWidget {
         locale: const Locale('en'),
         debugShowCheckedModeBanner: false,
         theme: AppTheme.appTheme,
-        home: Scaffold(),
+        initialRoute: RoutesName.signUpScreen,
+        onGenerateRoute: (settings) => AppRouters.onGenerate(settings),
       ),
     );
   }
