@@ -28,12 +28,12 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String password,
   }) async {
-    final either = await _authDataSource.signUpWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-
     if (await _checkInternetConnection()) {
+      final either = await _authDataSource.signUpWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
       return either.fold(
         (error) => left(ServerException(error.toString())),
         (user) => right(user),
@@ -45,9 +45,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<ServerException, String>> verifyAccount() async {
-    final either = await _authDataSource.verifyAccount();
-
     if (await _checkInternetConnection()) {
+      final either = await _authDataSource.verifyAccount();
+
       return either.fold(
         (error) => left(ServerException(error.toString())),
         (message) => right(message),
@@ -62,12 +62,12 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String password,
   }) async {
-    final either = await _authDataSource.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-
     if (await _checkInternetConnection()) {
+      final either = await _authDataSource.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
       return either.fold(
         (error) => left(ServerException(error.toString())),
         (user) => right(user),
@@ -79,9 +79,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<ServerException, UserEntity>> signInWithFacebook() async {
-    final either = await _authDataSource.signInWithFacebook();
-
     if (await _checkInternetConnection()) {
+      final either = await _authDataSource.signInWithFacebook();
+
       return either.fold(
         (error) => left(ServerException(error.toString())),
         (user) => right(user),
@@ -93,12 +93,27 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<ServerException, UserEntity>> signInWithGoogle() async {
-    final either = await _authDataSource.signInWithGoogle();
-
     if (await _checkInternetConnection()) {
+      final either = await _authDataSource.signInWithGoogle();
+
       return either.fold(
         (error) => left(ServerException(error.toString())),
         (user) => right(user),
+      );
+    } else {
+      return left(const NoInternetConnectionException());
+    }
+  }
+
+  @override
+  Future<Either<ServerException, String>> forgetPassword(
+      {required String email}) async {
+    if (await _checkInternetConnection()) {
+      final either = await _authDataSource.forgetPassword(email: email);
+
+      return either.fold(
+        (error) => left(ServerException(error.toString())),
+        (message) => right(message),
       );
     } else {
       return left(const NoInternetConnectionException());
