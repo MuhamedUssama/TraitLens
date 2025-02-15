@@ -18,6 +18,9 @@ class SignUpErrorState extends SignUpStates {
 
 class HideLoadingState extends SignUpStates {}
 
-class VerifyAccountState extends SignUpStates {}
+class VerifyAccountState extends SignUpStates {
+  String message;
+  VerifyAccountState(this.message);
+}
 
 class NavigateToSignInScreenState extends SignUpStates {}

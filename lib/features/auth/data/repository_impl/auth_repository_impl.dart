@@ -50,7 +50,7 @@ class AuthRepositoryImpl implements AuthRepository {
     if (await _checkInternetConnection()) {
       return either.fold(
         (error) => left(ServerException(error.toString())),
-        (success) => right('Email Verified'),
+        (message) => right(message),
       );
     } else {
       return left(const NoInternetConnectionException());

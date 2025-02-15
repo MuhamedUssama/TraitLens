@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/Material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -35,11 +35,10 @@ class SignUpViewModel extends Cubit<SignUpStates> {
   ValueNotifier<bool> passwordVisible = ValueNotifier(true);
   ValueNotifier<bool> passwordConfirmationVisible = ValueNotifier(true);
 
-  Future<void> doIndent(SignUpActions action) async {
+  Future<void> doIntent(SignUpActions action) async {
     switch (action) {
       case SignUpWithEmailAndPasswordAction():
         _signUpWithEmailAndPassword();
-        _verifyAccount();
       case SignUpWithGoogleAction():
         _signUpWithGoogle();
       case SignUpWithFacebookAction():
@@ -52,6 +51,8 @@ class SignUpViewModel extends Cubit<SignUpStates> {
         _changePasswordConfirmationVisibility();
       case FormDataChangedAction():
         _updateValidationState();
+      case VerifyAccountAction():
+        _verifyAccount();
     }
   }
 
@@ -88,7 +89,7 @@ class SignUpViewModel extends Cubit<SignUpStates> {
     emit(HideLoadingState());
     result.fold(
       (error) => emit(SignUpErrorState(error.message.toString())),
-      (_) => emit(VerifyAccountState()),
+      (message) => emit(VerifyAccountState(message)),
     );
   }
 

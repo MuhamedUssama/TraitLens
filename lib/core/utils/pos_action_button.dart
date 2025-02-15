@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trait_lens/config/theme/app_colors.dart';
 
 import '../../config/theme/text_style.dart';
 
@@ -19,6 +20,12 @@ class PosActionButton extends StatelessWidget {
             posAction!();
           }
         },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: ColorsManager.baseBlue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: FittedBox(

@@ -17,6 +17,15 @@ class AuthDataSourceImpl implements AuthDataSource {
   Future<Either<ServerException, UserEntity>> signUpWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
+      final methods =
+          await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+      if (methods.isNotEmpty) {
+        return const Left(
+          ServerException(
+              "The email address is already in use by another account."),
+        );
+      }
+
       UserCredential credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
@@ -147,11 +156,17 @@ class AuthDataSourceImpl implements AuthDataSource {
 
   @override
   Future<Either<ServerException, String>> verifyAccount() async {
-    if (!FirebaseAuth.instance.currentUser!.emailVerified) {
-      await FirebaseAuth.instance.currentUser!.sendEmailVerification();
-      return right('Email verified');
-    } else {
-      return left(const ServerException("Email already verified"));
+    try {
+      if (!FirebaseAuth.instance.currentUser!.emailVerified) {
+        await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+        return right(
+          "Verification email sent to ${FirebaseAuth.instance.currentUser!.email}",
+        );
+      } else {
+        return left(const ServerException("Email already verified"));
+      }
+    } on FirebaseAuthException catch (error) {
+      return left(ServerException(error.message));
     }
   }
 }
