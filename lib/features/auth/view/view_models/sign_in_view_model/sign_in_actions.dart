@@ -8,6 +8,8 @@ class SignInWithFacebookAction extends SignInActions {}
 
 class ChangePasswordVisibilityAction extends SignInActions {}
 
+class FormDataChangedAction extends SignInActions {}
+
 class NavigateToSignUpScreenAction extends SignInActions {}
 
 class NavigateToForgetPasswordScreenAction extends SignInActions {}
