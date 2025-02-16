@@ -12,7 +12,7 @@ import '../data_source/fill_profile_data_source.dart';
 
 @Injectable(as: FillProfileRepository)
 class FillProfileRepositoryImpl implements FillProfileRepository {
-  FillProfileDataSource _fillProfileDataSource;
+  final FillProfileDataSource _fillProfileDataSource;
 
   @factoryMethod
   FillProfileRepositoryImpl(this._fillProfileDataSource);
