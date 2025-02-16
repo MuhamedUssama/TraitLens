@@ -86,6 +86,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         Navigator.pushNamed(
                           context,
                           RoutesName.forgetPasswordScreen,
+                          arguments: viewModel.emailController.text,
                         );
                       }
                       if (state is NavigateToHomeScreenState) {

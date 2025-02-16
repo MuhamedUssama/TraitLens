@@ -27,5 +27,9 @@
   "forgotYourPassword": "هل نسيت كلمة المرور؟",
   "signIn": "تسجيل الدخول",
   "createNewAccount": "إنشاء حساب جديد",
-  "loggedInSuccessfully": "تم تسجيل الدخول بنجاح."
+  "loggedInSuccessfully": "تم تسجيل الدخول بنجاح.",
+  "forgotPassword": "نسيت كلمة المرور",
+  "forgetPasswordMessage": "في تطبيقنا ، نأخذ أمان معلوماتك على محمل الجد",
+  "submit": "إرسال",
+  "forgetPasswordLinkSentSuccessfully": "تم إرسال رابط نسيان كلمة المرور بنجاح."
 }

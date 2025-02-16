@@ -178,4 +178,18 @@ class AuthDataSourceImpl implements AuthDataSource {
       return left(ServerException(error.message));
     }
   }
+
+  @override
+  Future<Either<ServerException, String>> forgetPassword({
+    required String email,
+  }) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return right("Password reset email sent to $email");
+    } on FirebaseAuthException catch (error) {
+      return left(
+        ServerException(error.message ?? "Failed to send reset email"),
+      );
+    }
+  }
 }

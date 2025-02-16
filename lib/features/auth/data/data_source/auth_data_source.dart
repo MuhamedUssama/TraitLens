@@ -15,5 +15,9 @@ abstract interface class AuthDataSource {
 
   Future<Either<ServerException, String>> verifyAccount();
 
+  Future<Either<ServerException, String>> forgetPassword({
+    required String email,
+  });
+
   Future<void> signOut();
 }

@@ -17,6 +17,8 @@ import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
 import '../../features/auth/data/repository_impl/auth_repository_impl.dart'
     as _i954;
 import '../../features/auth/domain/repository/auth_repository.dart' as _i961;
+import '../../features/auth/domain/use_cases/forget_password_usecase.dart'
+    as _i27;
 import '../../features/auth/domain/use_cases/sign_in_with_email_and_password_usecase.dart'
     as _i780;
 import '../../features/auth/domain/use_cases/sign_in_with_facebook_usecase.dart'
@@ -28,6 +30,8 @@ import '../../features/auth/domain/use_cases/sign_up_with_email_and_password_use
     as _i217;
 import '../../features/auth/domain/use_cases/verify_account_usecase.dart'
     as _i3;
+import '../../features/auth/view/view_models/forget_password_view_model/forget_password_view_model.dart'
+    as _i247;
 import '../../features/auth/view/view_models/sign_in_view_model/sign_in_view_model.dart'
     as _i615;
 import '../../features/auth/view/view_models/sign_up_view_model/sign_up_view_model.dart'
@@ -62,11 +66,15 @@ extension GetItInjectableX on _i174.GetIt {
         _i217.SignUpWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i3.VerifyAccountUsecase>(
         () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i27.ForgetPasswordUsecase>(
+        () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i615.SignInViewModel>(() => _i615.SignInViewModel(
           gh<_i780.SignInWithEmailAndPasswordUsecase>(),
           gh<_i952.SignInWithFacebookUsecase>(),
           gh<_i645.SignInWithGoogleUsecase>(),
         ));
+    gh.factory<_i247.ForgetPasswordViewModel>(
+        () => _i247.ForgetPasswordViewModel(gh<_i27.ForgetPasswordUsecase>()));
     gh.factory<_i195.SignUpViewModel>(() => _i195.SignUpViewModel(
           gh<_i217.SignUpWithEmailAndPasswordUsecase>(),
           gh<_i645.SignInWithGoogleUsecase>(),
