@@ -40,6 +40,10 @@ import '../../features/fill_profile/data/data_source/fill_profile_data_source.da
     as _i760;
 import '../../features/fill_profile/data/data_source_impl/fill_profile_data_source_impl.dart'
     as _i186;
+import '../../features/fill_profile/data/repository_impl/fill_profile_repository_impl.dart'
+    as _i325;
+import '../../features/fill_profile/domain/repository/fill_profile_repository.dart'
+    as _i89;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -58,6 +62,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
     gh.factory<_i760.FillProfileDataSource>(
         () => _i186.FillProfileDataSourceImpl());
+    gh.factory<_i89.FillProfileRepository>(() =>
+        _i325.FillProfileRepositoryImpl(gh<_i760.FillProfileDataSource>()));
     gh.factory<_i961.AuthRepository>(
         () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()));
     gh.factory<_i780.SignInWithEmailAndPasswordUsecase>(() =>
