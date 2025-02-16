@@ -15,7 +15,7 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordStates> {
       : super(ForgetPasswordInitialState());
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   Future<void> doIntent(ForgetPasswordActions actions) async {
     switch (actions) {
@@ -30,7 +30,7 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordStates> {
     if (formKey.currentState!.validate()) {
       emit(ForgetPasswordLoadingState());
 
-      final result = await _forgetPasswordUsecase(email: _emailController.text);
+      final result = await _forgetPasswordUsecase(email: emailController.text);
 
       emit(ForgetPasswordHideLoadingState());
 
