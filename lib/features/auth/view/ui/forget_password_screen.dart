@@ -23,11 +23,22 @@ class ForgetPasswordScreen extends StatefulWidget {
 
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   ForgetPasswordViewModel viewModel = getIt.get<ForgetPasswordViewModel>();
+  String? email;
 
   @override
   void dispose() {
     viewModel.emailController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args is String && args.isNotEmpty) {
+      email = args;
+      viewModel.emailController.text = email!;
+    }
   }
 
   @override
@@ -72,7 +83,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       if (state is NavigateToLoginScreenState) {
                         Navigator.pushReplacementNamed(
                           context,
-                          RoutesName.forgetPasswordScreen,
+                          RoutesName.loginScreen,
                         );
                       }
                       if (state is ForgetPasswordSuccessState) {

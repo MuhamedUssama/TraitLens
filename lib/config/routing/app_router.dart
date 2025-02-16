@@ -18,6 +18,7 @@ class AppRouters {
       case RoutesName.forgetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ForgetPasswordScreen(),
+          settings: settings,
         );
 
       case RoutesName.homeScreen:
