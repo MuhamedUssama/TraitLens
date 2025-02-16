@@ -1,6 +1,8 @@
 import 'dart:io';
 
-class FillProfileModel {
+import '../../domain/entities/fill_profile_entity.dart';
+
+class UserProfileModel {
   final String? fullName;
   final String? birthDay;
   final String? phone;
@@ -8,7 +10,7 @@ class FillProfileModel {
   final String? imageUrl;
   final File? imageFile;
 
-  FillProfileModel({
+  UserProfileModel({
     this.fullName,
     this.birthDay,
     this.phone,
@@ -17,8 +19,8 @@ class FillProfileModel {
     this.imageFile,
   });
 
-  factory FillProfileModel.fromJson(Map<String, dynamic> json) {
-    return FillProfileModel(
+  factory UserProfileModel.fromJson(Map<String, dynamic> json) {
+    return UserProfileModel(
       fullName: json['fullName'] as String?,
       birthDay: json['birthDay'] as String?,
       phone: json['phone'] as String?,
@@ -37,5 +39,16 @@ class FillProfileModel {
       'imageUrl': imageUrl,
       'imageFile': imageFile?.path,
     };
+  }
+
+  UserProfileEntity toEntity() {
+    return UserProfileEntity(
+      fullName: fullName,
+      birthDay: birthDay,
+      phone: phone,
+      gender: gender,
+      imageUrl: imageUrl,
+      imageFile: imageFile,
+    );
   }
 }

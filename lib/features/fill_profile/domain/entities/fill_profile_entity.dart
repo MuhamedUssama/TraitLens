@@ -1,6 +1,6 @@
 import 'dart:io';
 
-class FillProfileEntity {
+class UserProfileEntity {
   final String? fullName;
   final String? birthDay;
   final String? phone;
@@ -8,7 +8,7 @@ class FillProfileEntity {
   final String? imageUrl;
   final File? imageFile;
 
-  FillProfileEntity({
+  UserProfileEntity({
     this.fullName,
     this.birthDay,
     this.phone,
