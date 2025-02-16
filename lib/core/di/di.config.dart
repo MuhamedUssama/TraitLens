@@ -36,6 +36,10 @@ import '../../features/auth/view/view_models/sign_in_view_model/sign_in_view_mod
     as _i615;
 import '../../features/auth/view/view_models/sign_up_view_model/sign_up_view_model.dart'
     as _i195;
+import '../../features/fill_profile/data/data_source/fill_profile_data_source.dart'
+    as _i760;
+import '../../features/fill_profile/data/data_source_impl/fill_profile_data_source_impl.dart'
+    as _i186;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -52,6 +56,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.factory<_i760.FillProfileDataSource>(
+        () => _i186.FillProfileDataSourceImpl());
     gh.factory<_i961.AuthRepository>(
         () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()));
     gh.factory<_i780.SignInWithEmailAndPasswordUsecase>(() =>
