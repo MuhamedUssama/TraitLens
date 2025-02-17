@@ -1,4 +1,5 @@
 import '../../domain/entities/fill_profile_entity.dart';
+import '../../domain/entities/profile_image_entity.dart';
 
 sealed class FillProfileStates {}
 
@@ -20,6 +21,12 @@ class FillProfileSuccessState extends FillProfileStates {
   FillProfileSuccessState(this.entity);
 }
 
-class FillProfileChangeImageState extends FillProfileStates {}
+class ChangeGenderState extends FillProfileStates {}
+
+class ChangeImageState extends FillProfileStates {
+  ProfileImageEntity? entity;
+
+  ChangeImageState(this.entity);
+}
 
 class NavigateToHomeScreenState extends FillProfileStates {}
