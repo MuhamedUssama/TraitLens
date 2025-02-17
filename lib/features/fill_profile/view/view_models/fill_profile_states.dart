@@ -20,4 +20,6 @@ class FillProfileSuccessState extends FillProfileStates {
   FillProfileSuccessState(this.entity);
 }
 
+class FillProfileChangeImageState extends FillProfileStates {}
+
 class NavigateToHomeScreenState extends FillProfileStates {}
