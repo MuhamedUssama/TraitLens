@@ -74,14 +74,14 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
 
   Future<void> _changeProfileImage() async {
     try {
-      emit(FillProfileLoadingState());
+      // emit(FillProfileLoadingState());
 
       final result = await _setUserImageUsecase(
         imageUrl: imageUrl,
         imageFile: imageFile,
       );
 
-      emit(FillProfileHideLoadingState());
+      // emit(FillProfileHideLoadingState());
 
       result.fold(
         (error) => emit(FillProfileErrorState(error.message)),

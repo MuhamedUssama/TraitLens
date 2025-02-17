@@ -34,3 +34,5 @@ class VerifyAccountState extends SignUpStates {
 }
 
 class NavigateToSignInScreenState extends SignUpStates {}
+
+class NavigateToFillProfileScreenState extends SignUpStates {}

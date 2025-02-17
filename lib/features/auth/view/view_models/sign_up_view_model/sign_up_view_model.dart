@@ -53,6 +53,8 @@ class SignUpViewModel extends Cubit<SignUpStates> {
         _updateValidationState();
       case VerifyAccountAction():
         _verifyAccount();
+      case NavigateToFillProfileScreenAction():
+        _navigateToFillProfileScreen();
     }
   }
 
@@ -123,5 +125,9 @@ class SignUpViewModel extends Cubit<SignUpStates> {
 
   void _navigateToLoginScreen() {
     emit(NavigateToSignInScreenState());
+  }
+
+  void _navigateToFillProfileScreen() {
+    emit(NavigateToFillProfileScreenState());
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trait_lens/features/auth/view/ui/forget_password_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/sign_in_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/sign_up_screen.dart';
+import 'package:trait_lens/features/fill_profile/view/ui/fill_profile_screen.dart';
 import 'package:trait_lens/features/home/view/ui/home_screen.dart';
 
 import 'routes_name.dart';
@@ -19,6 +20,11 @@ class AppRouters {
         return MaterialPageRoute(
           builder: (context) => const ForgetPasswordScreen(),
           settings: settings,
+        );
+
+      case RoutesName.fillProfileScreen:
+        return MaterialPageRoute(
+          builder: (context) => const FillProfileScreen(),
         );
 
       case RoutesName.homeScreen:

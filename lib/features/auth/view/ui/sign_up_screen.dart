@@ -76,7 +76,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           context: context,
                           posActionTitle: AppLocalizations.of(context)!.ok,
                           posAction: () {
-                            viewModel.doIntent(NavigateToSignInScreenAction());
+                            viewModel
+                                .doIntent(NavigateToFillProfileScreenAction());
                           },
                         );
                       }
@@ -98,7 +99,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           context: context,
                           posActionTitle: AppLocalizations.of(context)!.ok,
                           posAction: () {
-                            viewModel.doIntent(NavigateToSignInScreenAction());
+                            viewModel
+                                .doIntent(NavigateToFillProfileScreenAction());
                           },
                         );
                       }
@@ -109,7 +111,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           context: context,
                           posActionTitle: AppLocalizations.of(context)!.ok,
                           posAction: () {
-                            viewModel.doIntent(NavigateToSignInScreenAction());
+                            viewModel
+                                .doIntent(NavigateToFillProfileScreenAction());
                           },
                         );
                       }
@@ -124,6 +127,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Navigator.pushReplacementNamed(
                           context,
                           RoutesName.loginScreen,
+                        );
+                      }
+                      if (state is NavigateToFillProfileScreenState) {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          RoutesName.fillProfileScreen,
                         );
                       }
                     },
