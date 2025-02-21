@@ -23,14 +23,17 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
     this._setUserImageUsecase,
   ) : super(FillProfileInitialState());
 
-  ValueNotifier<Gender> selectedGender = ValueNotifier(Gender.female);
-
   String? imageUrl;
   File? imageFile;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController birthdayController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+
+  ValueNotifier<bool> valid = ValueNotifier(false);
+  Gender selectedGender = Gender.female;
 
   Future<void> doIntent(FillProfileActions actions) async {
     switch (actions) {
@@ -46,6 +49,8 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
         _navigateToHomeScreen();
       case ChangeGenderAction():
         _changeGender();
+      case FormDataChangedAction():
+        _updateValidationState();
     }
   }
 
@@ -58,7 +63,7 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
         fullName: nameController.text,
         birthDay: birthdayController.text,
         phone: phoneController.text,
-        gender: selectedGender.value == Gender.female ? "female" : "male",
+        gender: selectedGender == Gender.female ? "female" : "male",
       );
 
       emit(FillProfileHideLoadingState());
@@ -69,6 +74,18 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
       );
     } catch (error) {
       emit(FillProfileErrorState(error.toString()));
+    }
+  }
+
+  void _updateValidationState() {
+    if (nameController.text.isEmpty ||
+        birthdayController.text.isEmpty ||
+        phoneController.text.isEmpty) {
+      valid.value = false;
+    } else if (!formKey.currentState!.validate()) {
+      valid.value = false;
+    } else {
+      valid.value = true;
     }
   }
 
@@ -101,9 +118,9 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
   }
 
   void _changeGender() {
-    selectedGender.value =
-        selectedGender.value == Gender.female ? Gender.male : Gender.female;
-    log('selectedGender: ${selectedGender.value}');
+    selectedGender =
+        selectedGender == Gender.female ? Gender.male : Gender.female;
+    log('selectedGender: $selectedGender');
     emit(ChangeGenderState());
   }
 

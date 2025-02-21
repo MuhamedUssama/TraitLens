@@ -17,3 +17,5 @@ class ChangeGenderAction extends FillProfileActions {
 }
 
 class NavigateToHomeScreenAction extends FillProfileActions {}
+
+class FormDataChangedAction extends FillProfileActions {}

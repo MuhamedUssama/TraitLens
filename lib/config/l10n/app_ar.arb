@@ -31,5 +31,17 @@
   "forgotPassword": "نسيت كلمة المرور",
   "forgetPasswordMessage": "في تطبيقنا ، نأخذ أمان معلوماتك على محمل الجد",
   "submit": "إرسال",
-  "forgetPasswordLinkSentSuccessfully": "تم إرسال رابط نسيان كلمة المرور بنجاح."
+  "forgetPasswordLinkSentSuccessfully": "تم إرسال رابط نسيان كلمة المرور بنجاح.",
+  "fillYourProfile": "املأ ملفك الشخصي",
+  "fillProfileMessage": "يرجى أخذ بضع دقائق لملء ملفك الشخصي بأكبر قدر ممكن من التفاصيل.",
+  "fullName": "الاسم الكامل",
+  "birthday": "تاريخ الميلاد",
+  "phoneNumber": "رقم الهاتف",
+  "gender": "الجنس",
+  "male": "ذكر",
+  "female": "أنثى",
+  "fillProfileSuccessfully": "تم إنشاء ملفك الشخصي بنجاح",
+  "emptyName": "لا يمكن ترك الاسم فارغ",
+  "emptyBirthDay": "لا يمكن ترك تاريخ الميلاد فارغ",
+  "emptyPhoneNumber": "لا يمكن ترك رقم الهاتف فارغ"
 }
