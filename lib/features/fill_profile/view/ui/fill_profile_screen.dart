@@ -26,6 +26,14 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
   FillProfileViewModel viewModel = getIt.get<FillProfileViewModel>();
 
   @override
+  void dispose() {
+    viewModel.nameController.dispose();
+    viewModel.phoneController.dispose();
+    viewModel.birthdayController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     AppLocalizations? local = AppLocalizations.of(context);
     return Container(

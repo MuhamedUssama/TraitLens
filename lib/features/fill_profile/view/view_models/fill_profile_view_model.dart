@@ -51,21 +51,23 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
 
   Future<void> _updateUserProfile() async {
     try {
-      emit(FillProfileLoadingState());
+      if (formKey.currentState!.validate()) {
+        emit(FillProfileLoadingState());
 
-      final result = await _fillProfileDataUsecase(
-        userId: FirebaseAuth.instance.currentUser!.uid,
-        fullName: nameController.text,
-        birthDay: birthdayController.text,
-        phone: phoneController.text,
-        gender: selectedGender == Gender.female ? "female" : "male",
-        imageFile: imageFile,
-      );
+        final result = await _fillProfileDataUsecase(
+          userId: FirebaseAuth.instance.currentUser!.uid,
+          fullName: nameController.text,
+          birthDay: birthdayController.text,
+          phone: phoneController.text,
+          gender: selectedGender == Gender.female ? "female" : "male",
+          imageFile: imageFile,
+        );
 
-      result.fold(
-        (error) => emit(FillProfileErrorState(error.message)),
-        (user) => emit(FillProfileSuccessState(user)),
-      );
+        result.fold(
+          (error) => emit(FillProfileErrorState(error.message)),
+          (user) => emit(FillProfileSuccessState(user)),
+        );
+      }
     } catch (error) {
       emit(FillProfileErrorState(error.toString()));
     }
