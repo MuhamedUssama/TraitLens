@@ -1,9 +1,9 @@
 import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/exceptions.dart';
 import '../../domain/entities/fill_profile_entity.dart';
-import '../../domain/entities/profile_image_entity.dart';
 
 abstract interface class FillProfileDataSource {
   Future<Either<ServerException, UserProfileEntity>> setProfile({
@@ -12,10 +12,6 @@ abstract interface class FillProfileDataSource {
     required String birthDay,
     required String phone,
     required String gender,
-  });
-
-  Future<Either<ServerException, ProfileImageEntity>> setProfileImage({
-    String? imageUrl,
     File? imageFile,
   });
 }

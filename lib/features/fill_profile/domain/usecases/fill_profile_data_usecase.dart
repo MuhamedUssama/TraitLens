@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,6 +20,7 @@ class FillProfileDataUsecase {
     required String birthDay,
     required String phone,
     required String gender,
+    File? imageFile,
   }) async {
     return await repository.setProfile(
       userId: userId,
@@ -25,6 +28,7 @@ class FillProfileDataUsecase {
       birthDay: birthDay,
       phone: phone,
       gender: gender,
+      imageFile: imageFile,
     );
   }
 }

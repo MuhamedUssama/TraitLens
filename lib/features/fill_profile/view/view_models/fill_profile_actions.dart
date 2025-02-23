@@ -4,7 +4,7 @@ sealed class FillProfileActions {}
 
 class FillProfileDataAction extends FillProfileActions {}
 
-class ChangeProfileImageAction extends FillProfileActions {}
+// class ChangeProfileImageAction extends FillProfileActions {}
 
 class CameraClickedAction extends FillProfileActions {}
 

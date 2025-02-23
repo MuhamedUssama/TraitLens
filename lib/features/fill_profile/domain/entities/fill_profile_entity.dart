@@ -4,7 +4,7 @@ class UserProfileEntity {
   String? birthDay;
   String? phone;
   String? gender;
-  String? profileImage;
+  String? profileImageUrl;
 
   UserProfileEntity({
     this.id,
@@ -12,6 +12,6 @@ class UserProfileEntity {
     this.birthDay,
     this.phone,
     this.gender,
-    this.profileImage,
+    this.profileImageUrl,
   });
 }

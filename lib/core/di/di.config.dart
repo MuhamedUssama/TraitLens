@@ -46,8 +46,6 @@ import '../../features/fill_profile/domain/repository/fill_profile_repository.da
     as _i89;
 import '../../features/fill_profile/domain/usecases/fill_profile_data_usecase.dart'
     as _i49;
-import '../../features/fill_profile/domain/usecases/set_user_image_usecase.dart'
-    as _i836;
 import '../../features/fill_profile/view/view_models/fill_profile_view_model.dart'
     as _i471;
 import '../cache/shared_preferences.dart' as _i254;
@@ -86,10 +84,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i27.ForgetPasswordUsecase>(
         () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()));
-    gh.factory<_i836.SetUserImageUsecase>(
-        () => _i836.SetUserImageUsecase(gh<_i89.FillProfileRepository>()));
     gh.factory<_i49.FillProfileDataUsecase>(
         () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
+    gh.factory<_i471.FillProfileViewModel>(
+        () => _i471.FillProfileViewModel(gh<_i49.FillProfileDataUsecase>()));
     gh.factory<_i615.SignInViewModel>(() => _i615.SignInViewModel(
           gh<_i780.SignInWithEmailAndPasswordUsecase>(),
           gh<_i952.SignInWithFacebookUsecase>(),
@@ -102,10 +100,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i645.SignInWithGoogleUsecase>(),
           gh<_i952.SignInWithFacebookUsecase>(),
           gh<_i3.VerifyAccountUsecase>(),
-        ));
-    gh.factory<_i471.FillProfileViewModel>(() => _i471.FillProfileViewModel(
-          gh<_i49.FillProfileDataUsecase>(),
-          gh<_i836.SetUserImageUsecase>(),
         ));
     return this;
   }

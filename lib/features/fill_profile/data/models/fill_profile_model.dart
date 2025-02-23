@@ -8,7 +8,7 @@ class UserProfileModel {
   String? birthDay;
   String? phone;
   String? gender;
-  String? profileImage;
+  String? profileImageUrl;
 
   UserProfileModel({
     this.id,
@@ -16,7 +16,7 @@ class UserProfileModel {
     this.birthDay,
     this.phone,
     this.gender,
-    this.profileImage,
+    this.profileImageUrl,
   });
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
@@ -26,7 +26,7 @@ class UserProfileModel {
       birthDay: json['birthDay'] as String?,
       phone: json['phone'] as String?,
       gender: json['gender'] as String?,
-      profileImage: json['profileImage'] as String?,
+      profileImageUrl: json['profileImageUrl'] as String?,
     );
   }
 
@@ -37,7 +37,7 @@ class UserProfileModel {
       'birthDay': birthDay,
       'phone': phone,
       'gender': gender,
-      'profileImage': profileImage,
+      'profileImageUrl': profileImageUrl,
     };
   }
 
@@ -48,7 +48,7 @@ class UserProfileModel {
       birthDay: birthDay,
       phone: phone,
       gender: gender,
-      profileImage: profileImage,
+      profileImageUrl: profileImageUrl,
     );
   }
 }

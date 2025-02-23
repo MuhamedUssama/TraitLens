@@ -8,19 +8,16 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/utils/image_picker_utils.dart';
 import '../../domain/usecases/fill_profile_data_usecase.dart';
-import '../../domain/usecases/set_user_image_usecase.dart';
 import 'fill_profile_actions.dart';
 import 'fill_profile_states.dart';
 
 @injectable
 class FillProfileViewModel extends Cubit<FillProfileStates> {
   final FillProfileDataUsecase _fillProfileDataUsecase;
-  final SetUserImageUsecase _setUserImageUsecase;
 
   @factoryMethod
   FillProfileViewModel(
     this._fillProfileDataUsecase,
-    this._setUserImageUsecase,
   ) : super(FillProfileInitialState());
 
   String? imageUrl;
@@ -39,8 +36,6 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
     switch (actions) {
       case FillProfileDataAction():
         await _updateUserProfile();
-      case ChangeProfileImageAction():
-        await _changeProfileImage();
       case CameraClickedAction():
         await _clickOnCameraButton();
       case GalleryClickedAction():
@@ -64,6 +59,7 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
         birthDay: birthdayController.text,
         phone: phoneController.text,
         gender: selectedGender == Gender.female ? "female" : "male",
+        imageFile: imageFile,
       );
 
       emit(FillProfileHideLoadingState());
@@ -89,32 +85,18 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
     }
   }
 
-  Future<void> _changeProfileImage() async {
-    try {
-      // emit(FillProfileLoadingState());
-
-      final result = await _setUserImageUsecase(
-        imageUrl: imageUrl,
-        imageFile: imageFile,
-      );
-
-      // emit(FillProfileHideLoadingState());
-
-      result.fold(
-        (error) => emit(FillProfileErrorState(error.message)),
-        (image) => emit(ChangeImageState(image)),
-      );
-    } catch (error) {
-      emit(FillProfileErrorState(error.toString()));
+  Future<void> _clickOnCameraButton() async {
+    imageFile = await ImagePickerUtils.cameraPicker();
+    if (imageFile != null) {
+      emit(ImageSelectedState(imageFile!));
     }
   }
 
-  Future<void> _clickOnCameraButton() async {
-    await ImagePickerUtils.cameraPicker();
-  }
-
   Future<void> _clickOnGalleryButton() async {
-    await ImagePickerUtils.galleryPicker();
+    imageFile = await ImagePickerUtils.galleryPicker();
+    if (imageFile != null) {
+      emit(ImageSelectedState(imageFile!));
+    }
   }
 
   void _changeGender() {

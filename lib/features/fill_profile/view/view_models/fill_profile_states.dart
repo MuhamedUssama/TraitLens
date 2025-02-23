@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import '../../domain/entities/fill_profile_entity.dart';
-import '../../domain/entities/profile_image_entity.dart';
 
 sealed class FillProfileStates {}
 
@@ -23,12 +24,9 @@ class FillProfileSuccessState extends FillProfileStates {
 
 class ChangeGenderState extends FillProfileStates {}
 
-class ChangeImageState extends FillProfileStates {
-  ProfileImageEntity? entity;
-
-  ChangeImageState(this.entity);
+class ImageSelectedState extends FillProfileStates {
+  final File imageFile;
+  ImageSelectedState(this.imageFile);
 }
 
 class NavigateToHomeScreenState extends FillProfileStates {}
-
-class ClickOnCamerasState extends FillProfileStates {}

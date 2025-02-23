@@ -70,8 +70,6 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                         posActionTitle: local.ok,
                       );
                     }
-                    if (state is ClickOnCamerasState) {}
-
                     if (state is FillProfileSuccessState) {
                       AppDialogs.showSuccessDialog(
                         message: local.fillProfileSuccessfully,
@@ -91,7 +89,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                   },
                   child: Column(
                     children: [
-                      const UserImageWidget(),
+                      UserImageWidget(viewModel: viewModel),
                       SizedBox(height: 47.h),
                       FillProfileFormWidget(viewModel: viewModel),
                     ],
