@@ -54,15 +54,6 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                 BlocListener<FillProfileViewModel, FillProfileStates>(
                   bloc: viewModel,
                   listener: (context, state) {
-                    if (state is FillProfileLoadingState) {
-                      AppDialogs.showLoading(
-                        message: local.loading,
-                        context: context,
-                      );
-                    }
-                    if (state is FillProfileHideLoadingState) {
-                      AppDialogs.hideLoading(context);
-                    }
                     if (state is FillProfileErrorState) {
                       AppDialogs.showFailDialog(
                         message: state.message ?? local.somethingWentWrong,

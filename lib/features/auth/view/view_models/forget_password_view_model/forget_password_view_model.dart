@@ -32,8 +32,6 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordStates> {
 
       final result = await _forgetPasswordUsecase(email: emailController.text);
 
-      emit(ForgetPasswordHideLoadingState());
-
       result.fold(
         (failure) => emit(ForgetPasswordErrorState(failure.message.toString())),
         (message) => emit(ForgetPasswordSuccessState(message)),

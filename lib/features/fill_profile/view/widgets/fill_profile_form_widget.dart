@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:trait_lens/core/utils/validation_utils.dart';
 import 'package:trait_lens/core/widgets/custom_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
 import '../view_models/fill_profile_actions.dart';
+import '../view_models/fill_profile_states.dart';
 import '../view_models/fill_profile_view_model.dart';
 import 'selected_gender_widget.dart';
 
@@ -63,21 +66,35 @@ class FillProfileFormWidget extends StatelessWidget {
             SizedBox(height: 26.h),
             SelectedGenderWidget(viewModel: viewModel),
             SizedBox(height: 66.h),
-            ElevatedButton(
-              onPressed: () {
-                viewModel.doIntent(FillProfileDataAction());
+            BlocBuilder<FillProfileViewModel, FillProfileStates>(
+              bloc: viewModel,
+              buildWhen: (previous, current) =>
+                  current is FillProfileLoadingState,
+              builder: (context, state) {
+                return ElevatedButton(
+                  onPressed: () {
+                    viewModel.doIntent(FillProfileDataAction());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(double.infinity, 60.h),
+                    backgroundColor: ColorsManager.baseBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                  ),
+                  child: state is FillProfileLoadingState
+                      ? Center(
+                          child: LoadingAnimationWidget.staggeredDotsWave(
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                        )
+                      : Text(
+                          locale.submit,
+                          style: TextStyles.font20WhiteSemiBold,
+                        ),
+                );
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 60.h),
-                backgroundColor: ColorsManager.baseBlue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-              ),
-              child: Text(
-                locale.submit,
-                style: TextStyles.font20WhiteSemiBold,
-              ),
             ),
           ],
         ),

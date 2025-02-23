@@ -62,8 +62,6 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
         imageFile: imageFile,
       );
 
-      emit(FillProfileHideLoadingState());
-
       result.fold(
         (error) => emit(FillProfileErrorState(error.message)),
         (user) => emit(FillProfileSuccessState(user)),

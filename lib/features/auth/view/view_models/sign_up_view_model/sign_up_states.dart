@@ -26,8 +26,6 @@ class SignUpWithFacebookSuccessState extends SignUpStates {
   SignUpWithFacebookSuccessState(this.userEntity);
 }
 
-class HideLoadingState extends SignUpStates {}
-
 class VerifyAccountState extends SignUpStates {
   String message;
   VerifyAccountState(this.message);

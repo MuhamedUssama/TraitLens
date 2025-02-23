@@ -8,8 +8,6 @@ class FillProfileInitialState extends FillProfileStates {}
 
 class FillProfileLoadingState extends FillProfileStates {}
 
-class FillProfileHideLoadingState extends FillProfileStates {}
-
 class FillProfileErrorState extends FillProfileStates {
   String? message;
 

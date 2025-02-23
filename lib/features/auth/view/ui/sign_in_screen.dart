@@ -33,6 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations? locale = AppLocalizations.of(context);
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -51,8 +52,8 @@ class _SignInScreenState extends State<SignInScreen> {
               children: [
                 AuthHeaderWidget(
                   height: 26.h,
-                  title: AppLocalizations.of(context)!.loginHere,
-                  message: AppLocalizations.of(context)!.loginMessage,
+                  title: locale!.loginHere,
+                  message: locale.loginMessage,
                   titleTextStyle: TextStyles.font30BlueBold,
                   messageTextStyle: TextStyles.font20GreyBold,
                 ),
@@ -60,20 +61,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 BlocListener<SignInViewModel, SignInStates>(
                     bloc: viewModel,
                     listener: (context, state) {
-                      if (state is SignInLoadingState) {
-                        AppDialogs.showLoading(
-                          message: AppLocalizations.of(context)!.loading,
-                          context: context,
-                        );
-                      }
-                      if (state is HideLoadingState) {
-                        AppDialogs.hideLoading(context);
-                      }
                       if (state is SignInErrorState) {
                         AppDialogs.showFailDialog(
                           message: state.errorMessage,
                           context: context,
-                          posActionTitle: AppLocalizations.of(context)!.ok,
+                          posActionTitle: locale.ok,
                         );
                       }
                       if (state is NavigateToSignUpScreenState) {
@@ -90,14 +82,16 @@ class _SignInScreenState extends State<SignInScreen> {
                         );
                       }
                       if (state is NavigateToHomeScreenState) {
-                        Navigator.pushNamed(context, RoutesName.homeScreen);
+                        Navigator.pushReplacementNamed(
+                          context,
+                          RoutesName.homeScreen,
+                        );
                       }
                       if (state is SignInSuccessState) {
                         AppDialogs.showSuccessDialog(
-                          message: AppLocalizations.of(context)!
-                              .loggedInSuccessfully,
+                          message: locale.loggedInSuccessfully,
                           context: context,
-                          posActionTitle: AppLocalizations.of(context)!.ok,
+                          posActionTitle: locale.ok,
                           posAction: () {
                             viewModel.doIntent(NavigateToHomeScreenAction());
                           },
@@ -105,10 +99,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       }
                       if (state is SignInWithGoogleState) {
                         AppDialogs.showSuccessDialog(
-                          message: AppLocalizations.of(context)!
-                              .loggedInSuccessfully,
+                          message: locale.loggedInSuccessfully,
                           context: context,
-                          posActionTitle: AppLocalizations.of(context)!.ok,
+                          posActionTitle: locale.ok,
                           posAction: () {
                             viewModel.doIntent(NavigateToHomeScreenAction());
                           },
@@ -116,10 +109,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       }
                       if (state is SignInWithFacebookState) {
                         AppDialogs.showSuccessDialog(
-                          message: AppLocalizations.of(context)!
-                              .loggedInSuccessfully,
+                          message: locale.loggedInSuccessfully,
                           context: context,
-                          posActionTitle: AppLocalizations.of(context)!.ok,
+                          posActionTitle: locale.ok,
                           posAction: () {
                             viewModel.doIntent(NavigateToHomeScreenAction());
                           },
