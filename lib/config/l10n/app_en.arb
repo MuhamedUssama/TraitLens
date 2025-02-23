@@ -31,5 +31,20 @@
   "forgotPassword": "Forgot Password",
   "forgetPasswordMessage": "At our app, we take the security of your information seriously.",
   "submit": "Submit",
-  "forgetPasswordLinkSentSuccessfully": "Forget password link sent successfully."
+  "forgetPasswordLinkSentSuccessfully": "Forget password link sent successfully.",
+  "fillYourProfile": "Fill Your Profile",
+  "fillProfileMessage": "Please take a few minutes to fill out your profile with as much detail as possible.",
+  "fullName": "Full Name",
+  "birthday": "Birthday",
+  "phoneNumber": "Phone Number",
+  "gender": "Gender",
+  "male":"Male",
+  "female":"Female",
+  "fillProfileSuccessfully": "Your profile created successfully",
+  "emptyName": "Name cannot be empty",
+  "emptyBirthDay": "Birthday cannot be empty",
+  "emptyPhoneNumber": "Phone Number cannot be empty",
+  "camera": "Camera",
+  "gallery": "Gallery",
+  "chooseOption": "Choose option"
 }

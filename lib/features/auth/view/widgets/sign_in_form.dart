@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
@@ -8,6 +10,7 @@ import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/validation_utils.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../view_models/sign_in_view_model/sign_in_actions.dart';
+import '../view_models/sign_in_view_model/sign_in_states.dart';
 import '../view_models/sign_in_view_model/sign_in_view_model.dart';
 
 class SignInForm extends StatelessWidget {
@@ -79,9 +82,22 @@ class SignInForm extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.r),
               ),
             ),
-            child: Text(
-              AppLocalizations.of(context)!.signIn,
-              style: TextStyles.font20WhiteSemiBold,
+            child: BlocBuilder<SignInViewModel, SignInStates>(
+              bloc: viewModel,
+              buildWhen: (previous, current) => current is SignInLoadingState,
+              builder: (context, state) {
+                return state is SignInLoadingState
+                    ? Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                      )
+                    : Text(
+                        AppLocalizations.of(context)!.signIn,
+                        style: TextStyles.font20WhiteSemiBold,
+                      );
+              },
             ),
           ),
           SizedBox(height: 30.h),

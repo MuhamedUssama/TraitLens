@@ -53,6 +53,8 @@ class SignUpViewModel extends Cubit<SignUpStates> {
         _updateValidationState();
       case VerifyAccountAction():
         _verifyAccount();
+      case NavigateToFillProfileScreenAction():
+        _navigateToFillProfileScreen();
     }
   }
 
@@ -71,11 +73,12 @@ class SignUpViewModel extends Cubit<SignUpStates> {
   Future<void> _signUpWithEmailAndPassword() async {
     if (formKey.currentState!.validate()) {
       emit(SignUpLoadingState());
+
       final result = await _signUpWithEmailAndPasswordUsecase(
         email: emailController.text,
         password: passwordController.text,
       );
-      emit(HideLoadingState());
+
       result.fold(
         (error) => emit(SignUpErrorState(error.message.toString())),
         (userEntity) => emit(SignUpSuccessState(userEntity)),
@@ -85,8 +88,9 @@ class SignUpViewModel extends Cubit<SignUpStates> {
 
   Future<void> _verifyAccount() async {
     emit(SignUpLoadingState());
+
     final result = await _verifyAccountUsecase();
-    emit(HideLoadingState());
+
     result.fold(
       (error) => emit(SignUpErrorState(error.message.toString())),
       (message) => emit(VerifyAccountState(message)),
@@ -95,8 +99,9 @@ class SignUpViewModel extends Cubit<SignUpStates> {
 
   Future<void> _signUpWithGoogle() async {
     emit(SignUpLoadingState());
+
     final result = await _signInWithGoogleUsecase();
-    emit(HideLoadingState());
+
     result.fold(
       (error) => emit(SignUpErrorState(error.message.toString())),
       (userEntity) => emit(SignUpWithGoogleSuccessState(userEntity)),
@@ -105,8 +110,9 @@ class SignUpViewModel extends Cubit<SignUpStates> {
 
   Future<void> _signUpWithFacebook() async {
     emit(SignUpLoadingState());
+
     final result = await _signInWithFacebookUsecase();
-    emit(HideLoadingState());
+
     result.fold(
       (error) => emit(SignUpErrorState(error.message.toString())),
       (userEntity) => emit(SignUpWithFacebookSuccessState(userEntity)),
@@ -123,5 +129,9 @@ class SignUpViewModel extends Cubit<SignUpStates> {
 
   void _navigateToLoginScreen() {
     emit(NavigateToSignInScreenState());
+  }
+
+  void _navigateToFillProfileScreen() {
+    emit(NavigateToFillProfileScreenState());
   }
 }

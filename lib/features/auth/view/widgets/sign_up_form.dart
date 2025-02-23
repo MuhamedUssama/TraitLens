@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:trait_lens/config/theme/app_colors.dart';
 import 'package:trait_lens/core/utils/app_assets.dart';
 
@@ -8,6 +10,7 @@ import '../../../../config/theme/text_style.dart';
 import '../../../../core/utils/validation_utils.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../view_models/sign_up_view_model/sign_up_actions.dart';
+import '../view_models/sign_up_view_model/sign_up_states.dart';
 import '../view_models/sign_up_view_model/sign_up_view_model.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -79,21 +82,34 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
           SizedBox(height: 52.h),
-          ElevatedButton(
-            onPressed: () {
-              viewModel.doIntent(SignUpWithEmailAndPasswordAction());
+          BlocBuilder<SignUpViewModel, SignUpStates>(
+            bloc: viewModel,
+            buildWhen: (previous, current) => current is SignUpLoadingState,
+            builder: (context, state) {
+              return ElevatedButton(
+                onPressed: () {
+                  viewModel.doIntent(SignUpWithEmailAndPasswordAction());
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 60.h),
+                  backgroundColor: ColorsManager.baseBlue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                ),
+                child: state is SignUpLoadingState
+                    ? Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                      )
+                    : Text(
+                        AppLocalizations.of(context)!.signUp,
+                        style: TextStyles.font20WhiteSemiBold,
+                      ),
+              );
             },
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(double.infinity, 60.h),
-              backgroundColor: ColorsManager.baseBlue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-            ),
-            child: Text(
-              AppLocalizations.of(context)!.signUp,
-              style: TextStyles.font20WhiteSemiBold,
-            ),
           ),
           SizedBox(height: 30.h),
           TextButton(

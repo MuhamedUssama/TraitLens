@@ -8,6 +8,8 @@ class SignUpWithFacebookAction extends SignUpActions {}
 
 class NavigateToSignInScreenAction extends SignUpActions {}
 
+class NavigateToFillProfileScreenAction extends SignUpActions {}
+
 class ChangePasswordVisibilityAction extends SignUpActions {}
 
 class ChangePasswordConfirmationVisibilityAction extends SignUpActions {}

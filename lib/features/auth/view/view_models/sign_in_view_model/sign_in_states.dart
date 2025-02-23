@@ -6,8 +6,6 @@ class SignInInitialState extends SignInStates {}
 
 class SignInLoadingState extends SignInStates {}
 
-class HideLoadingState extends SignInStates {}
-
 class SignInErrorState extends SignInStates {
   final String errorMessage;
 

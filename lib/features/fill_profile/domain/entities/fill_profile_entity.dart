@@ -1,19 +1,17 @@
-import 'dart:io';
+class UserProfileEntity {
+  String? id;
+  String? fullName;
+  String? birthDay;
+  String? phone;
+  String? gender;
+  String? profileImageUrl;
 
-class FillProfileEntity {
-  final String? fullName;
-  final String? birthDay;
-  final String? phone;
-  final String? gender;
-  final String? imageUrl;
-  final File? imageFile;
-
-  FillProfileEntity({
+  UserProfileEntity({
+    this.id,
     this.fullName,
     this.birthDay,
     this.phone,
     this.gender,
-    this.imageUrl,
-    this.imageFile,
+    this.profileImageUrl,
   });
 }

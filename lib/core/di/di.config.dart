@@ -36,6 +36,18 @@ import '../../features/auth/view/view_models/sign_in_view_model/sign_in_view_mod
     as _i615;
 import '../../features/auth/view/view_models/sign_up_view_model/sign_up_view_model.dart'
     as _i195;
+import '../../features/fill_profile/data/data_source/fill_profile_data_source.dart'
+    as _i760;
+import '../../features/fill_profile/data/data_source_impl/fill_profile_data_source_impl.dart'
+    as _i186;
+import '../../features/fill_profile/data/repository_impl/fill_profile_repository_impl.dart'
+    as _i325;
+import '../../features/fill_profile/domain/repository/fill_profile_repository.dart'
+    as _i89;
+import '../../features/fill_profile/domain/usecases/fill_profile_data_usecase.dart'
+    as _i49;
+import '../../features/fill_profile/view/view_models/fill_profile_view_model.dart'
+    as _i471;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -52,6 +64,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.factory<_i760.FillProfileDataSource>(
+        () => _i186.FillProfileDataSourceImpl());
+    gh.factory<_i89.FillProfileRepository>(() =>
+        _i325.FillProfileRepositoryImpl(gh<_i760.FillProfileDataSource>()));
     gh.factory<_i961.AuthRepository>(
         () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()));
     gh.factory<_i780.SignInWithEmailAndPasswordUsecase>(() =>
@@ -68,6 +84,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i27.ForgetPasswordUsecase>(
         () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i49.FillProfileDataUsecase>(
+        () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
+    gh.factory<_i471.FillProfileViewModel>(
+        () => _i471.FillProfileViewModel(gh<_i49.FillProfileDataUsecase>()));
     gh.factory<_i615.SignInViewModel>(() => _i615.SignInViewModel(
           gh<_i780.SignInWithEmailAndPasswordUsecase>(),
           gh<_i952.SignInWithFacebookUsecase>(),

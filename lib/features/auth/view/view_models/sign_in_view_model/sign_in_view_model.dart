@@ -69,7 +69,6 @@ class SignInViewModel extends Cubit<SignInStates> {
         password: passwordController.text,
       );
 
-      emit(HideLoadingState());
       result.fold(
         (error) => emit(SignInErrorState(error.message.toString())),
         (userEntity) => emit(SignInSuccessState(userEntity)),
@@ -79,8 +78,9 @@ class SignInViewModel extends Cubit<SignInStates> {
 
   Future<void> _signInWithGoogle() async {
     emit(SignInLoadingState());
+
     final result = await _signInWithGoogleUsecase();
-    emit(HideLoadingState());
+
     result.fold(
       (error) => emit(SignInErrorState(error.message.toString())),
       (userEntity) => emit(SignInWithGoogleState(userEntity)),
@@ -89,8 +89,9 @@ class SignInViewModel extends Cubit<SignInStates> {
 
   Future<void> _signInWithFacebook() async {
     emit(SignInLoadingState());
+
     final result = await _signInWithFacebookUsecase();
-    emit(HideLoadingState());
+
     result.fold(
       (error) => emit(SignInErrorState(error.message.toString())),
       (userEntity) => emit(SignInWithFacebookState(userEntity)),

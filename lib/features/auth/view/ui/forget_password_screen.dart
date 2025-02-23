@@ -71,15 +71,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   BlocListener<ForgetPasswordViewModel, ForgetPasswordStates>(
                     bloc: viewModel,
                     listener: (context, state) {
-                      if (state is ForgetPasswordLoadingState) {
-                        AppDialogs.showLoading(
-                          message: AppLocalizations.of(context)!.loading,
-                          context: context,
-                        );
-                      }
-                      if (state is ForgetPasswordHideLoadingState) {
-                        AppDialogs.hideLoading(context);
-                      }
                       if (state is NavigateToLoginScreenState) {
                         Navigator.pushReplacementNamed(
                           context,
