@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image/image.dart' as img;
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -57,6 +59,36 @@ class FillProfileDataSourceImpl implements FillProfileDataSource {
     }
   }
 
+  Future<void> _deleteOldImages(String userId) async {
+    final SupabaseStorageClient storage = Supabase.instance.client.storage;
+
+    final List<FileObject> response = await storage
+        .from('profileImages')
+        .list(path: 'profile_images/$userId/');
+
+    for (FileObject file in response) {
+      await storage
+          .from('profileImages')
+          .remove(['profile_images/$userId/${file.name}']);
+    }
+  }
+
+  Future<File> _compressImage(File imageFile, {int quality = 75}) async {
+    Uint8List imageBytes = await imageFile.readAsBytes();
+    img.Image? image = img.decodeImage(imageBytes);
+    if (image == null) {
+      throw Exception("Failed to decode image");
+    }
+    Uint8List compressedBytes =
+        Uint8List.fromList(img.encodeJpg(image, quality: quality));
+
+    final Directory tempDir = Directory.systemTemp;
+    final File compressedFile = File('${tempDir.path}/compressed_image.jpg');
+    await compressedFile.writeAsBytes(compressedBytes);
+
+    return compressedFile;
+  }
+
   Future<Either<ServerException, String>> _uploadImageToStorage(
     String userId,
     File? imageFile,
@@ -66,12 +98,18 @@ class FillProfileDataSourceImpl implements FillProfileDataSource {
         return left(const ServerException("No image file provided"));
       }
 
-      final imagePath =
+      await _deleteOldImages(userId);
+
+      File compressedImage = await _compressImage(imageFile, quality: 75);
+
+      final String imagePath =
           'profile_images/$userId/${DateTime.now().millisecondsSinceEpoch}.jpg';
 
       await Supabase.instance.client.storage.from('profileImages').upload(
-          imagePath, imageFile,
-          fileOptions: const FileOptions(cacheControl: '3600', upsert: true));
+            imagePath,
+            compressedImage,
+            fileOptions: const FileOptions(cacheControl: '3600', upsert: true),
+          );
 
       final String imageUrl = Supabase.instance.client.storage
           .from('profileImages')
