@@ -43,5 +43,8 @@
   "fillProfileSuccessfully": "Your profile created successfully",
   "emptyName": "Name cannot be empty",
   "emptyBirthDay": "Birthday cannot be empty",
-  "emptyPhoneNumber": "Phone Number cannot be empty"
+  "emptyPhoneNumber": "Phone Number cannot be empty",
+  "camera": "Camera",
+  "gallery": "Gallery",
+  "chooseOption": "Choose option"
 }

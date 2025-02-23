@@ -43,5 +43,9 @@
   "fillProfileSuccessfully": "تم إنشاء ملفك الشخصي بنجاح",
   "emptyName": "لا يمكن ترك الاسم فارغ",
   "emptyBirthDay": "لا يمكن ترك تاريخ الميلاد فارغ",
-  "emptyPhoneNumber": "لا يمكن ترك رقم الهاتف فارغ"
+  "emptyPhoneNumber": "لا يمكن ترك رقم الهاتف فارغ",
+  "camera": "التقاط صورة",
+  "gallery": "معرض الصور",
+  "chooseOption": "اختر"
+
 }

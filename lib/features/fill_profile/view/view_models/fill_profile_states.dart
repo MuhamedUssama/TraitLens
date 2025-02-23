@@ -30,3 +30,5 @@ class ChangeImageState extends FillProfileStates {
 }
 
 class NavigateToHomeScreenState extends FillProfileStates {}
+
+class ClickOnCamerasState extends FillProfileStates {}

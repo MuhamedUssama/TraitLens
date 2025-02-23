@@ -27,6 +27,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations? local = AppLocalizations.of(context);
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -44,20 +45,18 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                 SizedBox(height: 50.h),
                 AuthHeaderWidget(
                   height: 6.h,
-                  title: AppLocalizations.of(context)!.fillYourProfile,
+                  title: local!.fillYourProfile,
                   titleTextStyle: TextStyles.font30BlueBold,
-                  message: AppLocalizations.of(context)!.fillProfileMessage,
+                  message: local.fillProfileMessage,
                   messageTextStyle: TextStyles.font14GreyRegular,
                 ),
                 SizedBox(height: 28.h),
-                const UserImageWidget(),
-                SizedBox(height: 47.h),
                 BlocListener<FillProfileViewModel, FillProfileStates>(
                   bloc: viewModel,
                   listener: (context, state) {
                     if (state is FillProfileLoadingState) {
                       AppDialogs.showLoading(
-                        message: AppLocalizations.of(context)!.loading,
+                        message: local.loading,
                         context: context,
                       );
                     }
@@ -66,18 +65,18 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     }
                     if (state is FillProfileErrorState) {
                       AppDialogs.showFailDialog(
-                        message: state.message ??
-                            AppLocalizations.of(context)!.somethingWentWrong,
+                        message: state.message ?? local.somethingWentWrong,
                         context: context,
-                        posActionTitle: AppLocalizations.of(context)!.ok,
+                        posActionTitle: local.ok,
                       );
                     }
+                    if (state is ClickOnCamerasState) {}
+
                     if (state is FillProfileSuccessState) {
                       AppDialogs.showSuccessDialog(
-                        message: AppLocalizations.of(context)!
-                            .fillProfileSuccessfully,
+                        message: local.fillProfileSuccessfully,
                         context: context,
-                        posActionTitle: AppLocalizations.of(context)!.ok,
+                        posActionTitle: local.ok,
                         posAction: () {
                           viewModel.doIntent(NavigateToHomeScreenAction());
                         },
@@ -90,7 +89,13 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                       );
                     }
                   },
-                  child: FillProfileFormWidget(viewModel: viewModel),
+                  child: Column(
+                    children: [
+                      const UserImageWidget(),
+                      SizedBox(height: 47.h),
+                      FillProfileFormWidget(viewModel: viewModel),
+                    ],
+                  ),
                 ),
               ],
             ),

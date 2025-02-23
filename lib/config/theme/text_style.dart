@@ -60,6 +60,12 @@ class TextStyles {
     color: ColorsManager.baseBlue,
   );
 
+  static TextStyle font18BlueBold = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.baseBlue,
+  );
+
   static TextStyle font20GreyBold = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
