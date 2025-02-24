@@ -58,6 +58,8 @@ import '../../features/profile_tab/data/repository_impl/profile_tab_repository_i
     as _i937;
 import '../../features/profile_tab/domain/repository/profile_tab_repository.dart'
     as _i888;
+import '../../features/profile_tab/domain/usecases/get_user_data_usecase.dart'
+    as _i583;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -116,6 +118,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i952.SignInWithFacebookUsecase>(),
           gh<_i3.VerifyAccountUsecase>(),
         ));
+    gh.factory<_i583.GetUserDataUsecase>(
+        () => _i583.GetUserDataUsecase(gh<_i888.ProfileTabRepository>()));
     return this;
   }
 }

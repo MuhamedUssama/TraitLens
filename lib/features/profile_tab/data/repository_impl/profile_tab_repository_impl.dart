@@ -13,6 +13,7 @@ import '../data_source/profile_tab_data_source.dart';
 class ProfileTabRepositoryImpl implements ProfileTabRepository {
   ProfileTabDataSource onlineDataSource;
 
+  @factoryMethod
   ProfileTabRepositoryImpl(this.onlineDataSource);
 
   Future<bool> _checkInternetConnection() async {
