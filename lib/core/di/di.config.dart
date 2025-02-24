@@ -54,6 +54,10 @@ import '../../features/profile_tab/data/data_source/profile_tab_data_source.dart
     as _i583;
 import '../../features/profile_tab/data/data_source_impl/profile_tab_data_source_impl.dart'
     as _i583;
+import '../../features/profile_tab/data/repository_impl/profile_tab_repository_impl.dart'
+    as _i937;
+import '../../features/profile_tab/domain/repository/profile_tab_repository.dart'
+    as _i888;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -93,6 +97,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i27.ForgetPasswordUsecase>(
         () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i888.ProfileTabRepository>(
+        () => _i937.ProfileTabRepositoryImpl(gh<_i583.ProfileTabDataSource>()));
     gh.factory<_i49.FillProfileDataUsecase>(
         () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
     gh.factory<_i471.FillProfileViewModel>(
