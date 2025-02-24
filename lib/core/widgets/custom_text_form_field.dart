@@ -68,7 +68,7 @@ class CustomTextFormField extends StatelessWidget {
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
           borderSide: const BorderSide(
-            color: ColorsManager.errorColor,
+            color: ColorsManager.red,
             width: 2,
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,9 +32,14 @@ class TraitLensApp extends StatelessWidget {
         locale: const Locale('en'),
         debugShowCheckedModeBanner: false,
         theme: AppTheme.appTheme,
-        initialRoute: RoutesName.signUpScreen,
+        initialRoute: _getInitialRoute(),
         onGenerateRoute: (settings) => AppRouters.onGenerate(settings),
       ),
     );
+  }
+
+  String _getInitialRoute() {
+    final user = FirebaseAuth.instance.currentUser;
+    return user != null ? RoutesName.homeScreen : RoutesName.signUpScreen;
   }
 }

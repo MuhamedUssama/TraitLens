@@ -46,5 +46,11 @@
   "emptyPhoneNumber": "Phone Number cannot be empty",
   "camera": "Camera",
   "gallery": "Gallery",
-  "chooseOption": "Choose option"
+  "chooseOption": "Choose option",
+  "traitLengs": "TraitsLens",
+  "homeTabBody":"Hey 👋! Let me help you figure out your personality—it's gonna be fun and easy!",
+  "start": "Start",
+  "home": "Home",
+  "results": "Results",
+  "profile": "Profile"
 }
