@@ -44,7 +44,7 @@ class AppRouters {
         return PageTransition(
           type: PageTransitionType.fade,
           duration: const Duration(seconds: 1),
-          child: const HomeScreen(),
+          child: HomeScreen(),
         );
 
       default:

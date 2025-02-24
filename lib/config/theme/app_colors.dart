@@ -6,6 +6,8 @@ class ColorsManager {
 
   static const Color lightBlue = Color(0XFFF1F4FF);
 
+  static const Color bottomNavigationBarColor = Color(0XFFEDEFF3);
+
   static const Color baseBlack = Colors.black;
 
   static const Color red = Color(0XFFCC1010);

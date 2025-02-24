@@ -7,3 +7,7 @@ class AppAssets {
 class AppSvg {
   static const String notification = 'assets/svg/notification.svg';
 }
+
+class AppIcons {
+  static const String results = 'assets/icons/results.png';
+}

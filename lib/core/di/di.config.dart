@@ -48,6 +48,8 @@ import '../../features/fill_profile/domain/usecases/fill_profile_data_usecase.da
     as _i49;
 import '../../features/fill_profile/view/view_models/fill_profile_view_model.dart'
     as _i471;
+import '../../features/home/view/view_model/home_screen_view_model.dart'
+    as _i736;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -61,6 +63,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    gh.factory<_i736.HomeScreenViewModel>(() => _i736.HomeScreenViewModel());
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
