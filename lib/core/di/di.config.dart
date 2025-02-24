@@ -50,6 +50,10 @@ import '../../features/fill_profile/view/view_models/fill_profile_view_model.dar
     as _i471;
 import '../../features/home/view/view_model/home_screen_view_model.dart'
     as _i736;
+import '../../features/profile_tab/data/data_source/profile_tab_data_source.dart'
+    as _i583;
+import '../../features/profile_tab/data/data_source_impl/profile_tab_data_source_impl.dart'
+    as _i583;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -67,6 +71,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.factory<_i583.ProfileTabDataSource>(
+        () => _i583.ProfileTabDataSourceImpl());
     gh.factory<_i760.FillProfileDataSource>(
         () => _i186.FillProfileDataSourceImpl());
     gh.factory<_i89.FillProfileRepository>(() =>

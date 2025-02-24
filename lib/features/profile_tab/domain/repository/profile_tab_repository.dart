@@ -4,5 +4,7 @@ import '../../../../core/errors/exceptions.dart';
 import '../../../fill_profile/domain/entities/fill_profile_entity.dart';
 
 abstract interface class ProfileTabRepository {
-  Future<Either<ServerException, UserProfileEntity>> getUserData();
+  Future<Either<ServerException, UserProfileEntity>> getUserData({
+    required String userId,
+  });
 }
