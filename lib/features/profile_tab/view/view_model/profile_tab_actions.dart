@@ -2,7 +2,7 @@ sealed class ProfileTabActions {}
 
 class GetUserProfileDataAction extends ProfileTabActions {}
 
-class NavigateToEditProfileScrenAction extends ProfileTabActions {}
+class NavigateToEditProfileScreenAction extends ProfileTabActions {}
 
 class NavigateToAboutUsScreenAction extends ProfileTabActions {}
 
