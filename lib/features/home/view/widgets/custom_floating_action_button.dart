@@ -14,7 +14,7 @@ class CustomFloatingActionButton extends StatelessWidget {
       height: 60.h,
       width: 60.w,
       decoration: BoxDecoration(
-        color: ColorsManager.floatingActionButtonColor,
+        color: ColorsManager.bottomNavigationBarColor,
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Center(child: SvgPicture.asset(AppSvg.message, width: 32.w)),
