@@ -8,6 +8,8 @@ class ColorsManager {
 
   static const Color bottomNavigationBarColor = Color(0XFFEDEFF3);
 
+  static const Color floatingActionButtonColor = Color(0XFFE6E6E6);
+
   static const Color baseBlack = Colors.black;
 
   static const Color red = Color(0XFFCC1010);
