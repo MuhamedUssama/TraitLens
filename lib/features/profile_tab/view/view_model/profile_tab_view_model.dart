@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,6 +15,10 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
   ProfileTabViewModel(this._getUserDataUsecase)
       : super(ProfileTabInitialState());
 
+  final String? email = FirebaseAuth.instance.currentUser?.email;
+
+  ValueNotifier<bool> switcher = ValueNotifier(false);
+
   Future<void> doIntent(ProfileTabActions actions) async {
     switch (actions) {
       case GetUserProfileDataAction():
@@ -28,15 +33,21 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
       // TODO: Handle this case.
       case LogOutAction():
       // TODO: Handle this case.
+      case NotificationSwitchAction():
+        _switchNotiFication();
     }
   }
 
   Future<void> _getUserData() async {
     emit(ProfileTabLoadingState());
 
-    final result = await _getUserDataUsecase(
-      userId: FirebaseAuth.instance.currentUser!.uid,
-    );
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      emit(GetUserDataErrorState("User is not logged in"));
+      return;
+    }
+
+    final result = await _getUserDataUsecase(userId: user.uid);
 
     result.fold(
       (error) => emit(GetUserDataErrorState(error.message)),
@@ -54,5 +65,9 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
 
   void _navigateToTermsAndConditionsScreen() {
     emit(NavigateToTermsAndConditionsScreenState());
+  }
+
+  void _switchNotiFication() {
+    switcher.value = !switcher.value;
   }
 }

@@ -10,7 +10,7 @@ class ColorsManager {
 
   static const Color floatingActionButtonColor = Color(0XFFE6E6E6);
 
-  static const Color baseBlack = Colors.black;
+  static const Color baseBlack = Color(0XFF0C1015);
 
   static const Color red = Color(0XFFCC1010);
 
@@ -19,6 +19,8 @@ class ColorsManager {
   static const Color white = Colors.white;
 
   static const Color grey = Color(0XFF757575);
+
+  static const Color darkGrey = Color(0xff535353);
 
   static const Color lightGrey = Color(0XFFECECEC);
 

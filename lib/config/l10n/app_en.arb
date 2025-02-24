@@ -52,5 +52,13 @@
   "start": "Start",
   "home": "Home",
   "results": "Results",
-  "profile": "Profile"
+  "profile": "Profile",
+  "editProfile": "Edit Profile",
+  "notification": "Notifications",
+  "language": "Language",
+  "aboutUs": "About Us",
+  "termsAndConditions": "Terms & Conditions",
+  "logout" : "Logout",
+  "english": "English",
+  "arabic": "Arabic"
 }
