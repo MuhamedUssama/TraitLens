@@ -9,6 +9,7 @@ import '../../../../core/utils/app_assets.dart';
 import '../view_model/home_screen_states.dart';
 import '../view_model/home_screen_view_model.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
+import '../widgets/custom_floating_action_button.dart';
 import '../widgets/notification_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -46,6 +47,9 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           body: viewModel.tabs[viewModel.currentIndex],
+          floatingActionButton: viewModel.currentIndex == 0
+              ? const CustomFloatingActionButton()
+              : null,
           bottomNavigationBar: CustomBottomNavigationBar(
             viewModel: viewModel,
             items: items,

@@ -8,4 +8,5 @@ class AnimationsAssets {
   static const String profileAnimation = "$_baseRoute/person_loading.json";
   static const String loading = "$_baseRoute/loading.json";
   static const String noData = "$_baseRoute/no_data.json";
+  static const String welcomeRobor = "$_baseRoute/welcomeRobot.json";
 }

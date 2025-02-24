@@ -5,7 +5,9 @@ class AppAssets {
 }
 
 class AppSvg {
-  static const String notification = 'assets/svg/notification.svg';
+  static const String baseUrl = 'assets/svg/';
+  static const String notification = '${baseUrl}notification.svg';
+  static const String message = '${baseUrl}message.svg';
 }
 
 class AppIcons {

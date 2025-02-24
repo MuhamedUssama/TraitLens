@@ -48,6 +48,12 @@ class TextStyles {
     color: ColorsManager.secondaryColor,
   );
 
+  static TextStyle font18GreyBold = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.secondaryColor,
+  );
+
   static TextStyle font14GreyRegular = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,
