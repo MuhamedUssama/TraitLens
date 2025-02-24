@@ -8,7 +8,7 @@ class ColorsManager {
 
   static const Color baseBlack = Colors.black;
 
-  static const Color errorColor = Color(0XFFCC1010);
+  static const Color red = Color(0XFFCC1010);
 
   static const Color successColor = Color(0XFF11CE19);
 
@@ -19,4 +19,6 @@ class ColorsManager {
   static const Color lightGrey = Color(0XFFECECEC);
 
   static const Color darkWhite = Color(0XFFF8F8F8);
+
+  static const Color transparent = Colors.transparent;
 }
