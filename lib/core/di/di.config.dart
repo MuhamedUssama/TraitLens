@@ -64,6 +64,8 @@ import '../../features/profile_tab/domain/usecases/sign_out_usecase.dart'
     as _i882;
 import '../../features/profile_tab/domain/usecases/update_user_data_usecase.dart'
     as _i154;
+import '../../features/profile_tab/view/view_model/edit_profile_screen/edit_profile_screen_view_model.dart'
+    as _i1016;
 import '../../features/profile_tab/view/view_model/profile_tab/profile_tab_view_model.dart'
     as _i260;
 import '../cache/shared_preferences.dart' as _i254;
@@ -128,6 +130,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i952.SignInWithFacebookUsecase>(),
           gh<_i3.VerifyAccountUsecase>(),
         ));
+    gh.factory<_i1016.EditProfileScreenViewModel>(() =>
+        _i1016.EditProfileScreenViewModel(gh<_i154.UpdateUserDataUsecase>()));
     gh.factory<_i583.GetUserDataUsecase>(
         () => _i583.GetUserDataUsecase(gh<_i888.ProfileTabRepository>()));
     gh.factory<_i260.ProfileTabViewModel>(() => _i260.ProfileTabViewModel(
