@@ -89,9 +89,6 @@ class ProfileTabDataSourceImpl implements ProfileTabDataSource {
     }
   }
 
-  @override
-  Future<void> signOut() => FirebaseAuth.instance.signOut();
-
   Future<void> _deleteOldImages(String userId) async {
     final SupabaseStorageClient storage = Supabase.instance.client.storage;
 
@@ -147,6 +144,18 @@ class ProfileTabDataSourceImpl implements ProfileTabDataSource {
       return Right(imageUrl);
     } on StorageException catch (exception) {
       return Left(ServerException(exception.message));
+    } catch (error) {
+      return Left(ServerException(error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<ServerException, void>> signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      return const Right(null);
+    } on FirebaseException catch (exception) {
+      return Left(ServerException(exception.message ?? 'Sign out failed'));
     } catch (error) {
       return Left(ServerException(error.toString()));
     }

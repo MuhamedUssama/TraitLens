@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -34,6 +36,26 @@ class ProfileTabRepositoryImpl implements ProfileTabRepository {
         (error) => Left(ServerException(error.message.toString())),
         (user) => Right(user),
       );
+    } else {
+      return const Left(NoInternetConnectionException());
+    }
+  }
+
+  @override
+  Future<Either<ServerException, UserProfileEntity>> updateUserData(
+      {File? imageFile,
+      String? name,
+      String? birthday,
+      String? phone,
+      String? gender}) {
+    // TODO: implement updateUserData
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<ServerException, void>> signOut() async {
+    if (await _checkInternetConnection()) {
+      return await onlineDataSource.signOut();
     } else {
       return const Left(NoInternetConnectionException());
     }

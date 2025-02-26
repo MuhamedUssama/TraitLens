@@ -18,5 +18,5 @@ abstract interface class ProfileTabRepository {
     String? gender,
   });
 
-  Future<void> signOut();
+  Future<Either<ServerException, void>> signOut();
 }

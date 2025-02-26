@@ -18,5 +18,5 @@ abstract interface class ProfileTabDataSource {
     String? gender,
   });
 
-  Future<void> signOut();
+  Future<Either<ServerException, void>> signOut();
 }
