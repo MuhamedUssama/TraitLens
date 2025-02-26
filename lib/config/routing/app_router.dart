@@ -5,6 +5,7 @@ import 'package:trait_lens/features/auth/view/ui/sign_in_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/sign_up_screen.dart';
 import 'package:trait_lens/features/fill_profile/view/ui/fill_profile_screen.dart';
 import 'package:trait_lens/features/home/view/ui/home_screen.dart';
+import 'package:trait_lens/features/profile_tab/view/ui/edit_profile_screen.dart';
 
 import 'routes_name.dart';
 
@@ -45,6 +46,14 @@ class AppRouters {
           type: PageTransitionType.fade,
           duration: const Duration(seconds: 1),
           child: HomeScreen(),
+        );
+
+      case RoutesName.editProfileScreen:
+        return PageTransition(
+          type: PageTransitionType.rightToLeft,
+          duration: const Duration(milliseconds: 1000),
+          settings: settings,
+          child: const EditProfileScreen(),
         );
 
       default:

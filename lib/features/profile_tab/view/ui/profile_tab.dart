@@ -44,7 +44,7 @@ class _ProfileTabState extends State<ProfileTab> {
           padding: EdgeInsets.symmetric(horizontal: 14.w),
           child: Column(
             children: [
-              const EditProfileWidget(),
+              EditProfileWidget(viewModel: viewModel),
               SizedBox(height: 8.h),
               const Divider(color: ColorsManager.grey),
               SizedBox(height: 8.h),
