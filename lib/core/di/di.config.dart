@@ -60,6 +60,10 @@ import '../../features/profile_tab/domain/repository/profile_tab_repository.dart
     as _i888;
 import '../../features/profile_tab/domain/usecases/get_user_data_usecase.dart'
     as _i583;
+import '../../features/profile_tab/domain/usecases/sign_out_usecase.dart'
+    as _i882;
+import '../../features/profile_tab/domain/usecases/update_user_data_usecase.dart'
+    as _i154;
 import '../../features/profile_tab/view/view_model/profile_tab/profile_tab_view_model.dart'
     as _i260;
 import '../cache/shared_preferences.dart' as _i254;
@@ -105,6 +109,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i937.ProfileTabRepositoryImpl(gh<_i583.ProfileTabDataSource>()));
     gh.factory<_i49.FillProfileDataUsecase>(
         () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
+    gh.factory<_i882.SignOutUsecase>(
+        () => _i882.SignOutUsecase(gh<_i888.ProfileTabRepository>()));
+    gh.factory<_i154.UpdateUserDataUsecase>(
+        () => _i154.UpdateUserDataUsecase(gh<_i888.ProfileTabRepository>()));
     gh.factory<_i471.FillProfileViewModel>(
         () => _i471.FillProfileViewModel(gh<_i49.FillProfileDataUsecase>()));
     gh.factory<_i615.SignInViewModel>(() => _i615.SignInViewModel(
