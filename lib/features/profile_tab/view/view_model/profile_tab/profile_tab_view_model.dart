@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/usecases/get_user_data_usecase.dart';
+import '../../../../fill_profile/domain/entities/fill_profile_entity.dart';
+import '../../../domain/usecases/get_user_data_usecase.dart';
 import 'profile_tab_actions.dart';
 import 'profile_tab_states.dart';
 
@@ -18,6 +19,8 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
   final String? email = FirebaseAuth.instance.currentUser?.email;
 
   ValueNotifier<bool> switcher = ValueNotifier(false);
+
+  UserProfileEntity? userModel;
 
   Future<void> doIntent(ProfileTabActions actions) async {
     switch (actions) {
@@ -51,12 +54,15 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
 
     result.fold(
       (error) => emit(GetUserDataErrorState(error.message)),
-      (user) => emit(GetUserDataSuccessState(user)),
+      (user) {
+        userModel = user;
+        return emit(GetUserDataSuccessState(user));
+      },
     );
   }
 
   void _navigateToEditProfileScreen() {
-    emit(NavigateToEditProfileScreenState());
+    emit(NavigateToEditProfileScreenState(userModel));
   }
 
   void _navigateToAboutUsScreen() {

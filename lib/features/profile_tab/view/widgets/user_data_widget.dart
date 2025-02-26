@@ -6,8 +6,8 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
-import '../view_model/profile_tab_states.dart';
-import '../view_model/profile_tab_view_model.dart';
+import '../view_model/profile_tab/profile_tab_states.dart';
+import '../view_model/profile_tab/profile_tab_view_model.dart';
 
 class UserDataWidget extends StatelessWidget {
   final ProfileTabViewModel viewModel;

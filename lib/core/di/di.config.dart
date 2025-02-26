@@ -60,8 +60,8 @@ import '../../features/profile_tab/domain/repository/profile_tab_repository.dart
     as _i888;
 import '../../features/profile_tab/domain/usecases/get_user_data_usecase.dart'
     as _i583;
-import '../../features/profile_tab/view/view_model/profile_tab_view_model.dart'
-    as _i825;
+import '../../features/profile_tab/view/view_model/profile_tab/profile_tab_view_model.dart'
+    as _i260;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -122,8 +122,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i583.GetUserDataUsecase>(
         () => _i583.GetUserDataUsecase(gh<_i888.ProfileTabRepository>()));
-    gh.factory<_i825.ProfileTabViewModel>(
-        () => _i825.ProfileTabViewModel(gh<_i583.GetUserDataUsecase>()));
+    gh.factory<_i260.ProfileTabViewModel>(
+        () => _i260.ProfileTabViewModel(gh<_i583.GetUserDataUsecase>()));
     return this;
   }
 }

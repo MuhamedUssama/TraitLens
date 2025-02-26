@@ -1,4 +1,4 @@
-import '../../../fill_profile/domain/entities/fill_profile_entity.dart';
+import '../../../../fill_profile/domain/entities/fill_profile_entity.dart';
 
 sealed class ProfileTabStates {}
 
@@ -20,7 +20,11 @@ class GetUserDataErrorState extends ProfileTabStates {
 
 class ChangeLanguagesState extends ProfileTabStates {}
 
-class NavigateToEditProfileScreenState extends ProfileTabStates {}
+class NavigateToEditProfileScreenState extends ProfileTabStates {
+  final UserProfileEntity? user;
+
+  NavigateToEditProfileScreenState(this.user);
+}
 
 class NavigateToAboutUsScreenState extends ProfileTabStates {}
 

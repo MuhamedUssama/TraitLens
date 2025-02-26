@@ -36,6 +36,12 @@ class TextStyles {
     color: ColorsManager.baseBlack,
   );
 
+  static TextStyle font24BlackMedium = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.baseBlack,
+  );
+
   static TextStyle font30BlueBold = TextStyle(
     fontSize: 30.sp,
     fontWeight: FontWeight.w900,

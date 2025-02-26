@@ -51,7 +51,7 @@ class AppRouters {
       case RoutesName.editProfileScreen:
         return PageTransition(
           type: PageTransitionType.rightToLeft,
-          duration: const Duration(milliseconds: 1000),
+          duration: const Duration(milliseconds: 600),
           settings: settings,
           child: const EditProfileScreen(),
         );

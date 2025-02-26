@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
-import '../view_model/profile_tab_actions.dart';
-import '../view_model/profile_tab_view_model.dart';
+import '../view_model/profile_tab/profile_tab_actions.dart';
+import '../view_model/profile_tab/profile_tab_view_model.dart';
 
 class NotificationsWidget extends StatelessWidget {
   final ProfileTabViewModel viewModel;

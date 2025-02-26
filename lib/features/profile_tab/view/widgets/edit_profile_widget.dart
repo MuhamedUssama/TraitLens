@@ -8,9 +8,9 @@ import '../../../../config/routing/routes_name.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
 import '../../../../core/utils/app_assets.dart';
-import '../view_model/profile_tab_actions.dart';
-import '../view_model/profile_tab_states.dart';
-import '../view_model/profile_tab_view_model.dart';
+import '../view_model/profile_tab/profile_tab_actions.dart';
+import '../view_model/profile_tab/profile_tab_states.dart';
+import '../view_model/profile_tab/profile_tab_view_model.dart';
 
 class EditProfileWidget extends StatelessWidget {
   final ProfileTabViewModel viewModel;
@@ -27,7 +27,11 @@ class EditProfileWidget extends StatelessWidget {
           current is NavigateToEditProfileScreenState,
       listener: (context, state) {
         if (state is NavigateToEditProfileScreenState) {
-          Navigator.pushNamed(context, RoutesName.editProfileScreen);
+          Navigator.pushNamed(
+            context,
+            RoutesName.editProfileScreen,
+            arguments: state.user,
+          );
         }
       },
       child: Padding(
