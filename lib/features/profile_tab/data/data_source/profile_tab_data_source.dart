@@ -15,6 +15,7 @@ abstract interface class ProfileTabDataSource {
     String? name,
     String? birthday,
     String? phone,
+    String? gender,
   });
 
   Future<void> signOut();
