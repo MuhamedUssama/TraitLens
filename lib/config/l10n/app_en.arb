@@ -60,5 +60,6 @@
   "termsAndConditions": "Terms & Conditions",
   "logout" : "Logout",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "logoutSuccess": "You have been logged out successfully"
 }

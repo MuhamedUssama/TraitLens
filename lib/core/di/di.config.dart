@@ -130,8 +130,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i583.GetUserDataUsecase>(
         () => _i583.GetUserDataUsecase(gh<_i888.ProfileTabRepository>()));
-    gh.factory<_i260.ProfileTabViewModel>(
-        () => _i260.ProfileTabViewModel(gh<_i583.GetUserDataUsecase>()));
+    gh.factory<_i260.ProfileTabViewModel>(() => _i260.ProfileTabViewModel(
+          gh<_i583.GetUserDataUsecase>(),
+          gh<_i882.SignOutUsecase>(),
+        ));
     return this;
   }
 }

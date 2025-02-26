@@ -5,16 +5,20 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../fill_profile/domain/entities/fill_profile_entity.dart';
 import '../../../domain/usecases/get_user_data_usecase.dart';
+import '../../../domain/usecases/sign_out_usecase.dart';
 import 'profile_tab_actions.dart';
 import 'profile_tab_states.dart';
 
 @injectable
 class ProfileTabViewModel extends Cubit<ProfileTabStates> {
   final GetUserDataUsecase _getUserDataUsecase;
+  final SignOutUsecase _signOutUsecase;
 
   @factoryMethod
-  ProfileTabViewModel(this._getUserDataUsecase)
-      : super(ProfileTabInitialState());
+  ProfileTabViewModel(
+    this._getUserDataUsecase,
+    this._signOutUsecase,
+  ) : super(ProfileTabInitialState());
 
   final String? email = FirebaseAuth.instance.currentUser?.email;
 
@@ -35,7 +39,7 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
       case ChangeLanguageAction():
       // TODO: Handle this case.
       case LogOutAction():
-      // TODO: Handle this case.
+        await _logout();
       case NotificationSwitchAction():
         _switchNotiFication();
     }
@@ -58,6 +62,17 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
         userModel = user;
         return emit(GetUserDataSuccessState(user));
       },
+    );
+  }
+
+  Future<void> _logout() async {
+    emit(ProfileTabLoadingState());
+
+    final result = await _signOutUsecase();
+
+    result.fold(
+      (failure) => emit(SignOutFailureState(failure.message)),
+      (success) => emit(SignOutSuccessState()),
     );
   }
 

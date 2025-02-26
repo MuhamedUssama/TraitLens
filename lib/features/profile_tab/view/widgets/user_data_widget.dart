@@ -54,41 +54,45 @@ class UserDataWidget extends StatelessWidget {
             ),
           );
         } else if (state is ProfileTabLoadingState) {
-          return Skeletonizer(
-            enabled: true,
-            child: Center(
-              child: Column(
-                children: [
-                  Container(
-                    width: 120.w,
-                    height: 120.w,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey.shade300,
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
-                  Container(
-                    width: 100.w,
-                    height: 20.h,
-                    color: Colors.grey.shade300,
-                  ),
-                  SizedBox(height: 4.h),
-                  Container(
-                    width: 150.w,
-                    height: 20.h,
-                    color: Colors.grey.shade300,
-                  ),
-                ],
-              ),
-            ),
-          );
+          return _loadingStateWidget();
         } else if (state is GetUserDataErrorState) {
           return Center(child: Text(state.errorMessage ?? ""));
         } else {
-          return const CircularProgressIndicator();
+          return _loadingStateWidget();
         }
       },
     );
   }
+}
+
+Widget _loadingStateWidget() {
+  return Skeletonizer(
+    enabled: true,
+    child: Center(
+      child: Column(
+        children: [
+          Container(
+            width: 120.w,
+            height: 120.w,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.grey.shade300,
+            ),
+          ),
+          SizedBox(height: 8.h),
+          Container(
+            width: 100.w,
+            height: 20.h,
+            color: Colors.grey,
+          ),
+          SizedBox(height: 4.h),
+          Container(
+            width: 150.w,
+            height: 20.h,
+            color: Colors.grey,
+          ),
+        ],
+      ),
+    ),
+  );
 }

@@ -55,7 +55,7 @@ class _ProfileTabState extends State<ProfileTab> {
               CustomBasicSection(title: locale!.aboutUs),
               CustomBasicSection(title: locale.termsAndConditions),
               const Divider(color: ColorsManager.grey),
-              const LogoutSection(),
+              LogoutSection(viewModel: viewModel),
               SizedBox(height: 80.h),
               Text('v 6.3.0 - (446)', style: TextStyles.font12GreyBold),
             ],

@@ -18,6 +18,14 @@ class GetUserDataErrorState extends ProfileTabStates {
   GetUserDataErrorState(this.errorMessage);
 }
 
+class SignOutFailureState extends ProfileTabStates {
+  String? errorMessage;
+
+  SignOutFailureState(this.errorMessage);
+}
+
+class SignOutSuccessState extends ProfileTabStates {}
+
 class ChangeLanguagesState extends ProfileTabStates {}
 
 class NavigateToEditProfileScreenState extends ProfileTabStates {
@@ -29,5 +37,3 @@ class NavigateToEditProfileScreenState extends ProfileTabStates {
 class NavigateToAboutUsScreenState extends ProfileTabStates {}
 
 class NavigateToTermsAndConditionsScreenState extends ProfileTabStates {}
-
-class LogOutState extends ProfileTabStates {}
