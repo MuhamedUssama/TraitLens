@@ -27,7 +27,7 @@ class EditProfileWidget extends StatelessWidget {
           current is NavigateToEditProfileScreenState,
       listener: (context, state) {
         if (state is NavigateToEditProfileScreenState) {
-          Navigator.pushNamed(
+          Navigator.pushReplacementNamed(
             context,
             RoutesName.editProfileScreen,
             arguments: state.user,

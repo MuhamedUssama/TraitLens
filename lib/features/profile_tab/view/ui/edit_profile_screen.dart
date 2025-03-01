@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../config/routing/routes_name.dart';
 import '../../../../config/theme/text_style.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/utils/app_assets.dart';
@@ -65,7 +66,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushReplacementNamed(
+                context,
+                RoutesName.homeScreen,
+              );
             },
           ),
           title: Text(

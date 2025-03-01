@@ -81,7 +81,9 @@ class EditScreenFormData extends StatelessWidget {
             BlocBuilder<EditProfileScreenViewModel, EditProfileScreenStates>(
               bloc: viewModel,
               buildWhen: (previous, current) =>
-                  current is EditProfileLoadingState,
+                  current is EditProfileLoadingState ||
+                  current is EditProfileSuccessState ||
+                  current is EditProfileFailureState,
               builder: (context, state) {
                 return ElevatedButton(
                   onPressed: () {
