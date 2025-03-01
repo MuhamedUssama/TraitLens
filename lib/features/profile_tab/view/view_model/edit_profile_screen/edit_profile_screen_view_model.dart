@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -69,11 +70,15 @@ class EditProfileScreenViewModel extends Cubit<EditProfileScreenStates> {
         );
 
         result.fold(
-          (failure) => emit(EditProfileFailureState(failure.message)),
+          (failure) {
+            log('From failure: ${failure.message}');
+            emit(EditProfileFailureState(failure.message));
+          },
           (user) => emit(EditProfileSuccessState(user)),
         );
       }
     } catch (error) {
+      log('From try & catch: ${error.toString()}');
       emit(EditProfileFailureState(error.toString()));
     }
   }

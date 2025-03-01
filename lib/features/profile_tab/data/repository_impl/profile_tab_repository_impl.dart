@@ -42,14 +42,29 @@ class ProfileTabRepositoryImpl implements ProfileTabRepository {
   }
 
   @override
-  Future<Either<ServerException, UserProfileEntity>> updateUserData(
-      {File? imageFile,
-      String? name,
-      String? birthday,
-      String? phone,
-      String? gender}) {
-    // TODO: implement updateUserData
-    throw UnimplementedError();
+  Future<Either<ServerException, UserProfileEntity>> updateUserData({
+    File? imageFile,
+    String? name,
+    String? birthday,
+    String? phone,
+    String? gender,
+  }) async {
+    if (await _checkInternetConnection()) {
+      final either = await onlineDataSource.updateUserData(
+        imageFile: imageFile,
+        name: name,
+        birthday: birthday,
+        phone: phone,
+        gender: gender,
+      );
+
+      return either.fold(
+        (error) => Left(ServerException(error.message.toString())),
+        (user) => Right(user),
+      );
+    } else {
+      return const Left(NoInternetConnectionException());
+    }
   }
 
   @override

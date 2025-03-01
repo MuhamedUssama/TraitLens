@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/theme/text_style.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/utils/app_dialogs.dart';
 import '../../../fill_profile/domain/entities/fill_profile_entity.dart';
+import '../view_model/edit_profile_screen/edit_profile_screen_states.dart';
 import '../view_model/edit_profile_screen/edit_profile_screen_view_model.dart';
+import '../widgets/edit_screen_form_data.dart';
 import '../widgets/edit_screen_user_image_widget.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -19,6 +23,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   EditProfileScreenViewModel viewModel =
       getIt.get<EditProfileScreenViewModel>();
 
+  UserProfileEntity? arguments;
+
   @override
   void dispose() {
     viewModel.birthdayController.dispose();
@@ -30,8 +36,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     AppLocalizations? locale = AppLocalizations.of(context);
-    final UserProfileEntity arguments =
-        ModalRoute.of(context)?.settings.arguments as UserProfileEntity;
+
+    if (arguments == null) {
+      arguments =
+          ModalRoute.of(context)?.settings.arguments as UserProfileEntity;
+      viewModel.birthdayController.text = arguments!.birthDay!;
+      viewModel.nameController.text = arguments!.fullName!;
+      viewModel.phoneController.text = arguments!.phone!;
+      if (arguments!.gender == "male") {
+        viewModel.selectedGender = Gender.male;
+      } else if (arguments!.gender == "female") {
+        viewModel.selectedGender = Gender.female;
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -47,18 +64,41 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           style: TextStyles.font24BlackMedium,
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 22.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 50.h),
-            UserImageWidget(
-              user: arguments,
-              viewModel: viewModel,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 22.w),
+          child:
+              BlocListener<EditProfileScreenViewModel, EditProfileScreenStates>(
+            bloc: viewModel,
+            listener: (context, state) {
+              if (state is EditProfileFailureState) {
+                AppDialogs.showFailDialog(
+                  message: state.message ?? locale.somethingWentWrong,
+                  context: context,
+                  posActionTitle: locale.ok,
+                );
+              }
+              if (state is EditProfileSuccessState) {
+                AppDialogs.showSuccessDialog(
+                  message: locale.fillProfileSuccessfully,
+                  context: context,
+                  posActionTitle: locale.ok,
+                );
+              }
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 50.h),
+                UserImageWidget(
+                  user: arguments!,
+                  viewModel: viewModel,
+                ),
+                SizedBox(height: 50.h),
+                EditScreenFormData(viewModel: viewModel, user: arguments!),
+              ],
             ),
-            SizedBox(height: 50.h),
-          ],
+          ),
         ),
       ),
     );

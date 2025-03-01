@@ -61,5 +61,6 @@
   "logout" : "Logout",
   "english": "English",
   "arabic": "Arabic",
-  "logoutSuccess": "You have been logged out successfully"
+  "logoutSuccess": "You have been logged out successfully",
+  "update" : "Update"
 }
