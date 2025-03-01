@@ -3,11 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/theme/app_colors.dart';
 import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_dialogs.dart';
 import '../../../fill_profile/domain/entities/fill_profile_entity.dart';
+import '../view_model/edit_profile_screen/edit_profile_screen_actions.dart';
+import '../view_model/edit_profile_screen/edit_profile_screen_view_model.dart';
 
 class UserImageWidget extends StatelessWidget {
   final UserProfileEntity user;
-  const UserImageWidget({super.key, required this.user});
+  final EditProfileScreenViewModel viewModel;
+  const UserImageWidget(
+      {super.key, required this.user, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,19 @@ class UserImageWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            AppDialogs.showCameraDialog(
+              context: context,
+              onCaremraClicked: () {
+                viewModel.doIntent(CameraClickedAction());
+                Navigator.pop(context);
+              },
+              onGalleryClicked: () {
+                viewModel.doIntent(GalleryClickedAction());
+                Navigator.pop(context);
+              },
+            );
+          },
           child: Container(
             width: 30.w,
             height: 30.w,
