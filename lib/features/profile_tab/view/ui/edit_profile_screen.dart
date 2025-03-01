@@ -22,8 +22,24 @@ class EditProfileScreen extends StatefulWidget {
 class _EditProfileScreenState extends State<EditProfileScreen> {
   EditProfileScreenViewModel viewModel =
       getIt.get<EditProfileScreenViewModel>();
-
   UserProfileEntity? arguments;
+  bool _isInitialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isInitialized && ModalRoute.of(context)?.settings.arguments != null) {
+      arguments =
+          ModalRoute.of(context)!.settings.arguments as UserProfileEntity;
+      viewModel.birthdayController.text = arguments!.birthDay ?? '';
+      viewModel.nameController.text = arguments!.fullName ?? '';
+      viewModel.phoneController.text = arguments!.phone ?? '';
+      viewModel.selectedGender = arguments!.gender?.toLowerCase() == "male"
+          ? Gender.male
+          : Gender.female;
+      _isInitialized = true;
+    }
+  }
 
   @override
   void dispose() {
@@ -36,19 +52,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     AppLocalizations? locale = AppLocalizations.of(context);
-
-    if (arguments == null) {
-      arguments =
-          ModalRoute.of(context)?.settings.arguments as UserProfileEntity;
-      viewModel.birthdayController.text = arguments!.birthDay!;
-      viewModel.nameController.text = arguments!.fullName!;
-      viewModel.phoneController.text = arguments!.phone!;
-      if (arguments!.gender == "male") {
-        viewModel.selectedGender = Gender.male;
-      } else if (arguments!.gender == "female") {
-        viewModel.selectedGender = Gender.female;
-      }
-    }
 
     return Scaffold(
       appBar: AppBar(
