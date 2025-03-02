@@ -41,6 +41,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             title: Text(locale.traitLengs, style: TextStyles.font32BlueBold),
             actions: const [
               NotificationWidget(),

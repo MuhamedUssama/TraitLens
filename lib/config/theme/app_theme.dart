@@ -5,10 +5,11 @@ import 'app_colors.dart';
 
 class AppTheme {
   static ThemeData appTheme = ThemeData(
-      scaffoldBackgroundColor: ColorsManager.white,
-      primaryColor: ColorsManager.baseBlue,
-      textTheme: GoogleFonts.poppinsTextTheme(),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: ColorsManager.transparent,
-      ));
+    scaffoldBackgroundColor: ColorsManager.white,
+    primaryColor: ColorsManager.baseBlue,
+    textTheme: GoogleFonts.poppinsTextTheme(),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: ColorsManager.transparent,
+    ),
+  );
 }

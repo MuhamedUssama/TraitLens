@@ -50,6 +50,24 @@ import '../../features/fill_profile/view/view_models/fill_profile_view_model.dar
     as _i471;
 import '../../features/home/view/view_model/home_screen_view_model.dart'
     as _i736;
+import '../../features/profile_tab/data/data_source/profile_tab_data_source.dart'
+    as _i583;
+import '../../features/profile_tab/data/data_source_impl/profile_tab_data_source_impl.dart'
+    as _i583;
+import '../../features/profile_tab/data/repository_impl/profile_tab_repository_impl.dart'
+    as _i937;
+import '../../features/profile_tab/domain/repository/profile_tab_repository.dart'
+    as _i888;
+import '../../features/profile_tab/domain/usecases/get_user_data_usecase.dart'
+    as _i583;
+import '../../features/profile_tab/domain/usecases/sign_out_usecase.dart'
+    as _i882;
+import '../../features/profile_tab/domain/usecases/update_user_data_usecase.dart'
+    as _i154;
+import '../../features/profile_tab/view/view_model/edit_profile_screen/edit_profile_screen_view_model.dart'
+    as _i1016;
+import '../../features/profile_tab/view/view_model/profile_tab/profile_tab_view_model.dart'
+    as _i260;
 import '../cache/shared_preferences.dart' as _i254;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -67,6 +85,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.factory<_i583.ProfileTabDataSource>(
+        () => _i583.ProfileTabDataSourceImpl());
     gh.factory<_i760.FillProfileDataSource>(
         () => _i186.FillProfileDataSourceImpl());
     gh.factory<_i89.FillProfileRepository>(() =>
@@ -87,8 +107,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i27.ForgetPasswordUsecase>(
         () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i888.ProfileTabRepository>(
+        () => _i937.ProfileTabRepositoryImpl(gh<_i583.ProfileTabDataSource>()));
     gh.factory<_i49.FillProfileDataUsecase>(
         () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
+    gh.factory<_i882.SignOutUsecase>(
+        () => _i882.SignOutUsecase(gh<_i888.ProfileTabRepository>()));
+    gh.factory<_i154.UpdateUserDataUsecase>(
+        () => _i154.UpdateUserDataUsecase(gh<_i888.ProfileTabRepository>()));
     gh.factory<_i471.FillProfileViewModel>(
         () => _i471.FillProfileViewModel(gh<_i49.FillProfileDataUsecase>()));
     gh.factory<_i615.SignInViewModel>(() => _i615.SignInViewModel(
@@ -103,6 +129,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i645.SignInWithGoogleUsecase>(),
           gh<_i952.SignInWithFacebookUsecase>(),
           gh<_i3.VerifyAccountUsecase>(),
+        ));
+    gh.factory<_i1016.EditProfileScreenViewModel>(() =>
+        _i1016.EditProfileScreenViewModel(gh<_i154.UpdateUserDataUsecase>()));
+    gh.factory<_i583.GetUserDataUsecase>(
+        () => _i583.GetUserDataUsecase(gh<_i888.ProfileTabRepository>()));
+    gh.factory<_i260.ProfileTabViewModel>(() => _i260.ProfileTabViewModel(
+          gh<_i583.GetUserDataUsecase>(),
+          gh<_i882.SignOutUsecase>(),
         ));
     return this;
   }

@@ -52,5 +52,15 @@
   "start": "ابدأ",
   "home": "الرئيسية",
   "results": "النتائج",
-  "profile": "الصفحة الشخصية"
+  "profile": "الصفحة الشخصية",
+  "editProfile": "تعديل الملف الشخصي",
+  "notification": "الإشعارات",
+  "language": "اللغة",
+  "aboutUs": "معلومات عنا",
+  "termsAndConditions": "الشروط والأحكام",
+  "logout": "تسجيل الخروج",
+  "english": "اللغة الانجليزية",
+  "arabic": "اللغة العربية",
+  "logoutSuccess": "تم تسجيل الخروج بنجاح",
+  "update" : "تعديل"
 }

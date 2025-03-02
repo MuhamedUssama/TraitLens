@@ -66,6 +66,7 @@ dependencies:
   image: ^4.3.0
   page_transition: ^2.2.1
   salomon_bottom_bar: ^3.3.2
+  skeletonizer: ^1.4.3
   # rive: ^0.13.20
 
 dev_dependencies:
