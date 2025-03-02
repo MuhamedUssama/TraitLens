@@ -67,7 +67,8 @@ dependencies:
   page_transition: ^2.2.1
   salomon_bottom_bar: ^3.3.2
   skeletonizer: ^1.4.3
-  # rive: ^0.13.20
+  flutter_dotenv: ^5.2.1
+  google_generative_ai: ^0.4.6
 
 dev_dependencies:
   flutter_test:

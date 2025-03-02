@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../config/routing/routes_name.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../core/utils/app_assets.dart';
 
@@ -10,14 +11,20 @@ class CustomFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60.h,
-      width: 60.w,
-      decoration: BoxDecoration(
-        color: ColorsManager.bottomNavigationBarColor,
-        borderRadius: BorderRadius.circular(16.r),
+    return InkWell(
+      borderRadius: BorderRadius.circular(16),
+      onTap: () {
+        Navigator.pushNamed(context, RoutesName.chatAiScreen);
+      },
+      child: Container(
+        height: 60.h,
+        width: 60.w,
+        decoration: BoxDecoration(
+          color: ColorsManager.bottomNavigationBarColor,
+          borderRadius: BorderRadius.circular(16.r),
+        ),
+        child: Center(child: SvgPicture.asset(AppSvg.message, width: 32.w)),
       ),
-      child: Center(child: SvgPicture.asset(AppSvg.message, width: 32.w)),
     );
   }
 }

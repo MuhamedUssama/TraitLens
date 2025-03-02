@@ -5,4 +5,5 @@ class RoutesName {
   static const String forgetPasswordScreen = '/forgetpassword';
   static const String homeScreen = '/home';
   static const String editProfileScreen = '/editprofile';
+  static const String chatAiScreen = '/chatAi';
 }
