@@ -11,6 +11,9 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/ai_chat/data/data_source/chat_data_source.dart' as _i582;
+import '../../features/ai_chat/data/data_source_impl/chat_data_source_impl.dart'
+    as _i922;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
 import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
     as _i105;
@@ -85,6 +88,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.singleton<_i582.ChatDataSource>(() => _i922.ChatDataSourceImpl());
     gh.factory<_i583.ProfileTabDataSource>(
         () => _i583.ProfileTabDataSourceImpl());
     gh.factory<_i760.FillProfileDataSource>(
