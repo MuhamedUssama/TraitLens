@@ -20,6 +20,8 @@ import '../../features/ai_chat/domain/repositoory/chat_repository.dart'
     as _i414;
 import '../../features/ai_chat/domain/usecases/get_gemini_response.dart'
     as _i945;
+import '../../features/ai_chat/view/view_model/chat_screen_view_model.dart'
+    as _i158;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
 import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
     as _i105;
@@ -125,6 +127,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
     gh.factory<_i945.GetGeminiResponse>(
         () => _i945.GetGeminiResponse(gh<_i414.ChatRepository>()));
+    gh.factory<_i158.ChatScreenViewModel>(
+        () => _i158.ChatScreenViewModel(gh<_i945.GetGeminiResponse>()));
     gh.factory<_i882.SignOutUsecase>(
         () => _i882.SignOutUsecase(gh<_i888.ProfileTabRepository>()));
     gh.factory<_i154.UpdateUserDataUsecase>(
