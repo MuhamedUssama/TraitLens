@@ -101,6 +101,7 @@ flutter:
     - assets/svg/
     - assets/rive/
     - assets/icons/
+    - .env
 
   #   - images/a_dot_ham.jpeg
 
