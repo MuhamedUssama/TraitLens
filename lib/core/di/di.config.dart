@@ -14,6 +14,10 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../../features/ai_chat/data/data_source/chat_data_source.dart' as _i582;
 import '../../features/ai_chat/data/data_source_impl/chat_data_source_impl.dart'
     as _i922;
+import '../../features/ai_chat/data/repository_impl/chat_repository_impl.dart'
+    as _i654;
+import '../../features/ai_chat/domain/repositoory/chat_repository.dart'
+    as _i414;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
 import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
     as _i105;
@@ -93,6 +97,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i583.ProfileTabDataSourceImpl());
     gh.factory<_i760.FillProfileDataSource>(
         () => _i186.FillProfileDataSourceImpl());
+    gh.factory<_i414.ChatRepository>(
+        () => _i654.ChatRepositoryImpl(gh<_i582.ChatDataSource>()));
     gh.factory<_i89.FillProfileRepository>(() =>
         _i325.FillProfileRepositoryImpl(gh<_i760.FillProfileDataSource>()));
     gh.factory<_i961.AuthRepository>(
