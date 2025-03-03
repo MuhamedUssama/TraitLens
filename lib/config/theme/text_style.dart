@@ -42,12 +42,6 @@ class TextStyles {
     color: ColorsManager.baseBlack,
   );
 
-  static TextStyle font30BlueBold = TextStyle(
-    fontSize: 30.sp,
-    fontWeight: FontWeight.w900,
-    color: ColorsManager.baseBlue,
-  );
-
   static TextStyle font12GreyBold = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
@@ -96,6 +90,18 @@ class TextStyles {
     color: ColorsManager.baseBlue,
   );
 
+  static TextStyle font24BlueBold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.baseBlue,
+  );
+
+  static TextStyle font30BlueBold = TextStyle(
+    fontSize: 30.sp,
+    fontWeight: FontWeight.w900,
+    color: ColorsManager.baseBlue,
+  );
+
   static TextStyle font12BlueRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
@@ -112,5 +118,11 @@ class TextStyles {
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.secondaryColor,
+  );
+
+  static TextStyle font18GreenMedium = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.onlineColor,
   );
 }
