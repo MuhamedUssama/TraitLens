@@ -10,6 +10,7 @@ class AppSvg {
   static const String message = '${baseUrl}message.svg';
   static const String pen = '${baseUrl}pen.svg';
   static const String lensBot = '${baseUrl}lensBot.svg';
+  static const String sendButton = '${baseUrl}sendButton.svg';
 }
 
 class AppIcons {

@@ -144,4 +144,16 @@ class TextStyles {
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.baseBlack,
   );
+
+  static TextStyle textFieldHintTextChatScreen = GoogleFonts.nunito(
+    color: const Color(0XFFA1A1A1),
+    fontSize: 14.sp,
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle textFieldStyleChatScreen = GoogleFonts.nunito(
+    color: ColorsManager.baseBlack,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.bold,
+  );
 }
