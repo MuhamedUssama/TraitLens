@@ -12,24 +12,25 @@ import '../data_source/chat_data_source.dart';
 @Singleton(as: ChatDataSource)
 class ChatDataSourceImpl implements ChatDataSource {
   @override
-  Future<Either<exceptions.ServerException, MessageModel>> getGeminiResponse({
+  Stream<Either<exceptions.ServerException, MessageModel>> getGeminiResponse({
     String? message,
-  }) async {
+  }) async* {
     try {
       if (message == null || message.isEmpty) {
-        return const Left(
-            exceptions.ServerException('Message cannot be empty'));
+        yield const Left(exceptions.ServerException('Message cannot be empty'));
+        return;
       }
 
-      final apiKey = dotenv.env['geminiApiKey'];
+      final String? apiKey = dotenv.env['geminiApiKey'];
 
       if (apiKey == null || apiKey.isEmpty) {
-        return const Left(exceptions.ServerException(
+        yield const Left(exceptions.ServerException(
           'Gemini API Key not found in configuration',
         ));
+        return;
       }
 
-      final model = GenerativeModel(
+      final GenerativeModel model = GenerativeModel(
         model: 'gemini-1.5-flash',
         apiKey: apiKey,
         systemInstruction: Content.system(
@@ -40,23 +41,26 @@ class ChatDataSourceImpl implements ChatDataSource {
         ),
       );
 
-      final response = await model.generateContent([Content.text(message)]);
-      log('Raw response from Gemini: ${response.text}');
+      final Stream<GenerateContentResponse> responseStream =
+          model.generateContentStream([Content.text(message)]);
 
-      if (response.text == null || response.text!.isEmpty) {
-        return const Left(exceptions.ServerException(
-          'No response received from Gemini API',
-        ));
+      await for (GenerateContentResponse response in responseStream) {
+        log('Raw response chunk from Gemini: ${response.text}');
+        if (response.text == null || response.text!.isEmpty) {
+          yield const Left(exceptions.ServerException(
+            'No response received from Gemini API',
+          ));
+        } else {
+          yield Right(MessageModel(
+            text: response.text!,
+            isUser: false,
+          ));
+        }
       }
-
-      return Right(MessageModel(
-        text: response.text!,
-        isUser: false,
-      ));
     } on GenerativeAIException catch (e) {
-      return Left(exceptions.ServerException('Gemini API error: ${e.message}'));
+      yield Left(exceptions.ServerException('Gemini API error: ${e.message}'));
     } on Exception catch (error) {
-      return Left(
+      yield Left(
         exceptions.ServerException('An unexpected error occurred: $error'),
       );
     }
