@@ -156,4 +156,16 @@ class TextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
   );
+
+  static TextStyle userMessageChatScreen = GoogleFonts.nunito(
+    color: ColorsManager.white,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle aiMessageChatScreen = GoogleFonts.nunito(
+    color: const Color(0XFF656565),
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+  );
 }
