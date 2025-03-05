@@ -34,7 +34,7 @@ class ChatScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                     radius: 3.w,
                   ),
                   SizedBox(width: 8.w),
-                  Text('Online', style: TextStyles.font18GreenMedium),
+                  Text('Online', style: TextStyles.chatScreenOnlie),
                 ],
               ),
             ],

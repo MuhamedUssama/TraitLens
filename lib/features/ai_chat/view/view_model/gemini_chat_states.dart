@@ -16,4 +16,9 @@ class SendMessageFailureState extends GeminiChatStates {
   SendMessageFailureState(this.errorMessage);
 }
 
+class ChatWelcomeState extends GeminiChatStates {
+  final String welcomeText;
+  ChatWelcomeState(this.welcomeText);
+}
+
 class NavigateToHomeScreenState extends GeminiChatStates {}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trait_lens/config/theme/app_colors.dart';
 
 import 'font_weight_helper.dart';
@@ -96,6 +97,12 @@ class TextStyles {
     color: ColorsManager.baseBlue,
   );
 
+  static TextStyle chatScreenTitle = GoogleFonts.baloo2(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.baseBlue,
+  );
+
   static TextStyle font30BlueBold = TextStyle(
     fontSize: 30.sp,
     fontWeight: FontWeight.w900,
@@ -124,5 +131,17 @@ class TextStyles {
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.medium,
     color: ColorsManager.onlineColor,
+  );
+
+  static TextStyle chatScreenOnlie = GoogleFonts.baloo2(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.onlineColor,
+  );
+
+  static TextStyle noMessagesChat = GoogleFonts.baloo2(
+    fontSize: 22.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.baseBlack,
   );
 }
