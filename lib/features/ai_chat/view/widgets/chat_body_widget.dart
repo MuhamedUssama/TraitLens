@@ -73,7 +73,7 @@ class ChatBodyWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(12),
       decoration: const BoxDecoration(
-        color: Color(0XFFEEEEEE),
+        color: ColorsManager.messageBackgroundColor,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.zero,
           bottomRight: Radius.circular(20),
@@ -89,13 +89,13 @@ class ChatBodyWidget extends StatelessWidget {
             Container(
               width: 200.w,
               height: 10.h,
-              color: ColorsManager.messageBackgroundColor,
+              color: ColorsManager.darkGrey,
             ),
             const SizedBox(height: 6),
             Container(
               width: 80.w,
               height: 10.h,
-              color: ColorsManager.messageBackgroundColor,
+              color: ColorsManager.darkGrey,
             ),
           ],
         ),
