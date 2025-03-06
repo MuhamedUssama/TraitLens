@@ -8,7 +8,6 @@ import 'message_widget.dart';
 
 class ChatBodyWidget extends StatelessWidget {
   final ChatScreenViewModel viewModel;
-
   const ChatBodyWidget({super.key, required this.viewModel});
 
   @override

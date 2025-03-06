@@ -22,18 +22,18 @@ class ChatRepositoryImpl implements ChatRepository {
   }
 
   @override
-  Stream<Either<ServerException, MessageModel>> getGeminiResponse({
+  Future<Either<ServerException, MessageModel>> getGeminiResponse({
     String? message,
-  }) async* {
+  }) async {
     if (await _checkInternetConnection()) {
-      yield* _dataSource.getGeminiResponse(message: message).map(
-            (either) => either.fold(
-              (error) => Left(ServerException(error.message)),
-              (responseMessage) => Right(responseMessage),
-            ),
-          );
+      final either = await _dataSource.getGeminiResponse(message: message);
+
+      return either.fold(
+        (error) => Left(ServerException(error.message)),
+        (responseMessage) => Right(responseMessage),
+      );
     } else {
-      yield const Left(NoInternetConnectionException());
+      return const Left(NoInternetConnectionException());
     }
   }
 }

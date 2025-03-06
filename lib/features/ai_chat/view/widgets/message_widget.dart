@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/theme/app_colors.dart';
@@ -38,12 +39,22 @@ class MessageWidget extends StatelessWidget {
                 topRight: Radius.circular(20.r),
               ),
       ),
-      child: Text(
-        message.text,
-        style: message.isUser
-            ? TextStyles.userMessageChatScreen
-            : TextStyles.aiMessageChatScreen,
-      ),
+      child: message.isUser
+          ? Text(
+              message.text,
+              style: TextStyles.userMessageChatScreen,
+            )
+          : AnimatedTextKit(
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  message.text,
+                  textStyle: TextStyles.aiMessageChatScreen,
+                  speed: const Duration(milliseconds: 50),
+                ),
+              ],
+              totalRepeatCount: 1,
+              pause: const Duration(milliseconds: 0),
+            ),
     );
   }
 }

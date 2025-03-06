@@ -24,6 +24,7 @@ class ChatScreenViewModel extends Cubit<GeminiChatStates> {
   List<MessageModel> messages = [];
   final String welcomeText = "Hi, I'm Lens Bot\nHow can I help you?";
   bool hasSpokenWelcome = false;
+  String currentResponse = '';
 
   Future<void> doIntent(GeminiChatActions actions) async {
     switch (actions) {
@@ -36,7 +37,7 @@ class ChatScreenViewModel extends Cubit<GeminiChatStates> {
 
   Future<void> _initTts() async {
     await flutterTts.setLanguage("en-US");
-    await flutterTts.setPitch(0.5); // نغمة أعلى قليلاً
+    await flutterTts.setPitch(0.5);
     await flutterTts.setSpeechRate(0.4);
     await flutterTts
         .setVoice({"name": "en-GB-SMTf00", "locale": "eng-x-lvariant-f00"});

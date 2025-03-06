@@ -12,7 +12,7 @@ class GetGeminiResponse {
   @factoryMethod
   GetGeminiResponse(this._chatRepository);
 
-  Stream<Either<ServerException, MessageModel>> call({String? message}) {
-    return _chatRepository.getGeminiResponse(message: message);
+  Future<Either<ServerException, MessageModel>> call({String? message}) async {
+    return await _chatRepository.getGeminiResponse(message: message);
   }
 }
