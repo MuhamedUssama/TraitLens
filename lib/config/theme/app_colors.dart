@@ -29,4 +29,6 @@ class ColorsManager {
   static const Color darkWhite = Color(0XFFF8F8F8);
 
   static const Color transparent = Colors.transparent;
+
+  static const Color messageBackgroundColor = Color(0XFFEEEEEE);
 }

@@ -23,8 +23,9 @@ class MessageWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color:
-            message.isUser ? ColorsManager.baseBlue : const Color(0XFFEEEEEE),
+        color: message.isUser
+            ? ColorsManager.baseBlue
+            : ColorsManager.messageBackgroundColor,
         borderRadius: message.isUser
             ? BorderRadius.only(
                 bottomLeft: Radius.circular(20.r),
