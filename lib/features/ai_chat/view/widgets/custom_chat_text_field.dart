@@ -37,11 +37,19 @@ class CustomChatTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: 'Write your message',
             hintStyle: TextStyles.textFieldHintTextChatScreen,
-            suffixIcon: IconButton(
-              icon: SvgPicture.asset(AppSvg.sendButton),
-              onPressed: () {
-                viewModel.doIntent(SendMessageAction());
-              },
+            suffixIcon: ValueListenableBuilder(
+              valueListenable: viewModel.isTyping,
+              builder: (context, value, child) => value
+                  ? IconButton(
+                      icon: SvgPicture.asset(AppSvg.stopCircle, width: 36.w),
+                      onPressed: () {},
+                    )
+                  : IconButton(
+                      icon: SvgPicture.asset(AppSvg.sendButton),
+                      onPressed: () {
+                        viewModel.doIntent(SendMessageAction());
+                      },
+                    ),
             ),
             border: OutlineInputBorder(
               borderSide: BorderSide.none,

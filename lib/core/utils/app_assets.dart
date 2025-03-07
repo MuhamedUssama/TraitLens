@@ -13,6 +13,7 @@ class AppSvg {
   static const String sendButton = '${baseUrl}sendButton.svg';
   static const String volumeOn = '${baseUrl}volumeOn.svg';
   static const String volumeOff = '${baseUrl}volumeOff.svg';
+  static const String stopCircle = '${baseUrl}stopCircle.svg';
 }
 
 class AppIcons {

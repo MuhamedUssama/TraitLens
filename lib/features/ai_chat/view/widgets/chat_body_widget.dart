@@ -41,7 +41,10 @@ class ChatBodyWidget extends StatelessWidget {
                 alignment: messages[index].isUser
                     ? Alignment.centerRight
                     : Alignment.centerLeft,
-                child: MessageWidget(message: messages[index]),
+                child: MessageWidget(
+                  message: messages[index],
+                  viewModel: viewModel,
+                ),
               );
             },
           );
@@ -56,7 +59,7 @@ class ChatBodyWidget extends StatelessWidget {
                 alignment: message.isUser
                     ? Alignment.centerRight
                     : Alignment.centerLeft,
-                child: MessageWidget(message: message),
+                child: MessageWidget(message: message, viewModel: viewModel),
               );
             },
           );

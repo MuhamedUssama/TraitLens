@@ -26,6 +26,8 @@ class ChatScreenViewModel extends Cubit<GeminiChatStates> {
   bool hasSpokenWelcome = false;
   bool isVolumeOn = true;
 
+  ValueNotifier<bool> isTyping = ValueNotifier<bool>(false);
+
   Future<void> doIntent(GeminiChatActions actions) async {
     switch (actions) {
       case SendMessageAction():
@@ -67,11 +69,13 @@ class ChatScreenViewModel extends Cubit<GeminiChatStates> {
 
       messages.add(MessageModel(text: messageController.text, isUser: true));
 
-      final result = await _geminiResponseUsecase(
-        message: messageController.text,
-      );
-
       messageController.clear();
+
+      isTyping.value = true;
+
+      final result = await _geminiResponseUsecase(
+        message: messages.last.text,
+      );
 
       result.fold(
         (error) => emit(SendMessageFailureState(error.message)),

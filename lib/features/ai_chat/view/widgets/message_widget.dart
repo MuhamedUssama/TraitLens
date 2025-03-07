@@ -5,11 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
 import '../../data/models/gemini_response_model.dart';
+import '../view_model/chat_screen_view_model.dart';
 
 class MessageWidget extends StatelessWidget {
+  final ChatScreenViewModel viewModel;
   final MessageModel message;
 
-  const MessageWidget({super.key, required this.message});
+  const MessageWidget(
+      {super.key, required this.message, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +56,7 @@ class MessageWidget extends StatelessWidget {
                   speed: const Duration(milliseconds: 50),
                 ),
               ],
+              onFinished: () => viewModel.isTyping.value = false,
               totalRepeatCount: 1,
               pause: const Duration(milliseconds: 0),
             ),
