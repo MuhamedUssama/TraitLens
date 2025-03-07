@@ -16,6 +16,10 @@ class ChatBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChatScreenViewModel, GeminiChatStates>(
+      buildWhen: (previous, current) =>
+          current is ChatWelcomeState ||
+          current is SendMessageLoadingState ||
+          current is SendMessageSuccessState,
       bloc: viewModel,
       builder: (context, state) {
         final messages = viewModel.messages;

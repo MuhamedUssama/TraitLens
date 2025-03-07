@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
 import '../../../../core/utils/app_assets.dart';
+import '../view_model/gemini_chat_actions.dart';
+import '../view_model/gemini_chat_states.dart';
+import '../view_model/chat_screen_view_model.dart';
 
 class ChatScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ChatScreenAppBar({super.key});
@@ -41,6 +45,27 @@ class ChatScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
+      actions: [
+        BlocBuilder<ChatScreenViewModel, GeminiChatStates>(
+          buildWhen: (previous, current) => current is VolumeButtonState,
+          builder: (context, state) {
+            final viewModel = context.read<ChatScreenViewModel>();
+            return IconButton(
+              onPressed: () {
+                viewModel.doIntent(VolumeButtonClickAction());
+              },
+              icon: viewModel.isVolumeOn
+                  ? SvgPicture.asset(AppSvg.volumeOn, height: 32.h, width: 32.w)
+                  : SvgPicture.asset(
+                      AppSvg.volumeOff,
+                      height: 30.h,
+                      width: 30.w,
+                    ),
+            );
+          },
+        ),
+        SizedBox(width: 10.w),
+      ],
       shape: LinearBorder.bottom(
         side: const BorderSide(
           color: ColorsManager.floatingActionButtonColor,

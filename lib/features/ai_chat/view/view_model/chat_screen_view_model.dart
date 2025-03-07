@@ -24,7 +24,7 @@ class ChatScreenViewModel extends Cubit<GeminiChatStates> {
   List<MessageModel> messages = [];
   final String welcomeText = "Hi, I'm Lens Bot\nHow can I help you?";
   bool hasSpokenWelcome = false;
-  String currentResponse = '';
+  bool isVolumeOn = true;
 
   Future<void> doIntent(GeminiChatActions actions) async {
     switch (actions) {
@@ -32,6 +32,8 @@ class ChatScreenViewModel extends Cubit<GeminiChatStates> {
         await _getGeminiResponse();
       case NavigateToHomeScreenAction():
         _navigateToHomeScreen();
+      case VolumeButtonClickAction():
+        _toggleVolume();
     }
   }
 
@@ -44,11 +46,19 @@ class ChatScreenViewModel extends Cubit<GeminiChatStates> {
   }
 
   Future<void> _showWelcomeMessage() async {
-    if (messages.isEmpty && !hasSpokenWelcome) {
+    if (messages.isEmpty && !hasSpokenWelcome && isVolumeOn) {
       await flutterTts.speak(welcomeText);
       hasSpokenWelcome = true;
       emit(ChatWelcomeState(welcomeText));
     }
+  }
+
+  Future<void> _toggleVolume() async {
+    isVolumeOn = !isVolumeOn;
+    if (!isVolumeOn) {
+      await flutterTts.stop();
+    }
+    emit(VolumeButtonState());
   }
 
   Future<void> _getGeminiResponse() async {

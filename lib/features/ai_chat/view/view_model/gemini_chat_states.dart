@@ -21,4 +21,6 @@ class ChatWelcomeState extends GeminiChatStates {
   ChatWelcomeState(this.welcomeText);
 }
 
+class VolumeButtonState extends GeminiChatStates {}
+
 class NavigateToHomeScreenState extends GeminiChatStates {}

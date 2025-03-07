@@ -11,6 +11,8 @@ class AppSvg {
   static const String pen = '${baseUrl}pen.svg';
   static const String lensBot = '${baseUrl}lensBot.svg';
   static const String sendButton = '${baseUrl}sendButton.svg';
+  static const String volumeOn = '${baseUrl}volumeOn.svg';
+  static const String volumeOff = '${baseUrl}volumeOff.svg';
 }
 
 class AppIcons {
