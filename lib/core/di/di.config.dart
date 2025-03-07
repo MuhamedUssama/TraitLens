@@ -11,6 +11,17 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/ai_chat/data/data_source/chat_data_source.dart' as _i582;
+import '../../features/ai_chat/data/data_source_impl/chat_data_source_impl.dart'
+    as _i922;
+import '../../features/ai_chat/data/repository_impl/chat_repository_impl.dart'
+    as _i654;
+import '../../features/ai_chat/domain/repositoory/chat_repository.dart'
+    as _i414;
+import '../../features/ai_chat/domain/usecases/get_gemini_response.dart'
+    as _i945;
+import '../../features/ai_chat/view/view_model/chat_screen_view_model.dart'
+    as _i158;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
 import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
     as _i105;
@@ -85,10 +96,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.singleton<_i582.ChatDataSource>(() => _i922.ChatDataSourceImpl());
     gh.factory<_i583.ProfileTabDataSource>(
         () => _i583.ProfileTabDataSourceImpl());
     gh.factory<_i760.FillProfileDataSource>(
         () => _i186.FillProfileDataSourceImpl());
+    gh.factory<_i414.ChatRepository>(
+        () => _i654.ChatRepositoryImpl(gh<_i582.ChatDataSource>()));
     gh.factory<_i89.FillProfileRepository>(() =>
         _i325.FillProfileRepositoryImpl(gh<_i760.FillProfileDataSource>()));
     gh.factory<_i961.AuthRepository>(
@@ -111,6 +125,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i937.ProfileTabRepositoryImpl(gh<_i583.ProfileTabDataSource>()));
     gh.factory<_i49.FillProfileDataUsecase>(
         () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
+    gh.factory<_i945.GetGeminiResponse>(
+        () => _i945.GetGeminiResponse(gh<_i414.ChatRepository>()));
+    gh.factory<_i158.ChatScreenViewModel>(
+        () => _i158.ChatScreenViewModel(gh<_i945.GetGeminiResponse>()));
     gh.factory<_i882.SignOutUsecase>(
         () => _i882.SignOutUsecase(gh<_i888.ProfileTabRepository>()));
     gh.factory<_i154.UpdateUserDataUsecase>(

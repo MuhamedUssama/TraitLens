@@ -9,6 +9,11 @@ class AppSvg {
   static const String notification = '${baseUrl}notification.svg';
   static const String message = '${baseUrl}message.svg';
   static const String pen = '${baseUrl}pen.svg';
+  static const String lensBot = '${baseUrl}lensBot.svg';
+  static const String sendButton = '${baseUrl}sendButton.svg';
+  static const String volumeOn = '${baseUrl}volumeOn.svg';
+  static const String volumeOff = '${baseUrl}volumeOff.svg';
+  static const String stopCircle = '${baseUrl}stopCircle.svg';
 }
 
 class AppIcons {

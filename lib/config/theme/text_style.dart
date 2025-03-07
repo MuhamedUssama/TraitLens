@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trait_lens/config/theme/app_colors.dart';
 
 import 'font_weight_helper.dart';
@@ -40,12 +41,6 @@ class TextStyles {
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.medium,
     color: ColorsManager.baseBlack,
-  );
-
-  static TextStyle font30BlueBold = TextStyle(
-    fontSize: 30.sp,
-    fontWeight: FontWeight.w900,
-    color: ColorsManager.baseBlue,
   );
 
   static TextStyle font12GreyBold = TextStyle(
@@ -96,6 +91,24 @@ class TextStyles {
     color: ColorsManager.baseBlue,
   );
 
+  static TextStyle font24BlueBold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.baseBlue,
+  );
+
+  static TextStyle chatScreenTitle = GoogleFonts.baloo2(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.baseBlue,
+  );
+
+  static TextStyle font30BlueBold = TextStyle(
+    fontSize: 30.sp,
+    fontWeight: FontWeight.w900,
+    color: ColorsManager.baseBlue,
+  );
+
   static TextStyle font12BlueRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
@@ -112,5 +125,47 @@ class TextStyles {
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.secondaryColor,
+  );
+
+  static TextStyle font18GreenMedium = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.onlineColor,
+  );
+
+  static TextStyle chatScreenOnlie = GoogleFonts.baloo2(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.onlineColor,
+  );
+
+  static TextStyle noMessagesChat = GoogleFonts.baloo2(
+    fontSize: 22.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.baseBlack,
+  );
+
+  static TextStyle textFieldHintTextChatScreen = GoogleFonts.nunito(
+    color: const Color(0XFFA1A1A1),
+    fontSize: 14.sp,
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle textFieldStyleChatScreen = GoogleFonts.nunito(
+    color: ColorsManager.baseBlack,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle userMessageChatScreen = GoogleFonts.nunito(
+    color: ColorsManager.white,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle aiMessageChatScreen = GoogleFonts.nunito(
+    color: const Color(0XFF656565),
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
   );
 }

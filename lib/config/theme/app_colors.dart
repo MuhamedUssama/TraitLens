@@ -16,6 +16,8 @@ class ColorsManager {
 
   static const Color successColor = Color(0XFF11CE19);
 
+  static const Color onlineColor = Color(0XFF3ABF38);
+
   static const Color white = Colors.white;
 
   static const Color grey = Color(0XFF757575);
@@ -27,4 +29,6 @@ class ColorsManager {
   static const Color darkWhite = Color(0XFFF8F8F8);
 
   static const Color transparent = Colors.transparent;
+
+  static const Color messageBackgroundColor = Color(0XFFEEEEEE);
 }
