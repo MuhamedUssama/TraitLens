@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:trait_lens/features/ai_chat/view/ui/ai_chat_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/forget_password_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/sign_in_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/sign_up_screen.dart';
@@ -54,6 +55,13 @@ class AppRouters {
           duration: const Duration(milliseconds: 600),
           settings: settings,
           child: const EditProfileScreen(),
+        );
+
+      case RoutesName.chatAiScreen:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
+          child: AiChatScreen(),
         );
 
       default:

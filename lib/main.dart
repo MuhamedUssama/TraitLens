@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:trait_lens/firebase_options.dart';
 
@@ -9,13 +10,14 @@ import 'trait_lens_app.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+  await dotenv.load(fileName: ".env");
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Supabase.initialize(
-    url: 'https://iheitgacckotzfdtqybc.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloZWl0Z2FjY2tvdHpmZHRxeWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk2NzQzMzcsImV4cCI6MjA1NTI1MDMzN30.PCBIfZR-ZjLLeguaUuAJfqZOn238Gc8Rd7YwI8cSZc4',
+    url: dotenv.env['SUPABASE_URL'] ?? '',
+    anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
   );
   runApp(const TraitLensApp());
 }

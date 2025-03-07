@@ -18,7 +18,7 @@ class HomeTab extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Column(
         children: [
-          LottieBuilder.asset(AnimationsAssets.welcomeRobor),
+          LottieBuilder.asset(AnimationsAssets.welcomeRobot),
           Text(
             locale!.homeTabBody,
             style: TextStyles.font18GreyBold,
