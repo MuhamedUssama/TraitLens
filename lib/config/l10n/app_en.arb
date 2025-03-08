@@ -59,8 +59,7 @@
   "aboutUs": "About Us",
   "termsAndConditions": "Terms & Conditions",
   "logout" : "Logout",
-  "english": "English",
-  "arabic": "Arabic",
+  "languageKeyword": "English",
   "logoutSuccess": "You have been logged out successfully",
   "update" : "Update"
 }

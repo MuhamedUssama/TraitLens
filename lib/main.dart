@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:trait_lens/firebase_options.dart';
 
+import 'core/cache/shared_preferences.dart';
 import 'core/di/di.dart';
 import 'trait_lens_app.dart';
 
@@ -11,6 +12,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   await dotenv.load(fileName: ".env");
+
+  await SharedPreferencesHelper.init();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
