@@ -80,6 +80,7 @@ import '../../features/profile_tab/view/view_model/edit_profile_screen/edit_prof
 import '../../features/profile_tab/view/view_model/profile_tab/profile_tab_view_model.dart'
     as _i260;
 import '../cache/shared_preferences.dart' as _i254;
+import '../shared/language_view_model/language_view_model.dart' as _i100;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -93,6 +94,7 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.factory<_i736.HomeScreenViewModel>(() => _i736.HomeScreenViewModel());
+    gh.factory<_i100.LanguageViewModel>(() => _i100.LanguageViewModel());
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());

@@ -59,8 +59,7 @@
   "aboutUs": "معلومات عنا",
   "termsAndConditions": "الشروط والأحكام",
   "logout": "تسجيل الخروج",
-  "english": "اللغة الانجليزية",
-  "arabic": "اللغة العربية",
+  "languageKeyword": "اللغة العربية",
   "logoutSuccess": "تم تسجيل الخروج بنجاح",
   "update" : "تعديل"
 }

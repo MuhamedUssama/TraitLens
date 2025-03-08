@@ -12,7 +12,7 @@ class SharedPreferencesHelper {
   }
 
   /// Removes a value from SharedPreferences with given [key].
-  static removeData({required String key}) async {
+  static Future<void> removeData({required String key}) async {
     await sharedPreferences.remove(key);
   }
 
@@ -39,25 +39,25 @@ class SharedPreferencesHelper {
   }
 
   /// Gets a bool value from SharedPreferences with given [key].
-  static getBool({required String key}) {
+  static bool getBool({required String key}) {
     debugPrint('SharedPrefHelper : getBool with key : $key');
     return sharedPreferences.getBool(key) ?? false;
   }
 
   /// Gets a double value from SharedPreferences with given [key].
-  static getDouble({required String key}) {
+  static double getDouble({required String key}) {
     debugPrint('SharedPrefHelper : getDouble with key : $key');
     return sharedPreferences.getDouble(key) ?? 0.0;
   }
 
   /// Gets an int value from SharedPreferences with given [key].
-  static getInt({required String key}) {
+  static int getInt({required String key}) {
     debugPrint('SharedPrefHelper : getInt with key : $key');
     return sharedPreferences.getInt(key) ?? 0;
   }
 
   /// Gets an String value from SharedPreferences with given [key].
-  static getString({required String key}) {
+  static String getString({required String key}) {
     debugPrint('SharedPrefHelper : getString with key : $key');
     return sharedPreferences.getString(key) ?? '';
   }
