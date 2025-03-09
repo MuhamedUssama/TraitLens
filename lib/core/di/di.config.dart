@@ -33,6 +33,8 @@ import '../../features/ai_detection/domain/repository/ai_detection_repository.da
     as _i33;
 import '../../features/ai_detection/domain/usecases/send_text_usecase.dart'
     as _i509;
+import '../../features/ai_detection/view/view_models/text_view_model/text_detection_view_model.dart'
+    as _i307;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
 import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
     as _i105;
@@ -142,6 +144,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i888.ProfileTabRepository>(
         () => _i937.ProfileTabRepositoryImpl(gh<_i583.ProfileTabDataSource>()));
+    gh.factory<_i307.TextDetectionViewModel>(
+        () => _i307.TextDetectionViewModel(gh<_i509.SendTextUsecase>()));
     gh.factory<_i49.FillProfileDataUsecase>(
         () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
     gh.factory<_i945.GetGeminiResponse>(
