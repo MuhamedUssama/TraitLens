@@ -8,7 +8,7 @@ import 'text_detection_actions.dart';
 import 'text_detection_states.dart';
 
 @injectable
-class TextDetectionViewModel extends Cubit {
+class TextDetectionViewModel extends Cubit<TextDetectionStates> {
   final SendTextUsecase _textUsecase;
 
   @factoryMethod

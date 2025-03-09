@@ -11,11 +11,7 @@ import 'package:trait_lens/features/ai_detection/data/models/text/text_detection
 class AiDetectionDataSourceImpl implements AiDetectionDataSource {
   final Dio dio;
 
-  AiDetectionDataSourceImpl(this.dio) {
-    dio.options.baseUrl = EndPoints.baseUrl;
-    dio.options.connectTimeout = const Duration(seconds: 10);
-    dio.options.receiveTimeout = const Duration(seconds: 10);
-  }
+  AiDetectionDataSourceImpl(this.dio);
 
   @override
   Future<Either<ServerException, TextDetectionResultModel>> sendText({

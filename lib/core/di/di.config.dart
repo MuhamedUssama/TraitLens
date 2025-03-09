@@ -93,6 +93,7 @@ import '../../features/profile_tab/view/view_model/edit_profile_screen/edit_prof
 import '../../features/profile_tab/view/view_model/profile_tab/profile_tab_view_model.dart'
     as _i260;
 import '../cache/shared_preferences.dart' as _i254;
+import '../modules/dio_module.dart' as _i948;
 import '../shared/language_view_model/language_view_model.dart' as _i100;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -106,10 +107,12 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    final dioModule = _$DioModule();
     gh.factory<_i100.LanguageViewModel>(() => _i100.LanguageViewModel());
     gh.factory<_i736.HomeScreenViewModel>(() => _i736.HomeScreenViewModel());
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
+    gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.lazySingleton<_i647.AiDetectionDataSource>(
         () => _i32.AiDetectionDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i33.AiDetectionRepository>(() =>
@@ -182,3 +185,5 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$DioModule extends _i948.DioModule {}

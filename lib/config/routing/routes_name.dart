@@ -7,4 +7,5 @@ class RoutesName {
   static const String editProfileScreen = '/editprofile';
   static const String chatAiScreen = '/chatAi';
   static const String textDetectionScreen = '/textDetection';
+  static const String voiceDetectionScreen = '/voiceDetection';
 }

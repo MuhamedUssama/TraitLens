@@ -174,4 +174,10 @@ class TextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
   );
+
+  static TextStyle textMessageTextScreen = TextStyle(
+    color: Colors.grey[600],
+    fontSize: 16,
+    fontFamily: 'Roboto',
+  );
 }

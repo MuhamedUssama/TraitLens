@@ -69,7 +69,7 @@ class AppRouters {
         return PageTransition(
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 500),
-          child: const TextDetectionScreen(),
+          child: TextDetectionScreen(),
         );
 
       default:
