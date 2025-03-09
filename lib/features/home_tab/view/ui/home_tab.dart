@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../config/routing/routes_name.dart';
 import '../../../../config/theme/text_style.dart';
 import '../../../../core/utils/animation_assets.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
@@ -25,7 +26,12 @@ class HomeTab extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 80.h),
-          CustomElevatedButton(title: locale.start, onPressed: () {}),
+          CustomElevatedButton(
+            title: locale.start,
+            onPressed: () {
+              Navigator.pushNamed(context, RoutesName.textDetectionScreen);
+            },
+          ),
         ],
       ),
     );
