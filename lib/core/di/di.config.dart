@@ -93,8 +93,8 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i736.HomeScreenViewModel>(() => _i736.HomeScreenViewModel());
     gh.factory<_i100.LanguageViewModel>(() => _i100.LanguageViewModel());
+    gh.factory<_i736.HomeScreenViewModel>(() => _i736.HomeScreenViewModel());
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
