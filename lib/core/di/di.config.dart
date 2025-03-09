@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -22,6 +23,10 @@ import '../../features/ai_chat/domain/usecases/get_gemini_response.dart'
     as _i945;
 import '../../features/ai_chat/view/view_model/chat_screen_view_model.dart'
     as _i158;
+import '../../features/ai_detection/data/data_source/ai_detection_data_source.dart'
+    as _i647;
+import '../../features/ai_detection/data/data_source_impl/ai_detection_data_source_impl.dart'
+    as _i32;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
 import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
     as _i105;
@@ -97,6 +102,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i736.HomeScreenViewModel>(() => _i736.HomeScreenViewModel());
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
+    gh.lazySingleton<_i647.AiDetectionDataSource>(
+        () => _i32.AiDetectionDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
     gh.singleton<_i582.ChatDataSource>(() => _i922.ChatDataSourceImpl());
     gh.factory<_i583.ProfileTabDataSource>(
