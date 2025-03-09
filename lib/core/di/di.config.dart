@@ -27,6 +27,12 @@ import '../../features/ai_detection/data/data_source/ai_detection_data_source.da
     as _i647;
 import '../../features/ai_detection/data/data_source_impl/ai_detection_data_source_impl.dart'
     as _i32;
+import '../../features/ai_detection/data/repository_impl/ai_detection_repository_impl.dart'
+    as _i548;
+import '../../features/ai_detection/domain/repository/ai_detection_repository.dart'
+    as _i33;
+import '../../features/ai_detection/domain/usecases/send_text_usecase.dart'
+    as _i509;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
 import '../../features/auth/data/data_source_impl/auth_data_source_impl.dart'
     as _i105;
@@ -104,6 +110,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i254.SharedPreferencesHelper());
     gh.lazySingleton<_i647.AiDetectionDataSource>(
         () => _i32.AiDetectionDataSourceImpl(gh<_i361.Dio>()));
+    gh.factory<_i33.AiDetectionRepository>(() =>
+        _i548.AiDetectionRepositoryImpl(gh<_i647.AiDetectionDataSource>()));
+    gh.factory<_i509.SendTextUsecase>(
+        () => _i509.SendTextUsecase(gh<_i33.AiDetectionRepository>()));
     gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
     gh.singleton<_i582.ChatDataSource>(() => _i922.ChatDataSourceImpl());
     gh.factory<_i583.ProfileTabDataSource>(
