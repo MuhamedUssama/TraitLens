@@ -61,5 +61,20 @@
   "logout" : "Logout",
   "languageKeyword": "English",
   "logoutSuccess": "You have been logged out successfully",
-  "update" : "Update"
+  "update" : "Update",
+  "textScreen": "Text Screen",
+  "voiceScreen": "Voice Screen",
+  "imageScreen": "Image Screen",
+  "textScreenBody": "Tell me about yourself—share a story, or just give me a quick brief, a moment, a vibe, or a quick bio. Let's make this fun and real",
+  "voiceScreenBody": "Your voice matters! Say what's on your mind, share something cool, an idea, or anything about you",
+  "imageScreenBody": "Alright, time to upload a photo! You can either pick one from your gallery or snap a quick selfie. Let's see your vibe",
+  "typeHere": "Type here...",
+  "messageSuccessufflySent": "Your message has been sent successfully",
+  "finish": "Finish",
+  "openness": "Openness",
+  "conscientiousness": "Conscientiousness",
+  "extraversion": "Extraversion",
+  "agreeableness": "Agreeableness",
+  "neuroticism": "Neuroticism",
+  "status": "Status"
 }
