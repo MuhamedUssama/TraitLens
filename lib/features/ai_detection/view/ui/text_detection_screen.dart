@@ -60,13 +60,12 @@ class TextDetectionScreen extends StatelessWidget {
                 SizedBox(height: 40.h),
                 BlocBuilder<TextDetectionViewModel, TextDetectionStates>(
                   bloc: viewModel,
-                  buildWhen: (previous, current) =>
-                      current is TextDetectionLoadingState ||
-                      current is TextDetectionSuccessState,
                   builder: (context, state) => CustomSubmitButton(
                     title: locale.submit,
                     isLoading: state is TextDetectionLoadingState,
-                    onPressed: () {},
+                    onPressed: () {
+                      viewModel.doIntent(SubmitClickAction());
+                    },
                   ),
                 ),
               ],
