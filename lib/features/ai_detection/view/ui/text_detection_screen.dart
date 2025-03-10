@@ -44,7 +44,12 @@ class TextDetectionScreen extends StatelessWidget {
                   context: context,
                   posActionTitle: AppLocalizations.of(context)!.ok,
                   posAction: () {
-                    viewModel.doIntent(NavigateToAudioScreenAction());
+                    // viewModel.doIntent(NavigateToAudioScreenAction());
+                    Navigator.pushNamed(
+                      context,
+                      RoutesName.resultsScreenAfterDetection,
+                      arguments: state.textModel,
+                    );
                   },
                 );
               }
