@@ -69,5 +69,12 @@
   "voiceScreenBody": "Your voice matters! Say what's on your mind, share something cool, an idea, or anything about you",
   "imageScreenBody": "Alright, time to upload a photo! You can either pick one from your gallery or snap a quick selfie. Let's see your vibe",
   "typeHere": "Type here...",
-  "messageSuccessufflySent": "Your message has been sent successfully"
+  "messageSuccessufflySent": "Your message has been sent successfully",
+  "finish": "Finish",
+  "openness": "Openness",
+  "conscientiousness": "Conscientiousness",
+  "extraversion": "Extraversion",
+  "agreeableness": "Agreeableness",
+  "neuroticism": "Neuroticism",
+  "status": "Status"
 }

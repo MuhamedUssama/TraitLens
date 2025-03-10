@@ -69,6 +69,12 @@
   "voiceScreenBody": "صوتك مهم! عبّر عن أفكارك، شارك شيئًا رائعًا، فكرة، أو أي شيء عنك.",
   "imageScreenBody": "حان وقت رفع صورة! يمكنك اختيار واحدة من معرض الصور أو التقاط سيلفي سريع. دعنا نرى طاقتك!",
   "typeHere": "اكتب هنا...",
-  "messageSuccessufflySent": "رسالتك وصلت بنجاح"
-
+  "messageSuccessufflySent": "رسالتك وصلت بنجاح",
+  "finish": "انتهي",
+  "openness": "الانفتاح",
+  "conscientiousness": "الضمير الحي",
+  "extraversion": "الانبساطية",
+  "agreeableness": "التوافقية",
+  "neuroticism": "العصبية",
+  "status": "الحالة"
 }

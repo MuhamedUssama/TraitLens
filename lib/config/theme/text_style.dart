@@ -180,4 +180,24 @@ class TextStyles {
     fontSize: 16,
     fontFamily: 'Roboto',
   );
+
+  static TextStyle statusText = TextStyle(
+    color: const Color(0XFF737373),
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: 'Roboto',
+  );
+
+  static TextStyle statusItemText = TextStyle(
+    color: const Color(0XFF404040),
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    fontFamily: 'Roboto',
+  );
+
+  static TextStyle font12BlackMedium = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.baseBlack,
+  );
 }
