@@ -19,7 +19,9 @@ class HomeTab extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Column(
         children: [
-          LottieBuilder.asset(AnimationsAssets.welcomeRobot),
+          Expanded(
+              flex: 7,
+              child: LottieBuilder.asset(AnimationsAssets.welcomeRobot)),
           Text(
             locale!.homeTabBody,
             style: TextStyles.font18GreyBold,
@@ -32,6 +34,7 @@ class HomeTab extends StatelessWidget {
               Navigator.pushNamed(context, RoutesName.textDetectionScreen);
             },
           ),
+          const Spacer(flex: 3),
         ],
       ),
     );

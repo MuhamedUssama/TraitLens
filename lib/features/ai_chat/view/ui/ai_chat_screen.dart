@@ -19,12 +19,15 @@ class AiChatScreen extends StatelessWidget {
       create: (context) => viewModel,
       child: Scaffold(
         appBar: const ChatScreenAppBar(),
-        body: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
+        body: Column(
           children: [
             ChatBodyWidget(viewModel: viewModel),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+              padding: EdgeInsets.only(
+                bottom: 24.h,
+                left: 20.w,
+                right: 20.w,
+              ),
               child: CustomChatTextField(viewModel: viewModel),
             ),
           ],

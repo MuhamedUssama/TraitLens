@@ -24,44 +24,48 @@ class ChatBodyWidget extends StatelessWidget {
       builder: (context, state) {
         final messages = viewModel.messages;
         if (state is ChatWelcomeState && messages.isEmpty) {
-          return EmptyChatWidget(viewModel: viewModel);
+          return Expanded(child: EmptyChatWidget(viewModel: viewModel));
         }
 
         if (state is SendMessageLoadingState) {
-          return ListView.builder(
-            itemCount: messages.length + 1,
-            itemBuilder: (context, index) {
-              if (index == messages.length) {
+          return Expanded(
+            child: ListView.builder(
+              itemCount: messages.length + 1,
+              itemBuilder: (context, index) {
+                if (index == messages.length) {
+                  return Align(
+                    alignment: Alignment.centerLeft,
+                    child: _buildLoadingShimmer(context),
+                  );
+                }
                 return Align(
-                  alignment: Alignment.centerLeft,
-                  child: _buildLoadingShimmer(context),
+                  alignment: messages[index].isUser
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                  child: MessageWidget(
+                    message: messages[index],
+                    viewModel: viewModel,
+                  ),
                 );
-              }
-              return Align(
-                alignment: messages[index].isUser
-                    ? Alignment.centerRight
-                    : Alignment.centerLeft,
-                child: MessageWidget(
-                  message: messages[index],
-                  viewModel: viewModel,
-                ),
-              );
-            },
+              },
+            ),
           );
         }
 
         if (messages.isNotEmpty) {
-          return ListView.builder(
-            itemCount: messages.length,
-            itemBuilder: (context, index) {
-              final message = messages[index];
-              return Align(
-                alignment: message.isUser
-                    ? Alignment.centerRight
-                    : Alignment.centerLeft,
-                child: MessageWidget(message: message, viewModel: viewModel),
-              );
-            },
+          return Expanded(
+            child: ListView.builder(
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                final message = messages[index];
+                return Align(
+                  alignment: message.isUser
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                  child: MessageWidget(message: message, viewModel: viewModel),
+                );
+              },
+            ),
           );
         }
         return const Center(child: CircularProgressIndicator());

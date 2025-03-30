@@ -13,27 +13,26 @@ class EmptyChatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          LottieBuilder.asset(
-            AnimationsAssets.welcomeRobot,
-            width: MediaQuery.sizeOf(context).width * .6,
-          ),
-          AnimatedTextKit(
-            animatedTexts: [
-              TypewriterAnimatedText(
-                viewModel.welcomeText,
-                textStyle: TextStyles.noMessagesChat,
-                textAlign: TextAlign.center,
-                speed: const Duration(milliseconds: 102),
-              ),
-            ],
-            totalRepeatCount: 1,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        LottieBuilder.asset(
+          AnimationsAssets.welcomeRobot,
+          width: MediaQuery.sizeOf(context).width * .6,
+        ),
+        AnimatedTextKit(
+          animatedTexts: [
+            TypewriterAnimatedText(
+              viewModel.welcomeText,
+              textStyle: TextStyles.noMessagesChat,
+              textAlign: TextAlign.center,
+              speed: const Duration(milliseconds: 102),
+              cursor: '',
+            ),
+          ],
+          totalRepeatCount: 1,
+        ),
+      ],
     );
   }
 }

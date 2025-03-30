@@ -54,6 +54,8 @@ class MessageWidget extends StatelessWidget {
                   message.text,
                   textStyle: TextStyles.aiMessageChatScreen,
                   speed: const Duration(milliseconds: 50),
+                  cursor: '',
+                  textAlign: TextAlign.start,
                 ),
               ],
               onFinished: () => viewModel.isTyping.value = false,
