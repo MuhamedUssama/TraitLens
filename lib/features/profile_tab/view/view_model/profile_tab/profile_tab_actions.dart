@@ -8,8 +8,6 @@ class NavigateToAboutUsScreenAction extends ProfileTabActions {}
 
 class NavigateToTermsAndConditionsAction extends ProfileTabActions {}
 
-class ChangeLanguageAction extends ProfileTabActions {}
-
 class NotificationSwitchAction extends ProfileTabActions {}
 
 class LogOutAction extends ProfileTabActions {}

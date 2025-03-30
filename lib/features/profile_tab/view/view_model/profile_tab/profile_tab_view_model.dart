@@ -36,8 +36,6 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
         _navigateToAboutUsScreen();
       case NavigateToTermsAndConditionsAction():
         _navigateToTermsAndConditionsScreen();
-      case ChangeLanguageAction():
-      // TODO: Handle this case.
       case LogOutAction():
         await _logout();
       case NotificationSwitchAction():
