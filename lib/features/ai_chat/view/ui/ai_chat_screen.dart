@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trait_lens/core/di/di.dart';
 
 import '../view_model/chat_screen_view_model.dart';
@@ -19,14 +18,10 @@ class AiChatScreen extends StatelessWidget {
       create: (context) => viewModel,
       child: Scaffold(
         appBar: const ChatScreenAppBar(),
-        body: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
+        body: Column(
           children: [
             ChatBodyWidget(viewModel: viewModel),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-              child: CustomChatTextField(viewModel: viewModel),
-            ),
+            CustomChatTextField(viewModel: viewModel),
           ],
         ),
       ),

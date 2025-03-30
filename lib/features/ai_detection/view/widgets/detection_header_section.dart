@@ -28,6 +28,7 @@ class DetectionHeaderSection extends StatelessWidget {
               textStyle: TextStyles.font18GreyBold,
               textAlign: TextAlign.center,
               speed: const Duration(milliseconds: 100),
+              cursor: '',
             ),
           ],
           totalRepeatCount: 1,

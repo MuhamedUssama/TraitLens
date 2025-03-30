@@ -9,20 +9,38 @@ import '../../../../core/utils/validation_utils.dart';
 import '../view_model/chat_screen_view_model.dart';
 import '../view_model/gemini_chat_actions.dart';
 
-class CustomChatTextField extends StatelessWidget {
+class CustomChatTextField extends StatefulWidget {
   final ChatScreenViewModel viewModel;
   const CustomChatTextField({super.key, required this.viewModel});
 
   @override
+  State<CustomChatTextField> createState() => _CustomChatTextFieldState();
+}
+
+class _CustomChatTextFieldState extends State<CustomChatTextField> {
+  @override
+  void dispose() {
+    widget.viewModel.messageController.dispose();
+    widget.viewModel.isTyping.dispose();
+    widget.viewModel.flutterTts.stop();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
-      key: viewModel.formKey,
+      key: widget.viewModel.formKey,
       child: Container(
+        margin: EdgeInsets.only(
+          bottom: 24.h,
+          left: 20.w,
+          right: 20.w,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withValues(alpha: 0.5),
               spreadRadius: 2,
               blurRadius: 5,
               offset: const Offset(0, 3),
@@ -30,7 +48,7 @@ class CustomChatTextField extends StatelessWidget {
           ],
         ),
         child: TextFormField(
-          controller: viewModel.messageController,
+          controller: widget.viewModel.messageController,
           style: TextStyles.textFieldStyleChatScreen,
           cursorColor: ColorsManager.baseBlue,
           cursorRadius: const Radius.circular(10),
@@ -38,7 +56,7 @@ class CustomChatTextField extends StatelessWidget {
             hintText: 'Write your message',
             hintStyle: TextStyles.textFieldHintTextChatScreen,
             suffixIcon: ValueListenableBuilder(
-              valueListenable: viewModel.isTyping,
+              valueListenable: widget.viewModel.isTyping,
               builder: (context, value, child) => value
                   ? IconButton(
                       icon: SvgPicture.asset(AppSvg.stopCircle, width: 36.w),
@@ -47,7 +65,7 @@ class CustomChatTextField extends StatelessWidget {
                   : IconButton(
                       icon: SvgPicture.asset(AppSvg.sendButton),
                       onPressed: () {
-                        viewModel.doIntent(SendMessageAction());
+                        widget.viewModel.doIntent(SendMessageAction());
                       },
                     ),
             ),

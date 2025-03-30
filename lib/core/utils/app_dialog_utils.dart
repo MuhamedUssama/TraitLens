@@ -36,7 +36,7 @@ class AppDialogUtils {
           ],
         ),
       ),
-      barrierColor: Colors.black.withOpacity(0.7),
+      barrierColor: Colors.black.withValues(alpha: 0.7),
       barrierDismissible: false,
     );
   }
@@ -139,7 +139,7 @@ class AppDialogUtils {
           ],
         ),
       ),
-      barrierColor: Colors.black.withOpacity(0.7),
+      barrierColor: Colors.black.withValues(alpha: 0.7),
       barrierDismissible: false,
     );
   }

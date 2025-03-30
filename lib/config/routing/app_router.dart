@@ -79,7 +79,7 @@ class AppRouters {
           type: PageTransitionType.rightToLeft,
           duration: const Duration(milliseconds: 600),
           settings: settings,
-          child: ResultsScreenAfterDetection(),
+          child: const ResultsScreenAfterDetection(),
         );
 
       default:

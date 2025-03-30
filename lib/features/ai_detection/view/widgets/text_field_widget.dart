@@ -19,6 +19,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
   String? errorMessage;
 
   @override
+  void dispose() {
+    widget.viewModel.textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     AppLocalizations? locale = AppLocalizations.of(context);
 
@@ -38,7 +44,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.blue[100]!.withOpacity(0.5),
+                  color: Colors.blue[100]!.withValues(alpha: 0.5),
                   spreadRadius: 2,
                   blurRadius: 4,
                   offset: const Offset(0, 2),

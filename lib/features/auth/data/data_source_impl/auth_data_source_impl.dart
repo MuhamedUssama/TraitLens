@@ -11,13 +11,13 @@ import 'package:trait_lens/features/auth/domain/entities/user_entity.dart';
 
 import '../../../../core/utils/firebase_services.dart';
 
-@Injectable(as: AuthDataSource)
+@Singleton(as: AuthDataSource)
 class AuthDataSourceImpl implements AuthDataSource {
   @override
   Future<Either<ServerException, UserEntity>> signUpWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      final methods =
+      final List<String> methods =
           await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
       if (methods.isNotEmpty) {
         return const Left(
