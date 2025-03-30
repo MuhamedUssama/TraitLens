@@ -1,0 +1,2 @@
+E:/Flutter/trait_lens/android/app/.cxx/RelWithDebInfo/5o2k63u5/x86/CMakeFiles/edit_cache.dir
+E:/Flutter/trait_lens/android/app/.cxx/RelWithDebInfo/5o2k63u5/x86/CMakeFiles/rebuild_cache.dir

@@ -31,4 +31,10 @@ class ColorsManager {
   static const Color transparent = Colors.transparent;
 
   static const Color messageBackgroundColor = Color(0XFFEEEEEE);
+
+  static const Color openness = Color(0XFF3B82F6);
+  static const Color conscientiousness = Color(0XFFF59E0B);
+  static const Color extraversion = Color(0XFFFACC15);
+  static const Color agreeableness = Color(0XFF14B8A6);
+  static const Color neuroticism = Color(0XFFFF0000);
 }
