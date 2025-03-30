@@ -19,6 +19,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
   String? errorMessage;
 
   @override
+  void dispose() {
+    widget.viewModel.textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     AppLocalizations? locale = AppLocalizations.of(context);
 

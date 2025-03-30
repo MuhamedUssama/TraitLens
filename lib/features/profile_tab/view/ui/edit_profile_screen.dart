@@ -48,6 +48,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     viewModel.birthdayController.dispose();
     viewModel.nameController.dispose();
     viewModel.phoneController.dispose();
+    viewModel.valid.dispose();
     super.dispose();
   }
 
