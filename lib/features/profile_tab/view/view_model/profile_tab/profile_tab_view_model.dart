@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -22,8 +21,6 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
 
   final String? email = FirebaseAuth.instance.currentUser?.email;
 
-  ValueNotifier<bool> switcher = ValueNotifier(false);
-
   UserProfileEntity? userModel;
 
   Future<void> doIntent(ProfileTabActions actions) async {
@@ -38,8 +35,6 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
         _navigateToTermsAndConditionsScreen();
       case LogOutAction():
         await _logout();
-      case NotificationSwitchAction():
-        _switchNotiFication();
     }
   }
 
@@ -84,9 +79,5 @@ class ProfileTabViewModel extends Cubit<ProfileTabStates> {
 
   void _navigateToTermsAndConditionsScreen() {
     emit(NavigateToTermsAndConditionsScreenState());
-  }
-
-  void _switchNotiFication() {
-    switcher.value = !switcher.value;
   }
 }
