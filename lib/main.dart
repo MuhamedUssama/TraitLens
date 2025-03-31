@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_langdetect/flutter_langdetect.dart' as langdetect;
+import 'package:trait_lens/core/utils/fcm.dart';
 import 'package:trait_lens/firebase_options.dart';
 
 import 'core/cache/shared_preferences.dart';
@@ -21,6 +22,9 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await FCM.fcmInit();
+
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL'] ?? '',
     anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
