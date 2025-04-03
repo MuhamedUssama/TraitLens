@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:trait_lens/core/cache/shared_preferences.dart';
+import 'package:trait_lens/core/constants/app_constants.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -20,7 +22,7 @@ class FCM {
     await _hadleForgroiundMessages();
   }
 
-  static Future<NotificationSettings> _handlePermissions() async {
+  static Future<void> _handlePermissions() async {
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
       announcement: false,
@@ -33,14 +35,27 @@ class FCM {
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       log('User granted permission');
+      SharedPreferencesHelper.saveData(
+        key: AppConstants.notificationsKey,
+        value: true,
+      );
+      await FirebaseMessaging.instance.subscribeToTopic('general');
     } else if (settings.authorizationStatus ==
         AuthorizationStatus.provisional) {
       log('User granted provisional permission');
+      SharedPreferencesHelper.saveData(
+        key: AppConstants.notificationsKey,
+        value: true,
+      );
+      await FirebaseMessaging.instance.subscribeToTopic('general');
     } else {
       log('User declined or has not accepted permission');
+      SharedPreferencesHelper.saveData(
+        key: AppConstants.notificationsKey,
+        value: false,
+      );
+      await FirebaseMessaging.instance.unsubscribeFromTopic('general');
     }
-
-    return settings;
   }
 
   static Future<String?> _getToken() async {

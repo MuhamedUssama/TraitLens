@@ -34,14 +34,13 @@ class NotificationsWidget extends StatelessWidget {
               buildWhen: (previous, current) =>
                   current is NotificationsSwitchState,
               builder: (context, state) {
-                bool switcher = false;
-                if (state is NotificationsSwitchState) {
-                  switcher = state.isNotificationsEnabled;
-                }
+                bool switcher = state is NotificationsSwitchState &&
+                    state.isNotificationsEnabled;
+
                 return Switch(
                   value: switcher,
                   onChanged: (value) {
-                    context.read<NotificationsViewModel>().toggleNotification();
+                    viewModel.toggleNotification();
                   },
                   activeColor: ColorsManager.white,
                   activeTrackColor: ColorsManager.baseBlue,
