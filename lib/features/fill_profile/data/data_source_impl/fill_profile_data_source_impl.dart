@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image/image.dart' as img;
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -39,6 +40,7 @@ class FillProfileDataSourceImpl implements FillProfileDataSource {
 
       UserProfileModel userProfile = UserProfileModel(
         id: userId,
+        email: FirebaseAuth.instance.currentUser?.email ?? 'no email found',
         fullName: fullName,
         birthDay: birthDay,
         phone: phone,
