@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../domain/entities/fill_profile_entity.dart';
 
 class UserProfileModel {
@@ -5,10 +7,11 @@ class UserProfileModel {
 
   String? id;
   String? fullName;
-  String? birthDay;
+  Timestamp? birthDay;
   String? phone;
   String? gender;
   String? profileImageUrl;
+  String? email;
 
   UserProfileModel({
     this.id,
@@ -17,16 +20,18 @@ class UserProfileModel {
     this.phone,
     this.gender,
     this.profileImageUrl,
+    this.email,
   });
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
     return UserProfileModel(
       id: json['id'] as String?,
       fullName: json['fullName'] as String?,
-      birthDay: json['birthDay'] as String?,
+      birthDay: json['birthDay'] as Timestamp?,
       phone: json['phone'] as String?,
       gender: json['gender'] as String?,
       profileImageUrl: json['profileImageUrl'] as String?,
+      email: json['email'] as String?,
     );
   }
 
@@ -38,6 +43,7 @@ class UserProfileModel {
       'phone': phone,
       'gender': gender,
       'profileImageUrl': profileImageUrl,
+      'email': email,
     };
   }
 
@@ -49,6 +55,7 @@ class UserProfileModel {
       phone: phone,
       gender: gender,
       profileImageUrl: profileImageUrl,
+      email: email,
     );
   }
 }

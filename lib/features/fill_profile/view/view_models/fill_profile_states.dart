@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../domain/entities/fill_profile_entity.dart';
 
 sealed class FillProfileStates {}
@@ -28,3 +30,9 @@ class ImageSelectedState extends FillProfileStates {
 }
 
 class NavigateToHomeScreenState extends FillProfileStates {}
+
+class BirthdayUpdatedState extends FillProfileStates {
+  final Timestamp birthdayTimestamp;
+
+  BirthdayUpdatedState(this.birthdayTimestamp);
+}

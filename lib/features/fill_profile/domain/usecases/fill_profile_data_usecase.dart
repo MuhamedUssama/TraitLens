@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,7 +18,7 @@ class FillProfileDataUsecase {
   Future<Either<ServerException, UserProfileEntity>> call({
     required String userId,
     required String fullName,
-    required String birthDay,
+    required Timestamp birthDayTimestamp,
     required String phone,
     required String gender,
     File? imageFile,
@@ -25,7 +26,7 @@ class FillProfileDataUsecase {
     return await repository.setProfile(
       userId: userId,
       fullName: fullName,
-      birthDay: birthDay,
+      birthDayTimestamp: birthDayTimestamp,
       phone: phone,
       gender: gender,
       imageFile: imageFile,

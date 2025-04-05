@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -19,6 +20,7 @@ class EditProfileScreenViewModel extends Cubit<EditProfileScreenStates> {
       : super(EditProfileInitialState());
 
   File? imageFile;
+  Timestamp? birthdayTimestamp;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -41,6 +43,8 @@ class EditProfileScreenViewModel extends Cubit<EditProfileScreenStates> {
         await _clickOnCameraButton();
       case GalleryClickedAction():
         await _clickOnGalleryButton();
+      case UpdateBirthdayAction(:final birthdayTimestamp):
+        _updateBirthday(birthdayTimestamp);
     }
   }
 
@@ -63,7 +67,7 @@ class EditProfileScreenViewModel extends Cubit<EditProfileScreenStates> {
 
         final result = await _updateUserDataUsecase(
           name: nameController.text,
-          birthday: birthdayController.text,
+          birthday: birthdayTimestamp,
           phone: phoneController.text,
           imageFile: imageFile,
           gender: selectedGender == Gender.female ? "female" : "male",
@@ -101,6 +105,11 @@ class EditProfileScreenViewModel extends Cubit<EditProfileScreenStates> {
     selectedGender =
         selectedGender == Gender.female ? Gender.male : Gender.female;
     emit(ChangeGenderState());
+  }
+
+  void _updateBirthday(Timestamp birthdayTimestamp) {
+    this.birthdayTimestamp = birthdayTimestamp;
+    emit(BirthdayUpdatedState(birthdayTimestamp));
   }
 }
 

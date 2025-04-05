@@ -1,10 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserProfileEntity {
   String? id;
   String? fullName;
-  String? birthDay;
+  Timestamp? birthDay;
   String? phone;
   String? gender;
   String? profileImageUrl;
+  String? email;
 
   UserProfileEntity({
     this.id,
@@ -13,5 +16,6 @@ class UserProfileEntity {
     this.phone,
     this.gender,
     this.profileImageUrl,
+    this.email,
   });
 }

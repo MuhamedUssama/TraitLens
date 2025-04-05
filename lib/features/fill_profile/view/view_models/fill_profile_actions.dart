@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'fill_profile_view_model.dart';
 
 sealed class FillProfileActions {}
@@ -17,3 +19,9 @@ class ChangeGenderAction extends FillProfileActions {
 class NavigateToHomeScreenAction extends FillProfileActions {}
 
 class FormDataChangedAction extends FillProfileActions {}
+
+class UpdateBirthdayAction extends FillProfileActions {
+  final Timestamp birthdayTimestamp;
+
+  UpdateBirthdayAction(this.birthdayTimestamp);
+}
