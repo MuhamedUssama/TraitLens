@@ -95,6 +95,8 @@ import '../../features/profile_tab/view/view_model/profile_tab/profile_tab_view_
 import '../cache/shared_preferences.dart' as _i254;
 import '../modules/dio_module.dart' as _i948;
 import '../shared/language_view_model/language_view_model.dart' as _i100;
+import '../shared/notifications_view_model/notifications_view_model.dart'
+    as _i910;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -109,6 +111,8 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final dioModule = _$DioModule();
     gh.factory<_i100.LanguageViewModel>(() => _i100.LanguageViewModel());
+    gh.factory<_i910.NotificationsViewModel>(
+        () => _i910.NotificationsViewModel());
     gh.factory<_i736.HomeScreenViewModel>(() => _i736.HomeScreenViewModel());
     gh.singleton<_i254.SharedPreferencesHelper>(
         () => _i254.SharedPreferencesHelper());
@@ -119,7 +123,7 @@ extension GetItInjectableX on _i174.GetIt {
         _i548.AiDetectionRepositoryImpl(gh<_i647.AiDetectionDataSource>()));
     gh.factory<_i509.SendTextUsecase>(
         () => _i509.SendTextUsecase(gh<_i33.AiDetectionRepository>()));
-    gh.factory<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
+    gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
     gh.singleton<_i582.ChatDataSource>(() => _i922.ChatDataSourceImpl());
     gh.factory<_i583.ProfileTabDataSource>(
         () => _i583.ProfileTabDataSourceImpl());

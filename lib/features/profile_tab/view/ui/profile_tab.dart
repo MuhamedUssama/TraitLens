@@ -48,7 +48,7 @@ class _ProfileTabState extends State<ProfileTab> {
               SizedBox(height: 8.h),
               const Divider(color: ColorsManager.grey),
               SizedBox(height: 8.h),
-              NotificationsWidget(viewModel: viewModel),
+              NotificationsWidget(),
               SizedBox(height: 8.h),
               const Divider(color: ColorsManager.grey),
               const LanguageSectionWidget(),
