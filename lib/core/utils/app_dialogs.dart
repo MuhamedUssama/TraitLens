@@ -1,6 +1,11 @@
+import 'package:bottom_picker/bottom_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import '../../config/theme/app_colors.dart';
 import '../../config/theme/text_style.dart';
@@ -8,13 +13,14 @@ import 'animation_assets.dart';
 import 'app_dialog_utils.dart';
 
 class AppDialogs {
-  static void showFailDialog(
-      {required String message,
-      required BuildContext context,
-      String? posActionTitle,
-      VoidCallback? posAction,
-      String? negativeActionTitle,
-      VoidCallback? negativeAction}) {
+  static void showFailDialog({
+    required String message,
+    required BuildContext context,
+    String? posActionTitle,
+    VoidCallback? posAction,
+    String? negativeActionTitle,
+    VoidCallback? negativeAction,
+  }) {
     AppDialogUtils.showDialogOnScreen(
       context: context,
       message: message,
@@ -26,13 +32,14 @@ class AppDialogs {
     );
   }
 
-  static void showInfoDialog(
-      {required String message,
-      required BuildContext context,
-      String? posActionTitle,
-      VoidCallback? posAction,
-      String? negativeActionTitle,
-      VoidCallback? negativeAction}) {
+  static void showInfoDialog({
+    required String message,
+    required BuildContext context,
+    String? posActionTitle,
+    VoidCallback? posAction,
+    String? negativeActionTitle,
+    VoidCallback? negativeAction,
+  }) {
     AppDialogUtils.showDialogOnScreen(
       context: context,
       message: message,
@@ -53,13 +60,14 @@ class AppDialogs {
     Navigator.pop(context);
   }
 
-  static void showSuccessDialog(
-      {required String message,
-      required BuildContext context,
-      String? posActionTitle,
-      VoidCallback? posAction,
-      String? negativeActionTitle,
-      VoidCallback? negativeAction}) {
+  static void showSuccessDialog({
+    required String message,
+    required BuildContext context,
+    String? posActionTitle,
+    VoidCallback? posAction,
+    String? negativeActionTitle,
+    VoidCallback? negativeAction,
+  }) {
     AppDialogUtils.showDialogOnScreen(
       context: context,
       message: message,
@@ -116,5 +124,47 @@ class AppDialogs {
         );
       },
     );
+  }
+
+  static void takeUserBirthday({
+    required BuildContext context,
+    required TextEditingController controller,
+    required void Function(Timestamp birthdayTimestamp) onPicked,
+  }) {
+    BottomPicker.date(
+      pickerTitle: Text(
+        'Set Your Birthday',
+        style: GoogleFonts.poppins(
+          color: Colors.black,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      dateOrder: DatePickerDateOrder.dmy,
+      initialDateTime: DateTime.now(),
+      minDateTime: DateTime(1900, 1, 1),
+      maxDateTime: DateTime.now(),
+      pickerTextStyle: const TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+      ),
+      buttonContent: Text(
+        'Select',
+        style: GoogleFonts.poppins(
+          color: Colors.white,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w500,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      buttonSingleColor: ColorsManager.baseBlue,
+      buttonWidth: MediaQuery.sizeOf(context).width * .85,
+      onSubmit: (date) {
+        controller.text = DateFormat('dd/MM/yyyy').format(date);
+        final Timestamp timestamp = Timestamp.fromDate(date);
+        onPicked(timestamp);
+      },
+    ).show(context);
   }
 }

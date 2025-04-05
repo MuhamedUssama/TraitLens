@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,7 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
 
   String? imageUrl;
   File? imageFile;
+  Timestamp? birthdayTimestamp;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -46,21 +48,23 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
         _changeGender();
       case FormDataChangedAction():
         _updateValidationState();
+      case UpdateBirthdayAction(:final birthdayTimestamp):
+        _updateBirthday(birthdayTimestamp);
     }
   }
 
   Future<void> _updateUserProfile() async {
     try {
-      if (formKey.currentState!.validate()) {
+      if (formKey.currentState!.validate() && birthdayTimestamp != null) {
         emit(FillProfileLoadingState());
 
         final result = await _fillProfileDataUsecase(
           userId: FirebaseAuth.instance.currentUser!.uid,
           fullName: nameController.text,
-          birthDay: birthdayController.text,
           phone: phoneController.text,
           gender: selectedGender == Gender.female ? "female" : "male",
           imageFile: imageFile,
+          birthDayTimestamp: birthdayTimestamp!,
         );
 
         result.fold(
@@ -102,12 +106,18 @@ class FillProfileViewModel extends Cubit<FillProfileStates> {
   void _changeGender() {
     selectedGender =
         selectedGender == Gender.female ? Gender.male : Gender.female;
-    log('selectedGender: $selectedGender');
     emit(ChangeGenderState());
   }
 
   void _navigateToHomeScreen() {
     emit(NavigateToHomeScreenState());
+  }
+
+  void _updateBirthday(Timestamp birthdayTimestamp) {
+    log('>>> Updating birthday to: ${birthdayTimestamp.toDate()}');
+
+    this.birthdayTimestamp = birthdayTimestamp;
+    emit(BirthdayUpdatedState(birthdayTimestamp));
   }
 }
 

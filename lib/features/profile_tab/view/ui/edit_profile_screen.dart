@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../config/routing/routes_name.dart';
 import '../../../../config/theme/text_style.dart';
@@ -33,7 +34,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     if (!_isInitialized && ModalRoute.of(context)?.settings.arguments != null) {
       arguments =
           ModalRoute.of(context)!.settings.arguments as UserProfileEntity;
-      viewModel.birthdayController.text = arguments!.birthDay ?? '';
+      if (arguments?.birthDay != null) {
+        final DateTime dateTime = arguments!.birthDay!.toDate();
+        final String formattedDate = DateFormat('dd/MM/yyyy').format(dateTime);
+        viewModel.birthdayController.text = formattedDate;
+      }
       viewModel.nameController.text = arguments!.fullName ?? '';
       viewModel.phoneController.text = arguments!.phone ?? '';
       viewModel.selectedGender = arguments!.gender?.toLowerCase() == "male"

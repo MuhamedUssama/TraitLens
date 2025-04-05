@@ -41,7 +41,7 @@ class ProfileTabDataSourceImpl implements ProfileTabDataSource {
   Future<Either<ServerException, UserProfileEntity>> updateUserData({
     File? imageFile,
     String? name,
-    String? birthday,
+    Timestamp? birthday,
     String? phone,
     String? gender,
   }) async {

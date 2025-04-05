@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:trait_lens/core/utils/app_dialogs.dart';
 import 'package:trait_lens/core/utils/validation_utils.dart';
 import 'package:trait_lens/core/widgets/custom_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,6 +20,17 @@ class FillProfileFormWidget extends StatelessWidget {
   final FillProfileViewModel viewModel;
 
   const FillProfileFormWidget({super.key, required this.viewModel});
+
+  void _openDatePicker(BuildContext context) {
+    AppDialogs.takeUserBirthday(
+      context: context,
+      controller: viewModel.birthdayController,
+      onPicked: (timestamp) {
+        log('Birthday Timestamp: ${timestamp.toDate()}');
+        viewModel.doIntent(UpdateBirthdayAction(timestamp));
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +60,17 @@ class FillProfileFormWidget extends StatelessWidget {
                   controller: viewModel.birthdayController,
                   labelText: locale.birthday,
                   hintText: locale.birthday,
+                  readOnly: true,
+                  onTap: () => _openDatePicker(context),
                   textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.datetime,
+                  keyboardType: TextInputType.none,
                   validator: (birthDay) => AppValidator.validateFieldIsNotEmpty(
                     value: birthDay,
                     message: locale.emptyBirthDay,
+                  ),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.calendar_today),
+                    onPressed: () => _openDatePicker(context),
                   ),
                 ),
                 SizedBox(height: 26.h),
@@ -74,7 +94,9 @@ class FillProfileFormWidget extends StatelessWidget {
           BlocBuilder<FillProfileViewModel, FillProfileStates>(
             bloc: viewModel,
             buildWhen: (previous, current) =>
-                current is FillProfileLoadingState,
+                current is FillProfileLoadingState ||
+                current is FillProfileErrorState ||
+                current is FillProfileSuccessState,
             builder: (context, state) {
               return ElevatedButton(
                 onPressed: () {

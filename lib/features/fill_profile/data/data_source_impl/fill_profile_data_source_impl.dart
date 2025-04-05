@@ -20,7 +20,7 @@ class FillProfileDataSourceImpl implements FillProfileDataSource {
   Future<Either<ServerException, UserProfileEntity>> setProfile({
     required String userId,
     required String fullName,
-    required String birthDay,
+    required Timestamp birthDayTimestamp,
     required String phone,
     required String gender,
     File? imageFile,
@@ -42,7 +42,7 @@ class FillProfileDataSourceImpl implements FillProfileDataSource {
         id: userId,
         email: FirebaseAuth.instance.currentUser?.email ?? 'no email found',
         fullName: fullName,
-        birthDay: birthDay,
+        birthDay: birthDayTimestamp,
         phone: phone,
         gender: gender,
         profileImageUrl: profileImageUrl,

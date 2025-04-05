@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -27,7 +28,7 @@ class FillProfileRepositoryImpl implements FillProfileRepository {
   Future<Either<ServerException, UserProfileEntity>> setProfile({
     required String userId,
     required String fullName,
-    required String birthDay,
+    required Timestamp birthDayTimestamp,
     required String phone,
     required String gender,
     File? imageFile,
@@ -36,10 +37,10 @@ class FillProfileRepositoryImpl implements FillProfileRepository {
       final either = await _fillProfileDataSource.setProfile(
         userId: userId,
         fullName: fullName,
-        birthDay: birthDay,
         phone: phone,
         gender: gender,
         imageFile: imageFile,
+        birthDayTimestamp: birthDayTimestamp,
       );
 
       return either.fold(

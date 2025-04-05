@@ -16,6 +16,8 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
+  final bool readOnly;
+  final void Function()? onTap;
 
   const CustomTextFormField({
     super.key,
@@ -28,6 +30,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.textInputAction,
     required this.keyboardType,
     this.initialValue,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
@@ -40,6 +44,8 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscureText,
       validator: validator,
+      readOnly: readOnly,
+      onTap: onTap,
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
