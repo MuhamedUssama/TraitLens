@@ -11,4 +11,5 @@ class RoutesName {
   static const String imageDetectionScreen = '/imageDetection';
   static const String resultsScreenAfterDetection =
       '/resultsScreenAfterDetection';
+  static const String notificationsScreen = '/notificationsScreen';
 }

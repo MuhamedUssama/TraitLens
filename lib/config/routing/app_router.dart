@@ -8,6 +8,7 @@ import 'package:trait_lens/features/auth/view/ui/sign_in_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/sign_up_screen.dart';
 import 'package:trait_lens/features/fill_profile/view/ui/fill_profile_screen.dart';
 import 'package:trait_lens/features/home/view/ui/home_screen.dart';
+import 'package:trait_lens/features/notifications/view/ui/notifications_screen.dart';
 import 'package:trait_lens/features/profile_tab/view/ui/edit_profile_screen.dart';
 
 import 'routes_name.dart';
@@ -80,6 +81,13 @@ class AppRouters {
           duration: const Duration(milliseconds: 600),
           settings: settings,
           child: const ResultsScreenAfterDetection(),
+        );
+
+      case RoutesName.notificationsScreen:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
+          child: const NotificationsScreen(),
         );
 
       default:
