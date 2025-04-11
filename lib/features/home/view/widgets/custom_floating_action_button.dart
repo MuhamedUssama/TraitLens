@@ -11,20 +11,15 @@ class CustomFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(16),
-      onTap: () {
+    return FloatingActionButton(
+      onPressed: () {
         Navigator.pushNamed(context, RoutesName.chatAiScreen);
       },
-      child: Container(
-        height: 60.h,
-        width: 60.w,
-        decoration: BoxDecoration(
-          color: ColorsManager.bottomNavigationBarColor,
-          borderRadius: BorderRadius.circular(16.r),
-        ),
-        child: Center(child: SvgPicture.asset(AppSvg.message, width: 32.w)),
+      backgroundColor: ColorsManager.bottomNavigationBarColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.r),
       ),
+      child: SvgPicture.asset(AppSvg.message, width: 32.w),
     );
   }
 }
