@@ -74,6 +74,10 @@ import '../../features/fill_profile/view/view_models/fill_profile_view_model.dar
     as _i471;
 import '../../features/home/view/view_model/home_screen_view_model.dart'
     as _i736;
+import '../../features/notifications/data/data_source/notifications_data_source.dart'
+    as _i957;
+import '../../features/notifications/data/data_source_implememntation/notifications_remote_data_source_impl.dart'
+    as _i769;
 import '../../features/profile_tab/data/data_source/profile_tab_data_source.dart'
     as _i583;
 import '../../features/profile_tab/data/data_source_impl/profile_tab_data_source_impl.dart'
@@ -121,6 +125,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i32.AiDetectionDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i33.AiDetectionRepository>(() =>
         _i548.AiDetectionRepositoryImpl(gh<_i647.AiDetectionDataSource>()));
+    gh.lazySingleton<_i957.NotificationsDataSource>(
+        () => _i769.NotificationsRemoteDataSourceImpl());
     gh.factory<_i509.SendTextUsecase>(
         () => _i509.SendTextUsecase(gh<_i33.AiDetectionRepository>()));
     gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());

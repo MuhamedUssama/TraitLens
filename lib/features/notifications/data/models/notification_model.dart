@@ -1,3 +1,5 @@
+import 'package:trait_lens/features/notifications/domain/entities/notification_entity.dart';
+
 class NotificationModel {
   static const String collectionName = 'notifications';
 
@@ -37,6 +39,15 @@ class NotificationModel {
       title: title ?? this.title,
       message: message ?? this.message,
       isRead: isRead ?? this.isRead,
+    );
+  }
+
+  NotificationEntity toEntity() {
+    return NotificationEntity(
+      id: id,
+      title: title,
+      message: message,
+      isRead: isRead,
     );
   }
 }
