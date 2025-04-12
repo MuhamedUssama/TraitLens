@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
@@ -14,7 +16,7 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
   AiDetectionDataSourceImpl(this.dio);
 
   @override
-  Future<Either<ServerException, TextDetectionResultModel>> sendText({
+  Future<Either<ServerException, DetectionResultModel>> sendText({
     required String text,
   }) async {
     try {
@@ -27,7 +29,7 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return Right(TextDetectionResultModel.fromJson(response.data));
+        return Right(DetectionResultModel.fromJson(response.data));
       } else {
         return Left(_handleStatusCode(response.statusCode));
       }
@@ -61,5 +63,12 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
       default:
         return const FetchDataException();
     }
+  }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>> sendAudio(
+      {required File audioFile}) {
+    // TODO: implement sendAudio
+    throw UnimplementedError();
   }
 }

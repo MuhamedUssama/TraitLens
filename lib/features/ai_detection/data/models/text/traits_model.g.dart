@@ -12,6 +12,7 @@ Traits _$TraitsFromJson(Map<String, dynamic> json) => Traits(
       extraversionE: json['Extraversion(E)'] as String?,
       neuroticismN: json['Neuroticism(N)'] as String?,
       opennessO: json['Openness(O)'] as String?,
+      interviewI: json['Interview(I)'] as String?,
     );
 
 Map<String, dynamic> _$TraitsToJson(Traits instance) => <String, dynamic>{
@@ -20,4 +21,5 @@ Map<String, dynamic> _$TraitsToJson(Traits instance) => <String, dynamic>{
       'Extraversion(E)': instance.extraversionE,
       'Neuroticism(N)': instance.neuroticismN,
       'Openness(O)': instance.opennessO,
+      'Interview(I)': instance.interviewI,
     };

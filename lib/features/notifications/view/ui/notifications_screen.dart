@@ -55,7 +55,7 @@ class NotificationsScreen extends StatelessWidget {
                   },
                 );
               } else {
-                return ListView(children: [SizedBox()]);
+                return ListView(children: const [SizedBox()]);
               }
             },
           ),

@@ -15,7 +15,7 @@ class AiDetectionRepositoryImpl implements AiDetectionRepository {
   AiDetectionRepositoryImpl(this._dataSource);
 
   @override
-  Future<Either<ServerException, TextDetectionResultModel>> sendText({
+  Future<Either<ServerException, DetectionResultModel>> sendText({
     required String text,
   }) async {
     if (await ConnectivityHelper.checkInternetConnection()) {

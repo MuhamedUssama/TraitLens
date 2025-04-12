@@ -19,12 +19,16 @@ class Traits {
   @JsonKey(name: 'Openness(O)')
   String? opennessO;
 
+  @JsonKey(name: 'Interview(I)')
+  String? interviewI;
+
   Traits({
     this.agreeablenessA,
     this.conscientiousnessC,
     this.extraversionE,
     this.neuroticismN,
     this.opennessO,
+    this.interviewI,
   });
 
   factory Traits.fromJson(Map<String, dynamic> json) => _$TraitsFromJson(json);
