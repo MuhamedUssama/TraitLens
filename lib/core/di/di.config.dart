@@ -82,6 +82,8 @@ import '../../features/notifications/data/repository_implementation/notification
     as _i265;
 import '../../features/notifications/domain/repository/notification_repository.dart'
     as _i1068;
+import '../../features/notifications/domain/usecases/get_all_notitfications_use_case.dart'
+    as _i1029;
 import '../../features/profile_tab/data/data_source/profile_tab_data_source.dart'
     as _i583;
 import '../../features/profile_tab/data/data_source_impl/profile_tab_data_source_impl.dart'
@@ -165,6 +167,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i937.ProfileTabRepositoryImpl(gh<_i583.ProfileTabDataSource>()));
     gh.factory<_i307.TextDetectionViewModel>(
         () => _i307.TextDetectionViewModel(gh<_i509.SendTextUsecase>()));
+    gh.factory<_i1029.GetAllNotitficationsUseCase>(() =>
+        _i1029.GetAllNotitficationsUseCase(
+            gh<_i1068.NotificationRepository>()));
     gh.factory<_i49.FillProfileDataUsecase>(
         () => _i49.FillProfileDataUsecase(gh<_i89.FillProfileRepository>()));
     gh.factory<_i945.GetGeminiResponse>(
