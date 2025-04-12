@@ -84,6 +84,8 @@ import '../../features/notifications/domain/repository/notification_repository.d
     as _i1068;
 import '../../features/notifications/domain/usecases/get_all_notitfications_use_case.dart'
     as _i1029;
+import '../../features/notifications/view/view_model/notification_screen_view_model.dart'
+    as _i374;
 import '../../features/profile_tab/data/data_source/profile_tab_data_source.dart'
     as _i583;
 import '../../features/profile_tab/data/data_source_impl/profile_tab_data_source_impl.dart'
@@ -189,6 +191,9 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i247.ForgetPasswordViewModel>(
         () => _i247.ForgetPasswordViewModel(gh<_i27.ForgetPasswordUsecase>()));
+    gh.factory<_i374.NotificationScreenViewModel>(() =>
+        _i374.NotificationScreenViewModel(
+            gh<_i1029.GetAllNotitficationsUseCase>()));
     gh.factory<_i195.SignUpViewModel>(() => _i195.SignUpViewModel(
           gh<_i217.SignUpWithEmailAndPasswordUsecase>(),
           gh<_i645.SignInWithGoogleUsecase>(),

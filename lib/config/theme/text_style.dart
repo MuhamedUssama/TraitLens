@@ -37,7 +37,7 @@ class TextStyles {
     color: ColorsManager.baseBlack,
   );
 
-  static TextStyle font20BlackBold = TextStyle(
+  static TextStyle font20BlackBold = GoogleFonts.poppins(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.baseBlack,

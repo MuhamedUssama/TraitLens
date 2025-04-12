@@ -87,7 +87,7 @@ class AppRouters {
         return PageTransition(
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 500),
-          child: const NotificationsScreen(),
+          child: NotificationsScreen(),
         );
 
       default:

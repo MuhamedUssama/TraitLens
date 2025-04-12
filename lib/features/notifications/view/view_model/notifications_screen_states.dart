@@ -1,19 +1,19 @@
 import 'package:trait_lens/features/notifications/domain/entities/notification_entity.dart';
 
-abstract class NotificationsTabStates {}
+abstract class NotificationsScreenStates {}
 
-class NotificationsTabInitialState extends NotificationsTabStates {}
+class NotificationsScreenInitialState extends NotificationsScreenStates {}
 
-class NotificationsTabLoadingState extends NotificationsTabStates {}
+class NotificationsScreenLoadingState extends NotificationsScreenStates {}
 
-class NotificationsTabLoadedState extends NotificationsTabStates {
+class NotificationsScreenLoadedState extends NotificationsScreenStates {
   final List<NotificationEntity> notifications;
 
-  NotificationsTabLoadedState(this.notifications);
+  NotificationsScreenLoadedState(this.notifications);
 }
 
-class NotificationsTabErrorState extends NotificationsTabStates {
+class NotificationsScreenErrorState extends NotificationsScreenStates {
   final String error;
 
-  NotificationsTabErrorState(this.error);
+  NotificationsScreenErrorState(this.error);
 }
