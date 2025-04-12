@@ -26,16 +26,19 @@ class CustomNotificationLoadingItem extends StatelessWidget {
                   Container(
                     width: 150.w,
                     height: 14.h,
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                   ),
                   SizedBox(height: 6.h),
                   Container(
-                      width: double.infinity, height: 12.h, color: Colors.grey),
+                    width: double.infinity,
+                    height: 12.h,
+                    color: Colors.grey[300],
+                  ),
                   SizedBox(height: 4.h),
                   Container(
                     width: 200.w,
                     height: 12.h,
-                    color: Colors.grey,
+                    color: Colors.grey[300],
                   ),
                 ],
               ),
