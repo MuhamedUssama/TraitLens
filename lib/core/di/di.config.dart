@@ -78,6 +78,10 @@ import '../../features/notifications/data/data_source/notifications_data_source.
     as _i957;
 import '../../features/notifications/data/data_source_implememntation/notifications_remote_data_source_impl.dart'
     as _i769;
+import '../../features/notifications/data/repository_implementation/notifications_repository_impl.dart'
+    as _i265;
+import '../../features/notifications/domain/repository/notification_repository.dart'
+    as _i1068;
 import '../../features/profile_tab/data/data_source/profile_tab_data_source.dart'
     as _i583;
 import '../../features/profile_tab/data/data_source_impl/profile_tab_data_source_impl.dart'
@@ -153,6 +157,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i217.SignUpWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i3.VerifyAccountUsecase>(
         () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()));
+    gh.factory<_i1068.NotificationRepository>(() =>
+        _i265.NotificationsRepositoryImpl(gh<_i957.NotificationsDataSource>()));
     gh.factory<_i27.ForgetPasswordUsecase>(
         () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i888.ProfileTabRepository>(
