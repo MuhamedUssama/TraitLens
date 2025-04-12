@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
@@ -20,6 +22,21 @@ class AiDetectionRepositoryImpl implements AiDetectionRepository {
   }) async {
     if (await ConnectivityHelper.checkInternetConnection()) {
       final either = await _dataSource.sendText(text: text);
+
+      return either.fold(
+        (error) => Left(ServerException(error.message)),
+        (result) => Right(result),
+      );
+    } else {
+      return const Left(NoInternetConnectionException());
+    }
+  }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>> sendAudio(
+      {required File audioFile}) async {
+    if (await ConnectivityHelper.checkInternetConnection()) {
+      final either = await _dataSource.sendAudio(audioFile: audioFile);
 
       return either.fold(
         (error) => Left(ServerException(error.message)),
