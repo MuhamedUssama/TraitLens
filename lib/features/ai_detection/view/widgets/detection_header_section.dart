@@ -1,4 +1,4 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -21,19 +21,15 @@ class DetectionHeaderSection extends StatelessWidget {
             width: 200.w,
           ),
         ),
-        AnimatedTextKit(
-          animatedTexts: [
-            TypewriterAnimatedText(
-              title,
-              textStyle: TextStyles.font18GreyBold,
-              textAlign: TextAlign.center,
-              speed: const Duration(milliseconds: 80),
-              cursor: '',
-            ),
-          ],
-          totalRepeatCount: 1,
-          pause: const Duration(milliseconds: 0),
-        )
+        FadeIn(
+          animate: true,
+          duration: const Duration(milliseconds: 800),
+          child: Text(
+            title,
+            style: TextStyles.font18GreyBold,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ],
     );
   }

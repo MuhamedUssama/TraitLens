@@ -17,14 +17,18 @@ class CustomMicButton extends StatefulWidget {
 }
 
 class _CustomMicButtonState extends State<CustomMicButton>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation1;
   late Animation<double> _animation2;
   late Animation<double> _animation3;
+  late AnimationController _sizeController;
+  late Animation<double> _sizeAnimation;
 
   @override
   void initState() {
+    super.initState();
+
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
@@ -44,12 +48,34 @@ class _CustomMicButtonState extends State<CustomMicButton>
       CurvedAnimation(parent: curved, curve: const Interval(0.4, 1.0)),
     );
 
-    super.initState();
+    _sizeController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+
+    _sizeAnimation = Tween<double>(begin: 120, end: 80).animate(
+      CurvedAnimation(parent: _sizeController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void didUpdateWidget(CustomMicButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isRecording != oldWidget.isRecording) {
+      if (widget.isRecording) {
+        _sizeController.forward();
+        _controller.repeat(reverse: false);
+      } else {
+        _sizeController.reverse();
+        _controller.stop();
+      }
+    }
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _sizeController.dispose();
     super.dispose();
   }
 
@@ -59,7 +85,7 @@ class _CustomMicButtonState extends State<CustomMicButton>
       width: 180,
       height: 180,
       child: AnimatedBuilder(
-        animation: _controller,
+        animation: Listenable.merge([_controller, _sizeAnimation]),
         builder: (context, child) {
           return Stack(
             alignment: Alignment.center,
@@ -93,10 +119,14 @@ class _CustomMicButtonState extends State<CustomMicButton>
 
   Widget _buildMic() {
     return InkWell(
-      onTap: () {},
+      borderRadius: BorderRadius.circular(1000),
+      onTap: () {
+        if (widget.isRecording) return;
+        widget.onTap();
+      },
       child: Container(
-        width: 80,
-        height: 80,
+        width: _sizeAnimation.value,
+        height: _sizeAnimation.value,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(1000),
           gradient: const LinearGradient(

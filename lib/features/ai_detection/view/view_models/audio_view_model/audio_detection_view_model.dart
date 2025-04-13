@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -20,10 +21,14 @@ class AudioDetectionViewModel extends Cubit<AudioDetectionStates> {
   File? _audioFile;
 
   Future<void> recordAndSendAudio() async {
-    final bool hasPermission = await _recorder.hasPermission();
-    if (!hasPermission) {
-      emit(AudioDetectionPermissionDeniedState("Microphone permission denied"));
-      return;
+    final micStatus = await Permission.microphone.status;
+    if (!micStatus.isGranted) {
+      final result = await Permission.microphone.request();
+      if (!result.isGranted) {
+        emit(AudioDetectionPermissionDeniedState(
+            "Microphone permission denied"));
+        return;
+      }
     }
 
     emit(AudioDetectionRecordingState());
