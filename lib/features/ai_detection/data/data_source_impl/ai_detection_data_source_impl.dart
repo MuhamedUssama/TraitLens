@@ -108,4 +108,84 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
       return const Left(InternalServerErrorException());
     }
   }
+
+  String getImageMimeType(String filePath) {
+    final String extension = filePath.split('.').last.toLowerCase();
+    switch (extension) {
+      case 'jpg':
+      case 'jpeg':
+        return 'image/jpeg';
+      case 'png':
+        return 'image/png';
+      case 'gif':
+        return 'image/gif';
+      case 'bmp':
+        return 'image/bmp';
+      case 'webp':
+        return 'image/webp';
+      case 'tiff':
+        return 'image/tiff';
+      case 'svg':
+        return 'image/svg+xml';
+      case 'heic':
+        return 'image/heic';
+      case 'heif':
+        return 'image/heif';
+      case 'ico':
+        return 'image/x-icon';
+      case 'avif':
+        return 'image/avif';
+      case 'jfif':
+        return 'image/jpeg';
+      case 'exif':
+        return 'image/exif';
+      default:
+        return 'application/octet-stream';
+    }
+  }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>> sendImage({
+    required File imageFile,
+  }) async {
+    try {
+      final String mimeType = getImageMimeType(imageFile.path);
+
+      final FormData formData = FormData.fromMap({
+        'image_file': await MultipartFile.fromFile(
+          imageFile.path,
+          filename: imageFile.uri.pathSegments.last,
+          contentType: MediaType.parse(mimeType),
+        ),
+      });
+
+      final response = await dio.post(
+        EndPoints.imageEndPoint,
+        data: formData,
+        options: Options(
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        ),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return Right(DetectionResultModel.fromJson(response.data));
+      } else {
+        return Left(_handleStatusCode(response.statusCode));
+      }
+    } on DioException catch (exception) {
+      if (exception.type == DioExceptionType.connectionTimeout ||
+          exception.type == DioExceptionType.receiveTimeout ||
+          exception.type == DioExceptionType.sendTimeout) {
+        return const Left(NoInternetConnectionException());
+      } else if (exception.response != null) {
+        return Left(_handleStatusCode(exception.response!.statusCode));
+      } else {
+        return const Left(FetchDataException());
+      }
+    } catch (error) {
+      return const Left(InternalServerErrorException());
+    }
+  }
 }

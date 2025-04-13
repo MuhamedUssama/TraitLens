@@ -12,4 +12,8 @@ abstract interface class AiDetectionDataSource {
   Future<Either<ServerException, DetectionResultModel>> sendAudio({
     required File audioFile,
   });
+
+  Future<Either<ServerException, DetectionResultModel>> sendImage({
+    required File imageFile,
+  });
 }
