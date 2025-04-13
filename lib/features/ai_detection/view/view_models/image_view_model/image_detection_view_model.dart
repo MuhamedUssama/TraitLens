@@ -19,7 +19,7 @@ class ImageDetectionViewModel extends Cubit<ImageDetectionStates> {
     if (imageFile != null) {
       emit(ImageDetectionLoadingState());
 
-      final result = await _usecase.call(imageFile: imageFile!);
+      final result = await _usecase(imageFile: imageFile!);
 
       result.fold(
         (error) => emit(ImageDetectionErrorState(error.toString())),

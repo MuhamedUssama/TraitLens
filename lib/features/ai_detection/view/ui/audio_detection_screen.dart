@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trait_lens/config/routing/routes_name.dart';
 import 'package:trait_lens/core/di/di.dart';
 import 'package:trait_lens/core/utils/app_dialogs.dart';
 import 'package:trait_lens/features/ai_detection/view/view_models/audio_view_model/audio_detection_states.dart';
@@ -45,7 +46,9 @@ class AudioDetectionScreen extends StatelessWidget {
                 message: 'Audio sent successfully',
                 context: context,
                 posActionTitle: locale.ok,
-                posAction: () {},
+                posAction: () {
+                  Navigator.pushNamed(context, RoutesName.imageDetectionScreen);
+                },
               );
             }
           },
