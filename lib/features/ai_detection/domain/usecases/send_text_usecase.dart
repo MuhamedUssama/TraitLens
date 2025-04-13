@@ -12,7 +12,7 @@ class SendTextUsecase {
   @factoryMethod
   SendTextUsecase(this._detectionRepository);
 
-  Future<Either<ServerException, TextDetectionResultModel>> call({
+  Future<Either<ServerException, DetectionResultModel>> call({
     required String text,
   }) {
     return _detectionRepository.sendText(text: text);

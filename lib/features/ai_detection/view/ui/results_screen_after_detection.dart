@@ -22,8 +22,8 @@ class ResultsScreenAfterDetection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations? locale = AppLocalizations.of(context);
-    final TextDetectionResultModel arguments =
-        ModalRoute.of(context)!.settings.arguments as TextDetectionResultModel;
+    final DetectionResultModel arguments =
+        ModalRoute.of(context)!.settings.arguments as DetectionResultModel;
 
     final Traits? traits = arguments.traits;
     final List<PieChartSectionData> pieChartSections = [

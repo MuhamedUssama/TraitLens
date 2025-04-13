@@ -11,5 +11,13 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: ColorsManager.transparent,
     ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: ColorsManager.baseBlue,
+      selectionColor: ColorsManager.baseBlue.withValues(alpha: .5),
+      selectionHandleColor: ColorsManager.baseBlue,
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: ColorsManager.baseBlue,
+    ),
   );
 }

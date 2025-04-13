@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trait_lens/core/constants/end_points.dart';
 
@@ -14,7 +17,7 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
   AiDetectionDataSourceImpl(this.dio);
 
   @override
-  Future<Either<ServerException, TextDetectionResultModel>> sendText({
+  Future<Either<ServerException, DetectionResultModel>> sendText({
     required String text,
   }) async {
     try {
@@ -27,7 +30,7 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return Right(TextDetectionResultModel.fromJson(response.data));
+        return Right(DetectionResultModel.fromJson(response.data));
       } else {
         return Left(_handleStatusCode(response.statusCode));
       }
@@ -60,6 +63,49 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
         return const InternalServerErrorException();
       default:
         return const FetchDataException();
+    }
+  }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>> sendAudio({
+    required File audioFile,
+  }) async {
+    try {
+      final FormData formData = FormData.fromMap({
+        'audio_file': await MultipartFile.fromFile(
+          audioFile.path,
+          filename: audioFile.uri.pathSegments.last,
+          contentType: MediaType('audio', 'wav'),
+        ),
+      });
+
+      final response = await dio.post(
+        EndPoints.audioEndPoint,
+        data: formData,
+        options: Options(
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        ),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return Right(DetectionResultModel.fromJson(response.data));
+      } else {
+        return Left(_handleStatusCode(response.statusCode));
+      }
+    } on DioException catch (exception) {
+      if (exception.type == DioExceptionType.connectionTimeout ||
+          exception.type == DioExceptionType.receiveTimeout ||
+          exception.type == DioExceptionType.sendTimeout) {
+        return const Left(NoInternetConnectionException());
+      } else if (exception.response != null) {
+        return Left(_handleStatusCode(exception.response!.statusCode));
+      } else {
+        return const Left(FetchDataException());
+      }
+    } catch (error) {
+      return const Left(InternalServerErrorException());
     }
   }
 }

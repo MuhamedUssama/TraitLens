@@ -5,15 +5,15 @@ import 'traits_model.dart';
 part 'text_detection_result_model.g.dart';
 
 @JsonSerializable()
-class TextDetectionResultModel {
+class DetectionResultModel {
   @JsonKey(name: 'dominant_trait')
   String? dominantTrait;
   Traits? traits;
 
-  TextDetectionResultModel({this.dominantTrait, this.traits});
+  DetectionResultModel({this.dominantTrait, this.traits});
 
-  factory TextDetectionResultModel.fromJson(Map<String, dynamic> json) =>
-      _$TextDetectionResultModelFromJson(json);
+  factory DetectionResultModel.fromJson(Map<String, dynamic> json) =>
+      _$DetectionResultModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TextDetectionResultModelToJson(this);
+  Map<String, dynamic> toJson() => _$DetectionResultModelToJson(this);
 }

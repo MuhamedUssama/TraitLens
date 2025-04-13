@@ -14,6 +14,7 @@ class AppSvg {
   static const String volumeOn = '${baseUrl}volumeOn.svg';
   static const String volumeOff = '${baseUrl}volumeOff.svg';
   static const String stopCircle = '${baseUrl}stopCircle.svg';
+  static const String mic = '${baseUrl}mic.svg';
 }
 
 class AppIcons {

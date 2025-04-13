@@ -12,7 +12,7 @@ class TextDetectionFailureState extends TextDetectionStates {
 }
 
 class TextDetectionSuccessState extends TextDetectionStates {
-  final TextDetectionResultModel? textModel;
+  final DetectionResultModel? textModel;
   TextDetectionSuccessState(this.textModel);
 }
 

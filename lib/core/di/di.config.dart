@@ -31,8 +31,12 @@ import '../../features/ai_detection/data/repository_impl/ai_detection_repository
     as _i548;
 import '../../features/ai_detection/domain/repository/ai_detection_repository.dart'
     as _i33;
+import '../../features/ai_detection/domain/usecases/send_audio_usecase.dart'
+    as _i25;
 import '../../features/ai_detection/domain/usecases/send_text_usecase.dart'
     as _i509;
+import '../../features/ai_detection/view/view_models/audio_view_model/audio_detection_view_model.dart'
+    as _i473;
 import '../../features/ai_detection/view/view_models/text_view_model/text_detection_view_model.dart'
     as _i307;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
@@ -135,6 +139,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i548.AiDetectionRepositoryImpl(gh<_i647.AiDetectionDataSource>()));
     gh.lazySingleton<_i957.NotificationsDataSource>(
         () => _i769.NotificationsRemoteDataSourceImpl());
+    gh.factory<_i25.SendAudioUsecase>(
+        () => _i25.SendAudioUsecase(gh<_i33.AiDetectionRepository>()));
     gh.factory<_i509.SendTextUsecase>(
         () => _i509.SendTextUsecase(gh<_i33.AiDetectionRepository>()));
     gh.singleton<_i364.AuthDataSource>(() => _i105.AuthDataSourceImpl());
@@ -149,6 +155,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i325.FillProfileRepositoryImpl(gh<_i760.FillProfileDataSource>()));
     gh.factory<_i961.AuthRepository>(
         () => _i954.AuthRepositoryImpl(gh<_i364.AuthDataSource>()));
+    gh.factory<_i473.AudioDetectionViewModel>(
+        () => _i473.AudioDetectionViewModel(gh<_i25.SendAudioUsecase>()));
     gh.factory<_i780.SignInWithEmailAndPasswordUsecase>(() =>
         _i780.SignInWithEmailAndPasswordUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i952.SignInWithFacebookUsecase>(
