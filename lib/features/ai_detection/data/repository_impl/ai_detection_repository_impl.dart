@@ -46,4 +46,19 @@ class AiDetectionRepositoryImpl implements AiDetectionRepository {
       return const Left(NoInternetConnectionException());
     }
   }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>> sendImage(
+      {required File imageFile}) async {
+    if (await ConnectivityHelper.checkInternetConnection()) {
+      final either = await _dataSource.sendImage(imageFile: imageFile);
+
+      return either.fold(
+        (error) => Left(ServerException(error.message)),
+        (result) => Right(result),
+      );
+    } else {
+      return const Left(NoInternetConnectionException());
+    }
+  }
 }
