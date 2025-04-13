@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:trait_lens/features/ai_chat/view/ui/ai_chat_screen.dart';
+import 'package:trait_lens/features/ai_detection/view/ui/audio_detection_screen.dart';
 import 'package:trait_lens/features/ai_detection/view/ui/results_screen_after_detection.dart';
 import 'package:trait_lens/features/ai_detection/view/ui/text_detection_screen.dart';
 import 'package:trait_lens/features/auth/view/ui/forget_password_screen.dart';
@@ -73,6 +74,14 @@ class AppRouters {
           duration: const Duration(milliseconds: 500),
           settings: settings,
           child: TextDetectionScreen(),
+        );
+
+      case RoutesName.voiceDetectionScreen:
+        return PageTransition(
+          type: PageTransitionType.rightToLeft,
+          duration: const Duration(milliseconds: 600),
+          settings: settings,
+          child: const AudioDetectionScreen(),
         );
 
       case RoutesName.resultsScreenAfterDetection:
