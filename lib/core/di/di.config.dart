@@ -33,6 +33,8 @@ import '../../features/ai_detection/domain/repository/ai_detection_repository.da
     as _i33;
 import '../../features/ai_detection/domain/usecases/send_audio_usecase.dart'
     as _i25;
+import '../../features/ai_detection/domain/usecases/send_image_usecase.dart'
+    as _i205;
 import '../../features/ai_detection/domain/usecases/send_text_usecase.dart'
     as _i509;
 import '../../features/ai_detection/view/view_models/audio_view_model/audio_detection_view_model.dart'
@@ -137,6 +139,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i32.AiDetectionDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i33.AiDetectionRepository>(() =>
         _i548.AiDetectionRepositoryImpl(gh<_i647.AiDetectionDataSource>()));
+    gh.factory<_i205.SendImageUsecase>(
+        () => _i205.SendImageUsecase(gh<_i33.AiDetectionRepository>()));
     gh.lazySingleton<_i957.NotificationsDataSource>(
         () => _i769.NotificationsRemoteDataSourceImpl());
     gh.factory<_i25.SendAudioUsecase>(
