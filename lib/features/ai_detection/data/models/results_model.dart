@@ -1,4 +1,4 @@
-import 'text/text_detection_result_model.dart';
+import 'detection_result_model.dart';
 
 class DetectionFlowResults {
   final DetectionResultModel textResult;

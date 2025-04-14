@@ -6,7 +6,7 @@ import 'package:trait_lens/features/ai_detection/data/models/results_model.dart'
 
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
-import '../../data/models/text/traits_model.dart';
+import '../../data/models/traits_model.dart';
 import '../widgets/custom_submit_button.dart';
 import '../widgets/detection_app_bar.dart';
 import '../widgets/status_section.dart';

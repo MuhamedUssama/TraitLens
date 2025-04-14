@@ -7,7 +7,7 @@ import '../../../../core/errors/exceptions.dart';
 import '../../../../core/helpers/connectivity_helper.dart';
 import '../../domain/repository/ai_detection_repository.dart';
 import '../data_source/ai_detection_data_source.dart';
-import '../models/text/text_detection_result_model.dart';
+import '../models/detection_result_model.dart';
 
 @Injectable(as: AiDetectionRepository)
 class AiDetectionRepositoryImpl implements AiDetectionRepository {

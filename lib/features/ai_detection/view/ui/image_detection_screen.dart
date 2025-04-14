@@ -6,7 +6,7 @@ import 'package:trait_lens/config/routing/routes_name.dart';
 import 'package:trait_lens/core/di/di.dart';
 import 'package:trait_lens/core/utils/app_dialogs.dart';
 import 'package:trait_lens/features/ai_detection/data/models/results_model.dart';
-import 'package:trait_lens/features/ai_detection/data/models/text/text_detection_result_model.dart';
+import 'package:trait_lens/features/ai_detection/data/models/detection_result_model.dart';
 import 'package:trait_lens/features/ai_detection/view/view_models/image_view_model/image_detection_states.dart';
 import 'package:trait_lens/features/ai_detection/view/view_models/image_view_model/image_detection_view_model.dart';
 import 'package:trait_lens/features/ai_detection/view/widgets/custom_submit_button.dart';

@@ -8,7 +8,7 @@ import 'package:trait_lens/core/constants/end_points.dart';
 
 import 'package:trait_lens/core/errors/exceptions.dart';
 import 'package:trait_lens/features/ai_detection/data/data_source/ai_detection_data_source.dart';
-import 'package:trait_lens/features/ai_detection/data/models/text/text_detection_result_model.dart';
+import 'package:trait_lens/features/ai_detection/data/models/detection_result_model.dart';
 
 @LazySingleton(as: AiDetectionDataSource)
 class AiDetectionDataSourceImpl implements AiDetectionDataSource {
@@ -187,5 +187,12 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
     } catch (error) {
       return const Left(InternalServerErrorException());
     }
+  }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>> uploadResultToFireStore(
+      {required DetectionResultModel detectionResult}) {
+    // TODO: implement uploadResultToFireStore
+    throw UnimplementedError();
   }
 }

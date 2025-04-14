@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'text_detection_result_model.dart';
+part of 'detection_result_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

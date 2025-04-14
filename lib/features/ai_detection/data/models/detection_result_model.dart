@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'traits_model.dart';
 
-part 'text_detection_result_model.g.dart';
+part 'detection_result_model.g.dart';
 
 @JsonSerializable()
 class DetectionResultModel {

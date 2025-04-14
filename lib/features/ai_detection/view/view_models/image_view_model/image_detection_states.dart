@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:trait_lens/features/ai_detection/data/models/text/text_detection_result_model.dart';
+import 'package:trait_lens/features/ai_detection/data/models/detection_result_model.dart';
 
 sealed class ImageDetectionStates {}
 
