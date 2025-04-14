@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -204,6 +205,7 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
 
       return Right(detectionResult);
     } catch (error) {
+      log(error.toString());
       return const Left(FetchDataException());
     }
   }

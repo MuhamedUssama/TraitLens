@@ -16,4 +16,9 @@ abstract interface class AiDetectionRepository {
   Future<Either<ServerException, DetectionResultModel>> sendImage({
     required File imageFile,
   });
+
+  Future<Either<ServerException, DetectionResultModel>>
+      uploadResultToFireStore({
+    required DetectionResultModel detectionResult,
+  });
 }

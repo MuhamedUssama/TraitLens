@@ -61,4 +61,22 @@ class AiDetectionRepositoryImpl implements AiDetectionRepository {
       return const Left(NoInternetConnectionException());
     }
   }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>>
+      uploadResultToFireStore({
+    required DetectionResultModel detectionResult,
+  }) async {
+    if (await ConnectivityHelper.checkInternetConnection()) {
+      final either = await _dataSource.uploadResultToFireStore(
+          detectionResult: detectionResult);
+
+      return either.fold(
+        (error) => Left(ServerException(error.message)),
+        (result) => Right(result),
+      );
+    } else {
+      return const Left(NoInternetConnectionException());
+    }
+  }
 }
