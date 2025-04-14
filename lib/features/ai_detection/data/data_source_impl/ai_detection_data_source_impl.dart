@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:injectable/injectable.dart';
 import 'package:trait_lens/core/constants/end_points.dart';
 
 import 'package:trait_lens/core/errors/exceptions.dart';
+import 'package:trait_lens/core/utils/firebase_services.dart';
 import 'package:trait_lens/features/ai_detection/data/data_source/ai_detection_data_source.dart';
 import 'package:trait_lens/features/ai_detection/data/models/detection_result_model.dart';
 
@@ -190,9 +192,19 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
   }
 
   @override
-  Future<Either<ServerException, DetectionResultModel>> uploadResultToFireStore(
-      {required DetectionResultModel detectionResult}) {
-    // TODO: implement uploadResultToFireStore
-    throw UnimplementedError();
+  Future<Either<ServerException, DetectionResultModel>>
+      uploadResultToFireStore({
+    required DetectionResultModel detectionResult,
+  }) async {
+    try {
+      final String userId = FirebaseAuth.instance.currentUser!.uid;
+
+      await FireBaseService.getUserReslutsCollection(userId)
+          .add(detectionResult);
+
+      return Right(detectionResult);
+    } catch (error) {
+      return const Left(FetchDataException());
+    }
   }
 }

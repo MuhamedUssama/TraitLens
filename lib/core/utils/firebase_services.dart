@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:trait_lens/features/ai_detection/data/models/detection_result_model.dart';
 import 'package:trait_lens/features/auth/data/models/user_model.dart';
 import 'package:trait_lens/features/notifications/data/models/notification_model.dart';
 
@@ -37,5 +38,19 @@ class FireBaseService {
           fromFirestore: (doc, _) => NotificationModel.fromJson(doc.data()!),
           toFirestore: (notif, _) => notif.toJson(),
         );
+  }
+
+  static CollectionReference<DetectionResultModel> getUserReslutsCollection(
+      String userId) {
+    CollectionReference<DetectionResultModel> userProfileCollection =
+        getUsersCollection()
+            .doc(userId)
+            .collection('detectionResults')
+            .withConverter<DetectionResultModel>(
+              fromFirestore: (documentSnapshot, options) =>
+                  DetectionResultModel.fromJson(documentSnapshot.data()!),
+              toFirestore: (detectionModel, options) => detectionModel.toJson(),
+            );
+    return userProfileCollection;
   }
 }
