@@ -98,7 +98,7 @@ class AppRouters {
           type: PageTransitionType.rightToLeft,
           duration: const Duration(milliseconds: 600),
           settings: settings,
-          child: const ResultsScreenAfterDetection(),
+          child: ResultsScreenAfterDetection(),
         );
 
       case RoutesName.notificationsScreen:

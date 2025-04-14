@@ -200,6 +200,8 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
     try {
       final String userId = FirebaseAuth.instance.currentUser!.uid;
 
+      log(detectionResult.toJson().toString());
+
       await FireBaseService.getUserReslutsCollection(userId)
           .add(detectionResult);
 

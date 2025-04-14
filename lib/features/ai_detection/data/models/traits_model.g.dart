@@ -7,7 +7,7 @@ part of 'traits_model.dart';
 // **************************************************************************
 
 Traits _$TraitsFromJson(Map<String, dynamic> json) => Traits(
-      agreeablenessA: json[' Agreeableness(A)'] as String?,
+      agreeablenessA: json['Agreeableness(A)'] as String?,
       conscientiousnessC: json['Conscientiousness(C)'] as String?,
       extraversionE: json['Extraversion(E)'] as String?,
       neuroticismN: json['Neuroticism(N)'] as String?,
@@ -16,7 +16,7 @@ Traits _$TraitsFromJson(Map<String, dynamic> json) => Traits(
     );
 
 Map<String, dynamic> _$TraitsToJson(Traits instance) => <String, dynamic>{
-      ' Agreeableness(A)': instance.agreeablenessA,
+      'Agreeableness(A)': instance.agreeablenessA,
       'Conscientiousness(C)': instance.conscientiousnessC,
       'Extraversion(E)': instance.extraversionE,
       'Neuroticism(N)': instance.neuroticismN,

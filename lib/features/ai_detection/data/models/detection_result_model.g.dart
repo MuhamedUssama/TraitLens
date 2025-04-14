@@ -14,10 +14,3 @@ DetectionResultModel _$DetectionResultModelFromJson(
           ? null
           : Traits.fromJson(json['traits'] as Map<String, dynamic>),
     );
-
-Map<String, dynamic> _$DetectionResultModelToJson(
-        DetectionResultModel instance) =>
-    <String, dynamic>{
-      'dominant_trait': instance.dominantTrait,
-      'traits': instance.traits,
-    };

@@ -43,6 +43,8 @@ import '../../features/ai_detection/view/view_models/audio_view_model/audio_dete
     as _i473;
 import '../../features/ai_detection/view/view_models/image_view_model/image_detection_view_model.dart'
     as _i755;
+import '../../features/ai_detection/view/view_models/results_view_model.dart/detection_result_view_model.dart'
+    as _i427;
 import '../../features/ai_detection/view/view_models/text_view_model/text_detection_view_model.dart'
     as _i307;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
@@ -225,6 +227,9 @@ extension GetItInjectableX on _i174.GetIt {
         _i1016.EditProfileScreenViewModel(gh<_i154.UpdateUserDataUsecase>()));
     gh.factory<_i583.GetUserDataUsecase>(
         () => _i583.GetUserDataUsecase(gh<_i888.ProfileTabRepository>()));
+    gh.factory<_i427.DetectionResultViewModel>(() =>
+        _i427.DetectionResultViewModel(
+            gh<_i460.UploadDetectionResultToFirestoreUsecase>()));
     gh.factory<_i260.ProfileTabViewModel>(() => _i260.ProfileTabViewModel(
           gh<_i583.GetUserDataUsecase>(),
           gh<_i882.SignOutUsecase>(),

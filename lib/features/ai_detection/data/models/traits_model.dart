@@ -4,7 +4,7 @@ part 'traits_model.g.dart';
 
 @JsonSerializable()
 class Traits {
-  @JsonKey(name: ' Agreeableness(A)')
+  @JsonKey(name: 'Agreeableness(A)')
   String? agreeablenessA;
 
   @JsonKey(name: 'Conscientiousness(C)')

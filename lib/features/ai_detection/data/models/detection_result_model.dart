@@ -15,5 +15,10 @@ class DetectionResultModel {
   factory DetectionResultModel.fromJson(Map<String, dynamic> json) =>
       _$DetectionResultModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DetectionResultModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'dominant_trait': dominantTrait,
+      'traits': traits?.toJson(),
+    };
+  }
 }
