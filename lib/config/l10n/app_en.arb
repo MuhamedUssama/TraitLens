@@ -76,5 +76,6 @@
   "extraversion": "Extraversion",
   "agreeableness": "Agreeableness",
   "neuroticism": "Neuroticism",
-  "status": "Status"
+  "status": "Status",
+  "showResults": "Show Results"
 }

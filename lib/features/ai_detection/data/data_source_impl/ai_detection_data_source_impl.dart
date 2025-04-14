@@ -152,7 +152,7 @@ class AiDetectionDataSourceImpl implements AiDetectionDataSource {
       final String mimeType = getImageMimeType(imageFile.path);
 
       final FormData formData = FormData.fromMap({
-        'image_file': await MultipartFile.fromFile(
+        'image': await MultipartFile.fromFile(
           imageFile.path,
           filename: imageFile.uri.pathSegments.last,
           contentType: MediaType.parse(mimeType),
