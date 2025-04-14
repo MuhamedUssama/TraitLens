@@ -37,6 +37,8 @@ import '../../features/ai_detection/domain/usecases/send_image_usecase.dart'
     as _i205;
 import '../../features/ai_detection/domain/usecases/send_text_usecase.dart'
     as _i509;
+import '../../features/ai_detection/domain/usecases/upload_detection_result_to_firestore_usecase.dart'
+    as _i460;
 import '../../features/ai_detection/view/view_models/audio_view_model/audio_detection_view_model.dart'
     as _i473;
 import '../../features/ai_detection/view/view_models/image_view_model/image_detection_view_model.dart'
@@ -185,6 +187,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i937.ProfileTabRepositoryImpl(gh<_i583.ProfileTabDataSource>()));
     gh.factory<_i307.TextDetectionViewModel>(
         () => _i307.TextDetectionViewModel(gh<_i509.SendTextUsecase>()));
+    gh.factory<_i460.UploadDetectionResultToFirestoreUsecase>(() =>
+        _i460.UploadDetectionResultToFirestoreUsecase(
+            gh<_i33.AiDetectionRepository>()));
     gh.factory<_i1029.GetAllNotitficationsUseCase>(() =>
         _i1029.GetAllNotitficationsUseCase(
             gh<_i1068.NotificationRepository>()));
