@@ -7,7 +7,7 @@ import '../../../../core/errors/exceptions.dart';
 import '../../../../core/helpers/connectivity_helper.dart';
 import '../../domain/repository/ai_detection_repository.dart';
 import '../data_source/ai_detection_data_source.dart';
-import '../models/text/text_detection_result_model.dart';
+import '../models/detection_result_model.dart';
 
 @Injectable(as: AiDetectionRepository)
 class AiDetectionRepositoryImpl implements AiDetectionRepository {
@@ -37,6 +37,39 @@ class AiDetectionRepositoryImpl implements AiDetectionRepository {
       {required File audioFile}) async {
     if (await ConnectivityHelper.checkInternetConnection()) {
       final either = await _dataSource.sendAudio(audioFile: audioFile);
+
+      return either.fold(
+        (error) => Left(ServerException(error.message)),
+        (result) => Right(result),
+      );
+    } else {
+      return const Left(NoInternetConnectionException());
+    }
+  }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>> sendImage(
+      {required File imageFile}) async {
+    if (await ConnectivityHelper.checkInternetConnection()) {
+      final either = await _dataSource.sendImage(imageFile: imageFile);
+
+      return either.fold(
+        (error) => Left(ServerException(error.message)),
+        (result) => Right(result),
+      );
+    } else {
+      return const Left(NoInternetConnectionException());
+    }
+  }
+
+  @override
+  Future<Either<ServerException, DetectionResultModel>>
+      uploadResultToFireStore({
+    required DetectionResultModel detectionResult,
+  }) async {
+    if (await ConnectivityHelper.checkInternetConnection()) {
+      final either = await _dataSource.uploadResultToFireStore(
+          detectionResult: detectionResult);
 
       return either.fold(
         (error) => Left(ServerException(error.message)),

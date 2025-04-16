@@ -33,10 +33,18 @@ import '../../features/ai_detection/domain/repository/ai_detection_repository.da
     as _i33;
 import '../../features/ai_detection/domain/usecases/send_audio_usecase.dart'
     as _i25;
+import '../../features/ai_detection/domain/usecases/send_image_usecase.dart'
+    as _i205;
 import '../../features/ai_detection/domain/usecases/send_text_usecase.dart'
     as _i509;
+import '../../features/ai_detection/domain/usecases/upload_detection_result_to_firestore_usecase.dart'
+    as _i460;
 import '../../features/ai_detection/view/view_models/audio_view_model/audio_detection_view_model.dart'
     as _i473;
+import '../../features/ai_detection/view/view_models/image_view_model/image_detection_view_model.dart'
+    as _i755;
+import '../../features/ai_detection/view/view_models/results_view_model.dart/detection_result_view_model.dart'
+    as _i427;
 import '../../features/ai_detection/view/view_models/text_view_model/text_detection_view_model.dart'
     as _i307;
 import '../../features/auth/data/data_source/auth_data_source.dart' as _i364;
@@ -137,6 +145,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i32.AiDetectionDataSourceImpl(gh<_i361.Dio>()));
     gh.factory<_i33.AiDetectionRepository>(() =>
         _i548.AiDetectionRepositoryImpl(gh<_i647.AiDetectionDataSource>()));
+    gh.factory<_i205.SendImageUsecase>(
+        () => _i205.SendImageUsecase(gh<_i33.AiDetectionRepository>()));
+    gh.factory<_i755.ImageDetectionViewModel>(
+        () => _i755.ImageDetectionViewModel(gh<_i205.SendImageUsecase>()));
     gh.lazySingleton<_i957.NotificationsDataSource>(
         () => _i769.NotificationsRemoteDataSourceImpl());
     gh.factory<_i25.SendAudioUsecase>(
@@ -177,6 +189,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i937.ProfileTabRepositoryImpl(gh<_i583.ProfileTabDataSource>()));
     gh.factory<_i307.TextDetectionViewModel>(
         () => _i307.TextDetectionViewModel(gh<_i509.SendTextUsecase>()));
+    gh.factory<_i460.UploadDetectionResultToFirestoreUsecase>(() =>
+        _i460.UploadDetectionResultToFirestoreUsecase(
+            gh<_i33.AiDetectionRepository>()));
     gh.factory<_i1029.GetAllNotitficationsUseCase>(() =>
         _i1029.GetAllNotitficationsUseCase(
             gh<_i1068.NotificationRepository>()));
@@ -212,6 +227,9 @@ extension GetItInjectableX on _i174.GetIt {
         _i1016.EditProfileScreenViewModel(gh<_i154.UpdateUserDataUsecase>()));
     gh.factory<_i583.GetUserDataUsecase>(
         () => _i583.GetUserDataUsecase(gh<_i888.ProfileTabRepository>()));
+    gh.factory<_i427.DetectionResultViewModel>(() =>
+        _i427.DetectionResultViewModel(
+            gh<_i460.UploadDetectionResultToFirestoreUsecase>()));
     gh.factory<_i260.ProfileTabViewModel>(() => _i260.ProfileTabViewModel(
           gh<_i583.GetUserDataUsecase>(),
           gh<_i882.SignOutUsecase>(),

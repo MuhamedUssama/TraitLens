@@ -1,4 +1,4 @@
-import '../../../data/models/text/text_detection_result_model.dart';
+import '../../../data/models/detection_result_model.dart';
 
 sealed class TextDetectionStates {}
 

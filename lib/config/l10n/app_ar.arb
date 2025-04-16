@@ -76,5 +76,6 @@
   "extraversion": "الانبساطية",
   "agreeableness": "التوافقية",
   "neuroticism": "العصبية",
-  "status": "الحالة"
+  "status": "الحالة",
+  "showResults": "عرض النتائج"
 }

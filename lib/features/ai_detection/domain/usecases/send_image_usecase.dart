@@ -7,14 +7,14 @@ import 'package:trait_lens/features/ai_detection/data/models/detection_result_mo
 import 'package:trait_lens/features/ai_detection/domain/repository/ai_detection_repository.dart';
 
 @injectable
-class SendAudioUsecase {
-  final AiDetectionRepository _detectionRepository;
+class SendImageUsecase {
+  final AiDetectionRepository repository;
 
   @factoryMethod
-  const SendAudioUsecase(this._detectionRepository);
+  const SendImageUsecase(this.repository);
 
   Future<Either<ServerException, DetectionResultModel>> call({
-    required File audioFile,
-  }) =>
-      _detectionRepository.sendAudio(audioFile: audioFile);
+    required File imageFile,
+  }) async =>
+      await repository.sendImage(imageFile: imageFile);
 }

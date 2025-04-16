@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'traits_model.dart';
 
-part 'text_detection_result_model.g.dart';
+part 'detection_result_model.g.dart';
 
 @JsonSerializable()
 class DetectionResultModel {
@@ -15,5 +15,10 @@ class DetectionResultModel {
   factory DetectionResultModel.fromJson(Map<String, dynamic> json) =>
       _$DetectionResultModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DetectionResultModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'dominant_trait': dominantTrait,
+      'traits': traits?.toJson(),
+    };
+  }
 }

@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
-import '../../data/models/text/traits_model.dart';
+import '../../data/models/traits_model.dart';
 import 'status_item_widget.dart';
 
 class StatusSection extends StatelessWidget {
