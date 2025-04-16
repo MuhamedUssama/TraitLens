@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String host = '192.168.1.9';
+  static const String host = '172.20.10.8';
 
   static const String textBaseUrl = 'http://$host:5000';
   static const String audioBaseUrl = 'http://$host:5001';
