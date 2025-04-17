@@ -120,6 +120,10 @@ import '../../features/results_tab/data/data_source/results_tab_data_source.dart
     as _i401;
 import '../../features/results_tab/data/data_source_impl/results_tab_data_source_impl.dart'
     as _i502;
+import '../../features/results_tab/data/repository_impl/results_tab_repository_impl.dart'
+    as _i333;
+import '../../features/results_tab/domain/repository/results_tab_repository.dart'
+    as _i417;
 import '../cache/shared_preferences.dart' as _i254;
 import '../modules/dio_module.dart' as _i948;
 import '../shared/language_view_model/language_view_model.dart' as _i100;
@@ -189,6 +193,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i3.VerifyAccountUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i1068.NotificationRepository>(() =>
         _i265.NotificationsRepositoryImpl(gh<_i957.NotificationsDataSource>()));
+    gh.factory<_i417.ResultsTabRepository>(
+        () => _i333.ResultsTabRepositoryImpl(gh<_i401.ResultsTabDataSource>()));
     gh.factory<_i27.ForgetPasswordUsecase>(
         () => _i27.ForgetPasswordUsecase(gh<_i961.AuthRepository>()));
     gh.factory<_i888.ProfileTabRepository>(
