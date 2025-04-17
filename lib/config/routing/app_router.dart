@@ -12,6 +12,7 @@ import 'package:trait_lens/features/fill_profile/view/ui/fill_profile_screen.dar
 import 'package:trait_lens/features/home/view/ui/home_screen.dart';
 import 'package:trait_lens/features/notifications/view/ui/notifications_screen.dart';
 import 'package:trait_lens/features/profile_tab/view/ui/edit_profile_screen.dart';
+import 'package:trait_lens/features/results_tab/view/ui/result_details_screen.dart';
 
 import 'routes_name.dart';
 
@@ -106,6 +107,13 @@ class AppRouters {
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 500),
           child: NotificationsScreen(),
+        );
+
+      case RoutesName.resultsScreen:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
+          child: const ResultDetailsScreen(),
         );
 
       default:

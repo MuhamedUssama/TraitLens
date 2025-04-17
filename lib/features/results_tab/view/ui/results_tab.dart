@@ -49,8 +49,7 @@ class ResultsTab extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return CustomResultCard(
                       viewModel: viewModel,
-                      traits: state.results[index].traits!,
-                      personalityType: state.results[index].dominantTrait ?? '',
+                      detectionResul: state.results[index],
                     );
                   },
                 ),

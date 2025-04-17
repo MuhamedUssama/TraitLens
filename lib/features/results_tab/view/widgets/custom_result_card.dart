@@ -1,21 +1,21 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trait_lens/config/routing/routes_name.dart';
 import 'package:trait_lens/config/theme/app_colors.dart';
 import 'package:trait_lens/config/theme/text_style.dart';
-import 'package:trait_lens/features/ai_detection/data/models/traits_model.dart';
+import 'package:trait_lens/features/ai_detection/data/models/detection_result_model.dart';
 import 'package:trait_lens/features/results_tab/view/view_models/results_tab_view_model.dart';
 
 class CustomResultCard extends StatelessWidget {
   final ResultsTabViewModel viewModel;
-  final Traits traits;
-  final String personalityType;
+
+  final DetectionResultModel detectionResul;
 
   const CustomResultCard({
     super.key,
     required this.viewModel,
-    required this.traits,
-    required this.personalityType,
+    required this.detectionResul,
   });
 
   @override
@@ -27,13 +27,6 @@ class CustomResultCard extends StatelessWidget {
         color: ColorsManager.bottomNavigationBarColor,
         border: Border.all(color: ColorsManager.baseBlue),
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: ColorsManager.baseBlue.withValues(alpha: 0.2),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +39,8 @@ class CustomResultCard extends StatelessWidget {
                 width: 140.w,
                 child: PieChart(
                   PieChartData(
-                    sections: viewModel.getPieChartSections(traits),
+                    sections:
+                        viewModel.getPieChartSections(detectionResul.traits!),
                     centerSpaceRadius: 50,
                     sectionsSpace: 2,
                     centerSpaceColor: Colors.white,
@@ -55,13 +49,19 @@ class CustomResultCard extends StatelessWidget {
                 ),
               ),
               Text(
-                personalityType,
+                detectionResul.dominantTrait ?? '',
                 style: TextStyles.statusItemText,
               )
             ],
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                RoutesName.resultsScreen,
+                arguments: detectionResul,
+              );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorsManager.baseBlue,
               foregroundColor: ColorsManager.white,
