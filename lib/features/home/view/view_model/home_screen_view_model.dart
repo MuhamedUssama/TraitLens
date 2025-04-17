@@ -16,7 +16,7 @@ class HomeScreenViewModel extends Cubit<HomeScreenStates> {
 
   List<Widget> tabs = [
     const HomeTab(),
-    const ResultsTab(),
+    ResultsTab(),
     const ProfileTab(),
   ];
 
