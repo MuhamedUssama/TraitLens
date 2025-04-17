@@ -206,4 +206,10 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: ColorsManager.white,
   );
+
+  static TextStyle font16GreyBold = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.secondaryColor,
+  );
 }
