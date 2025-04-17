@@ -21,6 +21,7 @@ class CustomResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 200.h,
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -35,13 +36,13 @@ class CustomResultCard extends StatelessWidget {
             alignment: AlignmentDirectional.center,
             children: [
               SizedBox(
-                height: 140.h,
-                width: 140.w,
+                height: 150.h,
+                width: 150.w,
                 child: PieChart(
                   PieChartData(
                     sections:
                         viewModel.getPieChartSections(detectionResul.traits!),
-                    centerSpaceRadius: 50,
+                    centerSpaceRadius: 60,
                     sectionsSpace: 2,
                     centerSpaceColor: Colors.white,
                     pieTouchData: PieTouchData(enabled: false),

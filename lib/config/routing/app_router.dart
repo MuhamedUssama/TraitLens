@@ -43,22 +43,22 @@ class AppRouters {
 
       case RoutesName.fillProfileScreen:
         return PageTransition(
-          type: PageTransitionType.bottomToTop,
-          duration: const Duration(seconds: 1),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
           child: const FillProfileScreen(),
         );
 
       case RoutesName.homeScreen:
         return PageTransition(
           type: PageTransitionType.fade,
-          duration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 500),
           child: HomeScreen(),
         );
 
       case RoutesName.editProfileScreen:
         return PageTransition(
-          type: PageTransitionType.rightToLeft,
-          duration: const Duration(milliseconds: 600),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
           settings: settings,
           child: const EditProfileScreen(),
         );
@@ -80,8 +80,8 @@ class AppRouters {
 
       case RoutesName.voiceDetectionScreen:
         return PageTransition(
-          type: PageTransitionType.rightToLeft,
-          duration: const Duration(milliseconds: 600),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
           settings: settings,
           child: AudioDetectionScreen(),
         );
@@ -89,15 +89,15 @@ class AppRouters {
       case RoutesName.imageDetectionScreen:
         return PageTransition(
           type: PageTransitionType.fade,
-          duration: const Duration(milliseconds: 600),
+          duration: const Duration(milliseconds: 500),
           settings: settings,
           child: ImageDetectionScreen(),
         );
 
       case RoutesName.resultsScreenAfterDetection:
         return PageTransition(
-          type: PageTransitionType.rightToLeft,
-          duration: const Duration(milliseconds: 600),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
           settings: settings,
           child: ResultsScreenAfterDetection(),
         );

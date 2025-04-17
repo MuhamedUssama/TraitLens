@@ -26,9 +26,10 @@ class ResultDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: DetectionAppBar(title: locale!.results),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 45.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 45.w),
         child: Column(
           children: [
+            const Spacer(flex: 1),
             Stack(
               alignment: AlignmentDirectional.center,
               children: [
@@ -41,7 +42,7 @@ class ResultDetailsScreen extends StatelessWidget {
                         radius: 50,
                         titleColor: ColorsManager.baseBlack,
                       ),
-                      centerSpaceRadius: 50,
+                      centerSpaceRadius: 70,
                       sectionsSpace: 2,
                       centerSpaceColor: Colors.white,
                       pieTouchData: PieTouchData(enabled: false),
@@ -54,8 +55,9 @@ class ResultDetailsScreen extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 60.h),
+            SizedBox(height: 80.h),
             StatusSection(traits: detectionResult.traits),
+            const Spacer(flex: 3),
           ],
         ),
       ),
