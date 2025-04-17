@@ -200,4 +200,16 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: ColorsManager.baseBlack,
   );
+
+  static TextStyle text14WhiteMedium = GoogleFonts.roboto(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: ColorsManager.white,
+  );
+
+  static TextStyle font16GreyBold = GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.secondaryColor,
+  );
 }
