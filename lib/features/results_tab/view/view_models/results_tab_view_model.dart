@@ -60,43 +60,44 @@ class ResultsTabViewModel extends Cubit<ResultsTabStates> {
     );
   }
 
-  List<PieChartSectionData> getPieChartSections(Traits traits) {
+  List<PieChartSectionData> getPieChartSections(Traits traits,
+      {double radius = 25, Color titleColor = Colors.transparent}) {
     return [
       PieChartSectionData(
         color: ColorsManager.openness,
         value: parsePercentage(traits.opennessO),
         title: '${parsePercentage(traits.opennessO).toStringAsFixed(2)}%',
-        radius: 25,
-        titleStyle: const TextStyle(color: Colors.transparent),
+        radius: radius,
+        titleStyle: TextStyle(color: titleColor),
       ),
       PieChartSectionData(
         color: ColorsManager.conscientiousness,
         value: parsePercentage(traits.conscientiousnessC),
         title:
             '${parsePercentage(traits.conscientiousnessC).toStringAsFixed(2)}%',
-        radius: 25,
-        titleStyle: const TextStyle(color: Colors.transparent),
+        radius: radius,
+        titleStyle: TextStyle(color: titleColor),
       ),
       PieChartSectionData(
         color: ColorsManager.extraversion,
         value: parsePercentage(traits.extraversionE),
         title: '${parsePercentage(traits.extraversionE).toStringAsFixed(2)}%',
-        radius: 25,
-        titleStyle: const TextStyle(color: Colors.transparent),
+        radius: radius,
+        titleStyle: TextStyle(color: titleColor),
       ),
       PieChartSectionData(
         color: ColorsManager.agreeableness,
         value: parsePercentage(traits.agreeablenessA),
         title: '${parsePercentage(traits.agreeablenessA).toStringAsFixed(2)}%',
-        radius: 25,
-        titleStyle: const TextStyle(color: Colors.transparent),
+        radius: radius,
+        titleStyle: TextStyle(color: titleColor),
       ),
       PieChartSectionData(
         color: ColorsManager.neuroticism,
         value: parsePercentage(traits.neuroticismN),
         title: '${parsePercentage(traits.neuroticismN).toStringAsFixed(2)}%',
-        radius: 25,
-        titleStyle: const TextStyle(color: Colors.transparent),
+        radius: radius,
+        titleStyle: TextStyle(color: titleColor),
       ),
     ];
   }
