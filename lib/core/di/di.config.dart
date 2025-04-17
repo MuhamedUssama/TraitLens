@@ -124,6 +124,8 @@ import '../../features/results_tab/data/repository_impl/results_tab_repository_i
     as _i333;
 import '../../features/results_tab/domain/repository/results_tab_repository.dart'
     as _i417;
+import '../../features/results_tab/domain/usecases/get_user_detection_results_usecace.dart'
+    as _i71;
 import '../cache/shared_preferences.dart' as _i254;
 import '../modules/dio_module.dart' as _i948;
 import '../shared/language_view_model/language_view_model.dart' as _i100;
@@ -204,6 +206,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i460.UploadDetectionResultToFirestoreUsecase>(() =>
         _i460.UploadDetectionResultToFirestoreUsecase(
             gh<_i33.AiDetectionRepository>()));
+    gh.factory<_i71.GetUserDetectionResultsUsecace>(() =>
+        _i71.GetUserDetectionResultsUsecace(gh<_i417.ResultsTabRepository>()));
     gh.factory<_i1029.GetAllNotitficationsUseCase>(() =>
         _i1029.GetAllNotitficationsUseCase(
             gh<_i1068.NotificationRepository>()));

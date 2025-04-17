@@ -11,7 +11,7 @@ class ResultsTabRepositoryImpl implements ResultsTabRepository {
   final ResultsTabDataSource _dataSource;
 
   @factoryMethod
-  ResultsTabRepositoryImpl(this._dataSource);
+  const ResultsTabRepositoryImpl(this._dataSource);
 
   @override
   Future<Either<ServerException, List<DetectionResultModel>>>
