@@ -126,6 +126,8 @@ import '../../features/results_tab/domain/repository/results_tab_repository.dart
     as _i417;
 import '../../features/results_tab/domain/usecases/get_user_detection_results_usecace.dart'
     as _i71;
+import '../../features/results_tab/view/view_models/results_tab_view_model.dart'
+    as _i294;
 import '../cache/shared_preferences.dart' as _i254;
 import '../modules/dio_module.dart' as _i948;
 import '../shared/language_view_model/language_view_model.dart' as _i100;
@@ -217,6 +219,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i945.GetGeminiResponse(gh<_i414.ChatRepository>()));
     gh.factory<_i158.ChatScreenViewModel>(
         () => _i158.ChatScreenViewModel(gh<_i945.GetGeminiResponse>()));
+    gh.factory<_i294.ResultsTabViewModel>(() =>
+        _i294.ResultsTabViewModel(gh<_i71.GetUserDetectionResultsUsecace>()));
     gh.factory<_i882.SignOutUsecase>(
         () => _i882.SignOutUsecase(gh<_i888.ProfileTabRepository>()));
     gh.factory<_i154.UpdateUserDataUsecase>(
