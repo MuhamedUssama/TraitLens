@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,9 @@ class ChatBodyWidget extends StatelessWidget {
       builder: (context, state) {
         final messages = viewModel.messages;
         if (state is ChatWelcomeState && messages.isEmpty) {
-          return Expanded(child: EmptyChatWidget(viewModel: viewModel));
+          return Expanded(
+            child: FadeIn(child: EmptyChatWidget(viewModel: viewModel)),
+          );
         }
 
         if (state is SendMessageLoadingState) {
