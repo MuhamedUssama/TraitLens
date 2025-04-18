@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,14 +44,20 @@ class NotificationsScreen extends StatelessWidget {
                 return ListView.separated(
                   itemCount: state.notifications.length,
                   padding: EdgeInsets.symmetric(vertical: 16.h),
-                  separatorBuilder: (context, index) => const Divider(),
+                  separatorBuilder: (context, index) => FadeInLeft(
+                    delay: Duration(milliseconds: 100 * index),
+                    child: const Divider(),
+                  ),
                   itemBuilder: (context, index) {
                     NotificationEntity notification =
                         state.notifications[index];
-                    return CustomNotificationItem(
-                      title: notification.title ?? '',
-                      message: notification.message ?? '',
-                      notificationId: notification.id ?? '',
+                    return FadeInLeft(
+                      delay: Duration(milliseconds: 100 * index),
+                      child: CustomNotificationItem(
+                        title: notification.title ?? '',
+                        message: notification.message ?? '',
+                        notificationId: notification.id ?? '',
+                      ),
                     );
                   },
                 );
