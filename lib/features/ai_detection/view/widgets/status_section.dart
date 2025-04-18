@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:animate_do/animate_do.dart'; // استيراد المكتبة
 
 import '../../../../config/theme/app_colors.dart';
 import '../../../../config/theme/text_style.dart';
@@ -24,30 +25,45 @@ class StatusSection extends StatelessWidget {
           ],
         ),
         const Divider(),
-        StatusItemWidget(
-          color: ColorsManager.openness,
-          title: locale.openness,
-          percentage: traits?.opennessO ?? '0%',
+        FadeInLeft(
+          delay: const Duration(milliseconds: 100),
+          child: StatusItemWidget(
+            color: ColorsManager.openness,
+            title: locale.openness,
+            percentage: traits?.opennessO ?? '0%',
+          ),
         ),
-        StatusItemWidget(
-          color: ColorsManager.conscientiousness,
-          title: locale.conscientiousness,
-          percentage: traits?.conscientiousnessC ?? '0%',
+        FadeInLeft(
+          delay: const Duration(milliseconds: 200),
+          child: StatusItemWidget(
+            color: ColorsManager.conscientiousness,
+            title: locale.conscientiousness,
+            percentage: traits?.conscientiousnessC ?? '0%',
+          ),
         ),
-        StatusItemWidget(
-          color: ColorsManager.extraversion,
-          title: locale.extraversion,
-          percentage: traits?.extraversionE ?? '0%',
+        FadeInLeft(
+          delay: const Duration(milliseconds: 300),
+          child: StatusItemWidget(
+            color: ColorsManager.extraversion,
+            title: locale.extraversion,
+            percentage: traits?.extraversionE ?? '0%',
+          ),
         ),
-        StatusItemWidget(
-          color: ColorsManager.agreeableness,
-          title: locale.agreeableness,
-          percentage: traits?.agreeablenessA ?? '0%',
+        FadeInLeft(
+          delay: const Duration(milliseconds: 400),
+          child: StatusItemWidget(
+            color: ColorsManager.agreeableness,
+            title: locale.agreeableness,
+            percentage: traits?.agreeablenessA ?? '0%',
+          ),
         ),
-        StatusItemWidget(
-          color: ColorsManager.neuroticism,
-          title: locale.neuroticism,
-          percentage: traits?.neuroticismN ?? '0%',
+        FadeInLeft(
+          delay: const Duration(milliseconds: 500),
+          child: StatusItemWidget(
+            color: ColorsManager.neuroticism,
+            title: locale.neuroticism,
+            percentage: traits?.neuroticismN ?? '0%',
+          ),
         ),
       ],
     );
