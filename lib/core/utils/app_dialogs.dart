@@ -132,6 +132,13 @@ class AppDialogs {
     required void Function(Timestamp birthdayTimestamp) onPicked,
   }) {
     BottomPicker.date(
+      height: MediaQuery.sizeOf(context).height * .46,
+      buttonStyle: BoxDecoration(
+        color: ColorsManager.baseBlue,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      buttonPadding: 12,
+      itemExtent: 36,
       pickerTitle: Text(
         'Set Your Birthday',
         style: GoogleFonts.poppins(

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:trait_lens/config/routing/routes_name.dart';
 import 'package:trait_lens/core/di/di.dart';
 import 'package:trait_lens/core/utils/app_dialogs.dart';
 import 'package:trait_lens/features/ai_detection/data/models/results_model.dart';
@@ -89,6 +90,10 @@ class ResultsScreenAfterDetection extends StatelessWidget {
                     isLoading: state is DetectionResultLoadingState,
                     onPressed: () {
                       viewModel.uploadDetectionResult(traits);
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        RoutesName.homeScreen,
+                        (route) => false,
+                      );
                     },
                   );
                 },

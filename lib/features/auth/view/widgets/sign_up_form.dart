@@ -145,18 +145,21 @@ class SignUpForm extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(width: 10.w),
-              MaterialButton(
-                onPressed: () {
-                  viewModel.doIntent(SignUpWithFacebookAction());
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
+              // SizedBox(width: 10.w),
+              Visibility(
+                visible: false,
+                child: MaterialButton(
+                  onPressed: () {
+                    viewModel.doIntent(SignUpWithFacebookAction());
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  minWidth: 60.w,
+                  height: 44.h,
+                  color: ColorsManager.lightGrey,
+                  child: Icon(Icons.facebook, color: Colors.black, size: 24.w),
                 ),
-                minWidth: 60.w,
-                height: 44.h,
-                color: ColorsManager.lightGrey,
-                child: Icon(Icons.facebook, color: Colors.black, size: 24.w),
               ),
             ],
           )
