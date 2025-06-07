@@ -57,13 +57,16 @@ class AudioDetectionViewModel extends Cubit<AudioDetectionStates> {
 
         final result = await _audioUsecase(audioFile: _audioFile!);
 
+        // Add timer in ui
+
         result.fold(
           (failure) async {
             emit(AudioDetectionErrorState(failure.message));
             await _audioFile?.delete();
           },
-          (model) {
+          (model) async {
             emit(AudioDetectionSuccessState(model));
+            await _audioFile?.delete();
           },
         );
       } else {

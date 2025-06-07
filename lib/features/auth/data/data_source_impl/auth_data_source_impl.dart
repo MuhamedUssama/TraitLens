@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -153,15 +155,21 @@ class AuthDataSourceImpl implements AuthDataSource {
 
       return right(userModel.toEntity());
     } on FirebaseAuthException catch (error) {
+      log("FirebaseAuthException: ${error.message}");
       return left(
           ServerException(error.message ?? "Google authentication error"));
     } catch (error) {
+      log("General Exception: $error");
       return left(ServerException(error.toString()));
     }
   }
 
   @override
-  Future<void> signOut() => FirebaseAuth.instance.signOut();
+  Future<void> signOut() async {
+    await GoogleSignIn().signOut();
+    await GoogleSignIn().disconnect();
+    await FirebaseAuth.instance.signOut();
+  }
 
   @override
   Future<Either<ServerException, String>> verifyAccount() async {

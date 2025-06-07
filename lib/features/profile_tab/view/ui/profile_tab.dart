@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -38,26 +39,53 @@ class _ProfileTabState extends State<ProfileTab> {
     return Column(
       children: [
         SizedBox(height: 28.h),
-        UserDataWidget(viewModel: viewModel),
+        FadeInDown(child: UserDataWidget(viewModel: viewModel)),
         SizedBox(height: 75.h),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 14.w),
           child: Column(
             children: [
-              EditProfileWidget(viewModel: viewModel),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 100),
+                child: EditProfileWidget(viewModel: viewModel),
+              ),
               SizedBox(height: 8.h),
-              const Divider(color: ColorsManager.grey),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 200),
+                child: const Divider(color: ColorsManager.grey),
+              ),
               SizedBox(height: 8.h),
-              NotificationsWidget(),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 300),
+                child: NotificationsWidget(),
+              ),
               SizedBox(height: 8.h),
-              const Divider(color: ColorsManager.grey),
-              const LanguageSectionWidget(),
-              CustomBasicSection(title: locale!.aboutUs),
-              CustomBasicSection(title: locale.termsAndConditions),
-              const Divider(color: ColorsManager.grey),
-              LogoutSection(viewModel: viewModel),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 400),
+                child: const Divider(color: ColorsManager.grey),
+              ),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 500),
+                child: const LanguageSectionWidget(),
+              ),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 600),
+                child: CustomBasicSection(title: locale!.aboutUs),
+              ),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 700),
+                child: CustomBasicSection(title: locale.termsAndConditions),
+              ),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 800),
+                child: const Divider(color: ColorsManager.grey),
+              ),
+              FadeInLeft(
+                delay: const Duration(milliseconds: 900),
+                child: LogoutSection(viewModel: viewModel),
+              ),
               SizedBox(height: 80.h),
-              Text('v 6.3.0 - (446)', style: TextStyles.font12GreyBold),
+              Text('v 1.0.0', style: TextStyles.font12GreyBold),
             ],
           ),
         )

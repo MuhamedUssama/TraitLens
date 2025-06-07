@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../config/routing/routes_name.dart';
@@ -20,19 +21,29 @@ class HomeTab extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-              flex: 7,
-              child: LottieBuilder.asset(AnimationsAssets.welcomeRobot)),
-          Text(
-            locale!.homeTabBody,
-            style: TextStyles.font18GreyBold,
-            textAlign: TextAlign.center,
+            flex: 7,
+            child: FadeIn(
+              duration: const Duration(milliseconds: 800),
+              child: LottieBuilder.asset(AnimationsAssets.welcomeRobot),
+            ),
+          ),
+          FadeIn(
+            delay: const Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 800),
+            child: Text(
+              locale!.homeTabBody,
+              style: TextStyles.font18GreyBold,
+              textAlign: TextAlign.center,
+            ),
           ),
           SizedBox(height: 80.h),
-          CustomElevatedButton(
-            title: locale.start,
-            onPressed: () {
-              Navigator.pushNamed(context, RoutesName.textDetectionScreen);
-            },
+          FadeInUp(
+            child: CustomElevatedButton(
+              title: locale.start,
+              onPressed: () {
+                Navigator.pushNamed(context, RoutesName.textDetectionScreen);
+              },
+            ),
           ),
           const Spacer(flex: 3),
         ],

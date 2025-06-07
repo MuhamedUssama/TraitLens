@@ -16,7 +16,6 @@ class TextDetectionViewModel extends Cubit<TextDetectionStates> {
   @factoryMethod
   TextDetectionViewModel(this._textUsecase)
       : super(TextDetectionInitialState());
-  // "She exhibits high openness with her creative ideas, moderate conscientiousness in her organized yet flexible approach, strong extraversion through her outgoing nature, high agreeableness in her cooperative demeanor, and low neuroticism given her calm response to stress."
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController textController = TextEditingController();

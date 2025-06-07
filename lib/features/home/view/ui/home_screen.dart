@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:animate_do/animate_do.dart';
 
 import '../../../../config/theme/text_style.dart';
 import '../../../../core/di/di.dart';
@@ -42,9 +43,11 @@ class HomeScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            title: Text(locale.traitLengs, style: TextStyles.font32BlueBold),
-            actions: const [
-              NotificationWidget(),
+            title: FadeInLeft(
+              child: Text(locale.traitLengs, style: TextStyles.font32BlueBold),
+            ),
+            actions: [
+              FadeInRight(child: const NotificationWidget()),
             ],
           ),
           body: viewModel.tabs[viewModel.currentIndex],

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -47,53 +48,66 @@ class EditScreenFormData extends StatelessWidget {
               onChanged: () => viewModel.doIntent(FormDataChangedAction()),
               child: Column(
                 children: [
-                  CustomTextFormField(
-                    controller: viewModel.nameController,
-                    labelText: locale!.fullName,
-                    hintText: locale.fullName,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.name,
-                    validator: (name) => AppValidator.validateFieldIsNotEmpty(
-                      value: name,
-                      message: locale.emptyName,
+                  FadeInLeft(
+                    delay: const Duration(milliseconds: 300),
+                    child: CustomTextFormField(
+                      controller: viewModel.nameController,
+                      labelText: locale!.fullName,
+                      hintText: locale.fullName,
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.name,
+                      validator: (name) => AppValidator.validateFieldIsNotEmpty(
+                        value: name,
+                        message: locale.emptyName,
+                      ),
                     ),
                   ),
                   SizedBox(height: 26.h),
-                  CustomTextFormField(
-                    controller: viewModel.birthdayController,
-                    labelText: locale.birthday,
-                    hintText: locale.birthday,
-                    readOnly: true,
-                    onTap: () => _openDatePicker(context),
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.none,
-                    validator: (birthDay) =>
-                        AppValidator.validateFieldIsNotEmpty(
-                      value: birthDay,
-                      message: locale.emptyBirthDay,
-                    ),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_today),
-                      onPressed: () => _openDatePicker(context),
+                  FadeInRight(
+                    delay: const Duration(milliseconds: 300),
+                    child: CustomTextFormField(
+                      controller: viewModel.birthdayController,
+                      labelText: locale.birthday,
+                      hintText: locale.birthday,
+                      readOnly: true,
+                      onTap: () => _openDatePicker(context),
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.none,
+                      validator: (birthDay) =>
+                          AppValidator.validateFieldIsNotEmpty(
+                        value: birthDay,
+                        message: locale.emptyBirthDay,
+                      ),
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.calendar_today),
+                        onPressed: () => _openDatePicker(context),
+                      ),
                     ),
                   ),
                   SizedBox(height: 26.h),
-                  CustomTextFormField(
-                    controller: viewModel.phoneController,
-                    labelText: locale.phoneNumber,
-                    hintText: locale.phoneNumber,
-                    textInputAction: TextInputAction.done,
-                    keyboardType: TextInputType.phone,
-                    validator: (phone) => AppValidator.validateFieldIsNotEmpty(
-                      value: phone,
-                      message: locale.emptyPhoneNumber,
+                  FadeInLeft(
+                    delay: const Duration(milliseconds: 300),
+                    child: CustomTextFormField(
+                      controller: viewModel.phoneController,
+                      labelText: locale.phoneNumber,
+                      hintText: locale.phoneNumber,
+                      textInputAction: TextInputAction.done,
+                      keyboardType: TextInputType.phone,
+                      validator: (phone) =>
+                          AppValidator.validateFieldIsNotEmpty(
+                        value: phone,
+                        message: locale.emptyPhoneNumber,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox(height: 50.h),
-            EditScreenSelectedGender(viewModel: viewModel),
+            FadeInRight(
+              delay: const Duration(milliseconds: 300),
+              child: EditScreenSelectedGender(viewModel: viewModel),
+            ),
             SizedBox(height: 66.h),
             BlocBuilder<EditProfileScreenViewModel, EditProfileScreenStates>(
               bloc: viewModel,
@@ -102,28 +116,31 @@ class EditScreenFormData extends StatelessWidget {
                   current is EditProfileSuccessState ||
                   current is EditProfileFailureState,
               builder: (context, state) {
-                return ElevatedButton(
-                  onPressed: () {
-                    viewModel.doIntent(UpdateUserDataAction());
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 60.h),
-                    backgroundColor: ColorsManager.baseBlue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.r),
+                return FadeInLeft(
+                  delay: const Duration(milliseconds: 300),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      viewModel.doIntent(UpdateUserDataAction());
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 60.h),
+                      backgroundColor: ColorsManager.baseBlue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
                     ),
-                  ),
-                  child: state is EditProfileLoadingState
-                      ? Center(
-                          child: LoadingAnimationWidget.staggeredDotsWave(
-                            color: Colors.white,
-                            size: 40,
+                    child: state is EditProfileLoadingState
+                        ? Center(
+                            child: LoadingAnimationWidget.staggeredDotsWave(
+                              color: Colors.white,
+                              size: 40,
+                            ),
+                          )
+                        : Text(
+                            locale.update,
+                            style: TextStyles.font20WhiteSemiBold,
                           ),
-                        )
-                      : Text(
-                          locale.update,
-                          style: TextStyles.font20WhiteSemiBold,
-                        ),
+                  ),
                 );
               },
             ),

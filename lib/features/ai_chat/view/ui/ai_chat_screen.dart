@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trait_lens/core/di/di.dart';
@@ -21,7 +22,7 @@ class AiChatScreen extends StatelessWidget {
         body: Column(
           children: [
             ChatBodyWidget(viewModel: viewModel),
-            CustomChatTextField(viewModel: viewModel),
+            FadeInUp(child: CustomChatTextField(viewModel: viewModel)),
           ],
         ),
       ),

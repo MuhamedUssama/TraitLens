@@ -61,15 +61,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   BlocListener<SignUpViewModel, SignUpStates>(
                     bloc: viewModel,
                     listener: (context, state) {
-                      // if (state is SignUpLoadingState) {
-                      //   AppDialogs.showLoading(
-                      //     message: AppLocalizations.of(context)!.loading,
-                      //     context: context,
-                      //   );
-                      // }
-                      // if (state is HideLoadingState) {
-                      //   Navigator.pop(context);
-                      // }
                       if (state is VerifyAccountState) {
                         AppDialogs.showSuccessDialog(
                           message: state.message,

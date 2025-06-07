@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -61,61 +62,67 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     AppLocalizations? locale = AppLocalizations.of(context);
 
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(image: AssetImage(AppAssets.background)),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new),
-            onPressed: () {
-              Navigator.pushReplacementNamed(
-                context,
-                RoutesName.homeScreen,
-              );
-            },
-          ),
-          title: Text(
-            locale!.editProfile,
-            style: TextStyles.font24BlackMedium,
-          ),
+    return FadeIn(
+      child: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage(AppAssets.background)),
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 22.w),
-            child: BlocListener<EditProfileScreenViewModel,
-                EditProfileScreenStates>(
-              bloc: viewModel,
-              listener: (context, state) {
-                if (state is EditProfileFailureState) {
-                  AppDialogs.showFailDialog(
-                    message: state.message ?? locale.somethingWentWrong,
-                    context: context,
-                    posActionTitle: locale.ok,
-                  );
-                }
-                if (state is EditProfileSuccessState) {
-                  AppDialogs.showSuccessDialog(
-                    message: locale.fillProfileSuccessfully,
-                    context: context,
-                    posActionTitle: locale.ok,
-                  );
-                }
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new),
+              onPressed: () {
+                Navigator.pushReplacementNamed(
+                  context,
+                  RoutesName.homeScreen,
+                );
               },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: 50.h),
-                  UserImageWidget(
-                    user: arguments!,
-                    viewModel: viewModel,
-                  ),
-                  SizedBox(height: 50.h),
-                  EditScreenFormData(viewModel: viewModel, user: arguments!),
-                ],
+            ),
+            title: FadeInRight(
+              child: Text(
+                locale!.editProfile,
+                style: TextStyles.font24BlackMedium,
+              ),
+            ),
+          ),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 22.w),
+              child: BlocListener<EditProfileScreenViewModel,
+                  EditProfileScreenStates>(
+                bloc: viewModel,
+                listener: (context, state) {
+                  if (state is EditProfileFailureState) {
+                    AppDialogs.showFailDialog(
+                      message: state.message ?? locale.somethingWentWrong,
+                      context: context,
+                      posActionTitle: locale.ok,
+                    );
+                  }
+                  if (state is EditProfileSuccessState) {
+                    AppDialogs.showSuccessDialog(
+                      message: locale.fillProfileSuccessfully,
+                      context: context,
+                      posActionTitle: locale.ok,
+                    );
+                  }
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 50.h),
+                    FadeInDown(
+                      child: UserImageWidget(
+                        user: arguments!,
+                        viewModel: viewModel,
+                      ),
+                    ),
+                    SizedBox(height: 50.h),
+                    EditScreenFormData(viewModel: viewModel, user: arguments!),
+                  ],
+                ),
               ),
             ),
           ),

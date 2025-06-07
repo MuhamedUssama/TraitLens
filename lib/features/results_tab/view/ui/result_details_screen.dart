@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -30,30 +31,32 @@ class ResultDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             const Spacer(flex: 1),
-            Stack(
-              alignment: AlignmentDirectional.center,
-              children: [
-                SizedBox(
-                  height: 250.h,
-                  child: PieChart(
-                    PieChartData(
-                      sections: viewModel.getPieChartSections(
-                        detectionResult.traits!,
-                        radius: 50,
-                        titleColor: ColorsManager.baseBlack,
+            FadeInDown(
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  SizedBox(
+                    height: 250.h,
+                    child: PieChart(
+                      PieChartData(
+                        sections: viewModel.getPieChartSections(
+                          detectionResult.traits!,
+                          radius: 50,
+                          titleColor: ColorsManager.baseBlack,
+                        ),
+                        centerSpaceRadius: 70,
+                        sectionsSpace: 2,
+                        centerSpaceColor: Colors.white,
+                        pieTouchData: PieTouchData(enabled: false),
                       ),
-                      centerSpaceRadius: 70,
-                      sectionsSpace: 2,
-                      centerSpaceColor: Colors.white,
-                      pieTouchData: PieTouchData(enabled: false),
                     ),
                   ),
-                ),
-                Text(
-                  detectionResult.dominantTrait ?? '',
-                  style: TextStyles.statusItemText,
-                )
-              ],
+                  Text(
+                    detectionResult.dominantTrait ?? '',
+                    style: TextStyles.statusItemText,
+                  )
+                ],
+              ),
             ),
             SizedBox(height: 80.h),
             StatusSection(traits: detectionResult.traits),

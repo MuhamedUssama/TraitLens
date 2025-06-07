@@ -84,7 +84,10 @@ class SignInForm extends StatelessWidget {
             ),
             child: BlocBuilder<SignInViewModel, SignInStates>(
               bloc: viewModel,
-              buildWhen: (previous, current) => current is SignInLoadingState,
+              buildWhen: (previous, current) =>
+                  current is SignInLoadingState ||
+                  current is SignInErrorState ||
+                  current is SignInSuccessState,
               builder: (context, state) {
                 return state is SignInLoadingState
                     ? Center(
@@ -117,6 +120,7 @@ class SignInForm extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Row(
+            spacing: 10.w,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               MaterialButton(
@@ -136,18 +140,20 @@ class SignInForm extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(width: 10.w),
-              MaterialButton(
-                onPressed: () {
-                  viewModel.doIntent(SignInWithFacebookAction());
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
+              Visibility(
+                visible: true,
+                child: MaterialButton(
+                  onPressed: () {
+                    viewModel.doIntent(SignInWithFacebookAction());
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  minWidth: 60.w,
+                  height: 44.h,
+                  color: ColorsManager.lightGrey,
+                  child: Icon(Icons.facebook, color: Colors.black, size: 24.w),
                 ),
-                minWidth: 60.w,
-                height: 44.h,
-                color: ColorsManager.lightGrey,
-                child: Icon(Icons.facebook, color: Colors.black, size: 24.w),
               ),
             ],
           )
