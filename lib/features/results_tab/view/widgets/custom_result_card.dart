@@ -56,34 +56,37 @@ class CustomResultCard extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  detectionResul.dominantTrait ?? '',
-                  style: TextStyles.font16GreyBold,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      RoutesName.resultsScreen,
-                      arguments: detectionResul,
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorsManager.baseBlue,
-                    foregroundColor: ColorsManager.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.r),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    detectionResul.dominantTrait ?? '',
+                    style: TextStyles.font16GreyBold,
+                    textAlign: TextAlign.center,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        RoutesName.resultsScreen,
+                        arguments: detectionResul,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorsManager.baseBlue,
+                      foregroundColor: ColorsManager.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                    ),
+                    child: Text(
+                      'Show Details',
+                      style: TextStyles.text14WhiteMedium,
                     ),
                   ),
-                  child: Text(
-                    'Show Details',
-                    style: TextStyles.text14WhiteMedium,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

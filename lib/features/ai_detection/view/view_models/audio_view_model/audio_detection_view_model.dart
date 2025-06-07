@@ -64,8 +64,9 @@ class AudioDetectionViewModel extends Cubit<AudioDetectionStates> {
             emit(AudioDetectionErrorState(failure.message));
             await _audioFile?.delete();
           },
-          (model) {
+          (model) async {
             emit(AudioDetectionSuccessState(model));
+            await _audioFile?.delete();
           },
         );
       } else {

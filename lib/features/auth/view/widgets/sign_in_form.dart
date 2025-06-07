@@ -84,7 +84,10 @@ class SignInForm extends StatelessWidget {
             ),
             child: BlocBuilder<SignInViewModel, SignInStates>(
               bloc: viewModel,
-              buildWhen: (previous, current) => current is SignInLoadingState,
+              buildWhen: (previous, current) =>
+                  current is SignInLoadingState ||
+                  current is SignInErrorState ||
+                  current is SignInSuccessState,
               builder: (context, state) {
                 return state is SignInLoadingState
                     ? Center(
@@ -117,6 +120,7 @@ class SignInForm extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Row(
+            spacing: 10.w,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               MaterialButton(
@@ -136,9 +140,8 @@ class SignInForm extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              // SizedBox(width: 10.w),
               Visibility(
-                visible: false,
+                visible: true,
                 child: MaterialButton(
                   onPressed: () {
                     viewModel.doIntent(SignInWithFacebookAction());

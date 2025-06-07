@@ -55,7 +55,7 @@ class TraitLensApp extends StatelessWidget {
   }
 
   String _getInitialRoute() {
-    final user = FirebaseAuth.instance.currentUser;
+    final User? user = FirebaseAuth.instance.currentUser;
     return user != null ? RoutesName.homeScreen : RoutesName.loginScreen;
   }
 }
