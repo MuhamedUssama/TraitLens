@@ -212,4 +212,10 @@ class TextStyles {
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.secondaryColor,
   );
+
+  static TextStyle onBoardingTitle = GoogleFonts.poppins(
+    fontSize: 30.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsManager.baseBlue,
+  );
 }

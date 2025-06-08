@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:trait_lens/core/cache/shared_preferences.dart';
+import 'package:trait_lens/core/constants/app_constants.dart';
 
 import 'config/routing/app_router.dart';
 import 'config/routing/routes_name.dart';
@@ -55,7 +57,11 @@ class TraitLensApp extends StatelessWidget {
   }
 
   String _getInitialRoute() {
-    final User? user = FirebaseAuth.instance.currentUser;
-    return user != null ? RoutesName.homeScreen : RoutesName.loginScreen;
+    if (SharedPreferencesHelper.getBool(key: AppConstants.onBoardingKey)) {
+      final User? user = FirebaseAuth.instance.currentUser;
+      return user != null ? RoutesName.homeScreen : RoutesName.loginScreen;
+    } else {
+      return RoutesName.onBoardingScreen;
+    }
   }
 }
